@@ -32,7 +32,7 @@ session_start();
     </head>
     <body onload="multipleCheck()">
         <?php include "include/header.inc"; ?>
-        <form id="awardpts" action="submitaward.php" method="POST" >
+        <form id="awardpts" action="submitaward.php" method="POST" on>
             <h1>Award new points</h1><br>
             <table class="award">
                 <tr>

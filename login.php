@@ -13,14 +13,16 @@ if ($_POST["attempt"] > 0) {
 
     $query = sprintf("SELECT * FROM `dsp`.`dsp_users` WHERE `user` = '%s'", mysql_real_escape_string($_POST['user']));
     $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
-    $stuff = mysql_fetch_assoc($result);
-    if ($stuff['user'] == $_POST['user']) {
-        if ($stuff['pass'] == md5($_POST['pass'])) {
+    $data = mysql_fetch_assoc($result);
+    if ($data['user'] == $_POST['user']) {
+        if ($data['pass'] == md5($_POST['pass'])) {
             $_SESSION['user'] = $_POST['user'];
-            $_SESSION['auth'] = $stuff['auth'];
-            $_SESSION['full_name'] = $stuff['first_name'] . " " . $stuff['last_name'];
-            $_SESSION['first_name'] = $stuff['first_name'];
-            $_SESSION['last_name'] = $stuff['last_name'];
+            $_SESSION['auth'] = $data['auth'];
+            if ($data['auth'] >= 10)//webmaster
+                $_SESSION['debug'] = true;
+            $_SESSION['full_name'] = $data['first_name'] . " " . $data['last_name'];
+            $_SESSION['first_name'] = $data['first_name'];
+            $_SESSION['last_name'] = $data['last_name'];
             header("Location: ./mypoints.php");
             exit;
         }

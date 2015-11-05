@@ -6,8 +6,12 @@
 * {
     font-size: 12px;
 }
-html, body {}
-#content {height: 100%}
+html {
+
+}
+#content {
+    height: 100%
+}
 
 h1 {
     font-size: 18px;
@@ -24,6 +28,10 @@ body {
     height: 100%; 
     margin: 10px;
     width: 100%; 
+}
+
+a {
+    color: blue;
 }
 
 .all-content {

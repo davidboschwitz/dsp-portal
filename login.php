@@ -7,16 +7,19 @@ include "include/functions.inc";
 
 $errormsg = "";
 //If a login attempt has been made
-if ($_POST["attempt"] > 0) {
+if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     session_start();
     include "include/mysql.inc";
-
-    $query = sprintf("SELECT * FROM `dsp`.`dsp_users` WHERE `user` = '%s'", mysql_real_escape_string($_POST['user']));
+    
+    $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
+    $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
+    
+    $query = sprintf("SELECT * FROM `dsp`.`dsp_users` WHERE `user` = '%s'", mysql_real_escape_string($user));
     $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
     $data = mysql_fetch_assoc($result);
-    if ($data['user'] == $_POST['user']) {
-        if ($data['pass'] == md5($_POST['pass'])) {
-            $_SESSION['user'] = $_POST['user'];
+    if ($data['user'] == $user) {
+        if ($data['pass'] == md5($pass)) {
+            $_SESSION['user'] = $user;
             $_SESSION['auth'] = $data['auth'];
             if ($data['auth'] >= 10)//webmaster
                 $_SESSION['debug'] = true;
@@ -47,8 +50,8 @@ if ($_POST["attempt"] > 0) {
         <div id="login-message"></div>
         <div id="login-box">
             <form id="login" name="login" method="POST" action="login.php">
-                <input id="attempt" name="attempt" type="hidden" value="<?php echo (((int) trim($_POST['attempt'])) + 1) . ""; ?>" />
-                <input id="user" name="user" type="text" placeholder="Username" value="<?php echo $_POST['user']; ?>"/><br>
+                <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
+                <input id="user" name="user" type="text" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);; ?>"/><br>
                 <input id="pass" name="pass" type="password" placeholder="Password" /><br>
                 <input id="submit" type="submit" value="Login" />
             </form>

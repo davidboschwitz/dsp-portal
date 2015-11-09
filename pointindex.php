@@ -43,7 +43,7 @@ INNER JOIN dsp.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code") or 
                 ?>    
                 <tr>
                     <td style="text-align: right;"><?php echo $row[$i]['points']; ?></td>
-                    <td onclick="giveCode('<?php echo $row[$i]['code']; ?>')"><a style="text-decoration: underline; color: blue;" onclick="giveCode('<?php echo $row[$i]['code']; ?>')"><?php echo $row[$i]['code']; ?></a></td>
+                    <td onclick="giveCode('<?php echo $row[$i]['code']; ?>')"><a style="text-decoration: underline; color: blue;" href="#" onclick="giveCode('<?php echo $row[$i]['code']; ?>')"><?php echo $row[$i]['code']; ?></a></td>
                     <td><?php echo $row[$i]['category']; ?></td>
                     <td><?php echo $row[$i]['description']; ?></td>
                 </tr>

@@ -26,6 +26,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
             $_SESSION['full_name'] = $data['first_name'] . " " . $data['last_name'];
             $_SESSION['first_name'] = $data['first_name'];
             $_SESSION['last_name'] = $data['last_name'];
+            $_SESSION['time'] = time();
             header("Location: ./mypoints.php");
             exit;
         }

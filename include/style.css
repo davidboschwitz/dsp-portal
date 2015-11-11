@@ -28,7 +28,7 @@ body {
     height: 100%; 
     margin: 10px;
     width: 100%; 
-    padding: 0.5em;
+    //padding: 0.5em;
 }
 
 a {
@@ -168,6 +168,12 @@ table.award td {
 .awardlabelsuccess {
     text-align: center;
     color: green;
+    font-weight: bold;
+}
+
+.awardlabelfail {
+    text-align: center;
+    color: red;
     font-weight: bold;
 }
 

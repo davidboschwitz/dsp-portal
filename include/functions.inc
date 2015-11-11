@@ -1,6 +1,5 @@
 <?php
-
-include "config.inc";
+require "config.inc";
 session_start();
 
 if ($_SESSION['auth'] < $page['auth']) {

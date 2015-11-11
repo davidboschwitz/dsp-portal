@@ -1,6 +1,6 @@
 <?php
 $page['auth'] = 7;
-include "include/functions.inc";
+require "include/functions.inc";
 
 $query = "SELECT * FROM `dsp`.`points_awarded` WHERE 1 = 1";
 
@@ -40,7 +40,7 @@ if ($_POST['page'] < 1)
 $limitL = ($_POST['page'] - 1) * 50;
 $query .= " LIMIT " . $limitL . ",50";
 
-include "include/mysql.inc";
+require "include/mysql.inc";
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 $i = 0;
@@ -52,7 +52,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
 <html>
     <head>
         <title>Points Admin</title>
-        <?php include "include/head.inc"; ?>
+        <?php require "include/head.inc"; ?>
         <script type="text/javascript">
             function openHints() {
                 window.open("pointindex.php", "_blank", "toolbar=no, scrollbars=yes, resizable=no, top=500, left=500, width=500, height=600");
@@ -111,7 +111,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
         </script>
     </head>
     <body>
-        <?php include "include/header.inc"; ?>
+        <?php require "include/header.inc"; ?>
         <h2>Search for Points Awarded</h2>
         <div class="center">
             <form id="pointadmin" action="" method="POST">
@@ -213,6 +213,6 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 </table>
             </form>
         </div>
-        <?php include "include/footer.inc"; ?>
+        <?php require "include/footer.inc"; ?>
     </body>
 </html>

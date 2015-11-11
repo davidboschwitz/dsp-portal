@@ -1,6 +1,6 @@
 <?php
 $page['auth'] = 7;
-include "include/functions.inc";
+require "include/functions.inc";
 
 switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
     case 'edit':

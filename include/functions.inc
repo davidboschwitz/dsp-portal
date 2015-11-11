@@ -6,7 +6,15 @@ session_start();
 if ($_SESSION['auth'] < $page['auth']) {
     //you're don't have the authority to be on this page!
     echo "<h1>401 - Unauthorized</h1><br>";
-    echo "Clearance level " . $page['auth'] . " required.";
+    if (!isset($_SESSION['auth']))
+        echo "<a href=\"login.php\">Login here.</a>";
+    exit;
+}
+
+if ($_SESSION['timeout'] + $config['timeout'] > time()) {
+    //Session timeout
+    echo "<h1>401 - Unauthorized</h1><br>";
+    echo "Clearance level " . $page['auth'] . " required. <a href=\"login.php\">Login here.</a>";
     exit;
 }
 

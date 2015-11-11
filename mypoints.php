@@ -1,7 +1,7 @@
 <?php
 $page['auth'] = 1;
-include "include/functions.inc";
-include "include/mysql.inc"; //connect to MySQL
+require "include/functions.inc";
+require "include/mysql.inc"; //connect to MySQL
 
 $user = $_SESSION['user'];
 
@@ -33,10 +33,10 @@ while ($row[$rowcount] = mysql_fetch_assoc($result)) {
 <html>
     <head>
         <title>DSP - My Points</title>
-        <?php include "include/head.inc"; ?>
+        <?php require "include/head.inc"; ?>
     </head>
     <body>
-        <?php include "include/header.inc"; ?>
+        <?php require "include/header.inc"; ?>
         <h2>My Points Breakdown (<?php echo $_SESSION['full_name']; ?>)</h2>
         <table class="cream">
             <thead>
@@ -76,7 +76,7 @@ while ($row[$rowcount] = mysql_fetch_assoc($result)) {
                 </tr>
             </thead>
         </table>
-        <?php include "include/footer.inc"; ?>
+        <?php require "include/footer.inc"; ?>
     </body>
 </html>
 <?php

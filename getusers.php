@@ -1,8 +1,8 @@
 <?php
-
 $page['auth'] = 1;
-include 'include/functions.inc';
-include 'include/mysql.inc';
+require 'include/functions.inc';
+require 'include/mysql.inc';
+
 $search = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS);
 if (isset($_GET['multiple'])) {
     $start = 0;

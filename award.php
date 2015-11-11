@@ -1,12 +1,12 @@
 <?php
 $page['auth'] = 5;
-include "include/functions.inc";
+require "include/functions.inc";
 session_start();
 ?>
 <html>
     <head>
         <title>Award Points</title>
-        <?php include "include/head.inc"; ?>
+        <?php require "include/head.inc"; ?>
         <script type="text/javascript">
             function multipleCheck() {
                 if (document.getElementById("multiple").checked) {
@@ -50,7 +50,7 @@ session_start();
         </script>
     </head>
     <body onload="multipleCheck()">
-        <?php include "include/header.inc"; ?>
+        <?php require "include/header.inc"; ?>
         <form id="awardpts" action="submitaward.php" method="POST" on>
             <h2>Award new points</h2>
             <table class="award">
@@ -92,7 +92,7 @@ session_start();
                 </tr>
             </table>
         </form>
-        <?php include "include/footer.inc"; ?>
+        <?php require "include/footer.inc"; ?>
     </body>
 </html>
 

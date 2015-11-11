@@ -10,7 +10,7 @@ if ($_SESSION['auth'] < $page['auth']) {
     exit;
 }
 
-if ($_SESSION['timeout'] + $config['timeout'] > time()) {
+if ($config['timeout'] > 0 && $_SESSION['timeout'] + $config['timeout'] > time()) {
     //Session timeout
     echo "<h1>401 - Unauthorized</h1><br>";
     echo "Clearance level " . $page['auth'] . " required. <a href=\"login.php\">Login here.</a>";

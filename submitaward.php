@@ -11,25 +11,37 @@ session_start();
     </head>
     <body>
         <?php
-        include "include/header.inc";
-        if ($_POST['code']){
-            
-        }
-        if ($_POST['multiple'] == "on") {
-            $awardto = split(",", $_POST['awardedtomultiple']);
-            for ($i = 0; $i < count($awardto); $i++) {
-                $awardto[$i] = trim($awardto[$i]);
-                if (!valid_net_id($awardto[$i]))
-                    continue;
-                $query = sprintf("INSERT INTO `dsp`.`points_awarded` (`uid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
-                        . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_real_escape_string($awardto[$i]), mysql_real_escape_string($_POST['code']), intval($_POST['quantity']), mysql_real_escape_string($_SESSION['user']), mysql_real_escape_string($_POST['comments']));
-                $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+        require "include/header.inc";
+        $errormsg = null;
+        do {
+            if (!isset($_POST['code'])) {
+                $errormsg = "Error: CODE is not set!";
+                break;
             }
-        } else {
-            $query = sprintf("INSERT INTO `dsp`.`points_awarded` (`uid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
-                    . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_real_escape_string($_POST['awardedto']), mysql_real_escape_string($_POST['code']), intval($_POST['quantity']), mysql_real_escape_string($_SESSION['user']), mysql_real_escape_string($_POST['comments']));
-            $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
-        }
+            if (!isset($_POST['quantity'])) {
+                $errormsg = "Error: QUANTITY is not set!";
+                break;
+            }
+            if ($_POST['quantity'] > 20 || $_POST['quantity'] < 1) {
+                $errormsg = "Error: QUANTITY out of range [1,20]!";
+                break;
+            }
+            if ($_POST['multiple'] == "on") {
+                $awardto = split(",", $_POST['awardedtomultiple']);
+                for ($i = 0; $i < count($awardto); $i++) {
+                    $awardto[$i] = trim($awardto[$i]);
+                    if (!valid_net_id($awardto[$i]))
+                        continue;
+                    $query = sprintf("INSERT INTO `dsp`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
+                            . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_real_escape_string($awardto[$i]), mysql_real_escape_string($_POST['code']), intval($_POST['quantity']), mysql_real_escape_string($_SESSION['user']), mysql_real_escape_string($_POST['comments']));
+                    $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
+                }
+            } else {
+                $query = sprintf("INSERT INTO `dsp`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
+                        . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_real_escape_string($_POST['awardedto']), mysql_real_escape_string($_POST['code']), intval($_POST['quantity']), mysql_real_escape_string($_SESSION['user']), mysql_real_escape_string($_POST['comments']));
+                $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
+            }
+        } while (false);
         ?>
         <form id="awardpts" action="submitaward.php" method="POST" >
             <h1>Points awarded</h1><br>
@@ -66,10 +78,10 @@ session_start();
                     <td class="awardlabel">Awarded on</td>
                     <td><?php echo date("Y-m-d h:m:s"); ?></td>
                 </tr>
-                <tr><td class="awardlabelsuccess" colspan="2">Points awarded successfully!</td></tr>
+                <tr><td class="<?php echo $errormsg != null ? "awardlabelfail" : "awardlabelsuccess"; ?>" colspan="2"><?php echo $errormsg != null ? $errormsg : "Points awarded successfully!"; ?></td></tr>
             </table>
         </form>
-        <?php include "include/footer.inc"; ?>
+        <?php require "include/footer.inc"; ?>
     </body>
 </html>
 

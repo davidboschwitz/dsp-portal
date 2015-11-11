@@ -1,17 +1,17 @@
 <?php
 $page['auth'] = 1;
-include "include/functions.inc";
+require "include/functions.inc";
 ?>
 <html>
     <head>
         <title>Calendar</title>
-        <?php include "include/head.inc"; ?>
+        <?php require "include/head.inc"; ?>
     </head>
     <body>
-        <?php include "include/header.inc"; ?>
+        <?php require "include/header.inc"; ?>
         <h2>Calendar</h2>
         <iframe src="http://goo.gl/zQeBnx" width="98%" height="96%"></iframe>
-        <?php include "include/footer.inc"; ?>
+        <?php require "include/footer.inc"; ?>
     </body>
 </html>
 

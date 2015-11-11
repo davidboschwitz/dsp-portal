@@ -1,5 +1,5 @@
 <?php
-include "include/config.inc";
+require "include/config.inc";
 ?>
 <html>
     <head>
@@ -25,7 +25,7 @@ include "include/config.inc";
                 </tr>
             </thead>
             <?php
-            include "include/mysql.inc";
+            require "include/mysql.inc";
             $result = mysql_query("SELECT
   pd.points,
   pd.code,

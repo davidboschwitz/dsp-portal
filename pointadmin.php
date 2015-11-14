@@ -5,6 +5,7 @@ require "include/functions.inc";
 $query = "SELECT * FROM `dsp`.`points_awarded` WHERE 1 = 1";
 
 if (isset($_POST['datebefore']) && isset($_POST['dateafter'])) {
+    //TODO make sure input is formatted to be a date
     $query .= sprintf(" AND `timestamp` BETWEEN '%s' AND '%s 23:59:00'", mysql_escape_string($_POST['datebefore']), mysql_escape_string($_POST['dateafter']));
 }
 if (isset($_POST['awardedto']) && valid_net_id($_POST['awardedto'])) {
@@ -13,10 +14,11 @@ if (isset($_POST['awardedto']) && valid_net_id($_POST['awardedto'])) {
 if (isset($_POST['awardedby']) && valid_net_id($_POST['awardedby'])) {
     $query .= sprintf(" AND `awardedby` = '%s'", mysql_escape_string($_POST['awardedby']));
 }
-if (strlen($_POST['code']) > 3 && strlen($_POST['code']) < 6) {
+if (isset($_POST['code']) && strlen($_POST['code']) > 3 && strlen($_POST['code']) < 6) {
+    //TODO make sure it is a valid code
     $query .= sprintf(" AND `code` = '%s'", mysql_escape_string($_POST['code']));
 }
-if ($_POST['quantity'] > 0) {
+if (isset($_POST['quantity']) && $_POST['quantity'] > 0) {
     $query .= sprintf(" AND `quantity` = '%s'", mysql_escape_string($_POST['quantity']));
 }
 if (isset($_POST['comments'])) {
@@ -184,7 +186,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                         </tr>
                     </thead>
                     <?php for ($i = 0; $i < $rowcount; $i++) { ?>    
-                        <tr>
+                        <tr id="point[<?php echo $row[$i]['pointid']; ?>]">
                             <td><input type="checkbox" id="pointcheck<?php echo $row[$i]['pointid']; ?>" onclick="togglePoint(<?php echo $row[$i]['pointid']; ?>)" /></td>
                             <td><?php echo $row[$i]['timestamp']; ?></td>
                             <td><?php echo $row[$i]['code']; ?></td>

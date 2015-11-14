@@ -2,7 +2,6 @@
 $page['auth'] = 5;
 require "include/functions.inc";
 require "include/mysql.inc";
-session_start();
 ?>
 <html>
     <head>

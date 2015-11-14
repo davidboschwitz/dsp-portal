@@ -3,3 +3,6 @@ include/mysql.inc
 
 # Exclude netbeans stuff
 nbproject/
+
+# Misc
+.DS_STORE

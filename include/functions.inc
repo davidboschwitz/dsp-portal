@@ -24,6 +24,7 @@ if ($config['timeout'] > 0) {
 function valid_net_id($netid) {
     if (strlen($netid) < 1 && strlen($netid) > 25)
         return false;
+    //TODO fix regex because it matches to nothing
     if (preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $netid)) {
         //echo "fail: ".$netid."<br>";
         return false;

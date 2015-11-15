@@ -4,7 +4,7 @@ require "config.inc";
 session_start();
 
 if ($_SESSION['auth'] < $page['auth']) {
-    //you're don't have the authority to be on this page!
+    //you don't have the authority to be on this page!
     echo "<h1>401 - Unauthorized</h1><br>";
     if (!isset($_SESSION['auth']))
         echo "<a href=\"login.php\">Login here.</a>";

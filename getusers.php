@@ -13,13 +13,13 @@ if (isset($_GET['multiple'])) {
     }
 
     $search = trim($search);
-    $query = sprintf("SELECT *  FROM `dsp`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%'", mysql_real_escape_string($search), mysql_real_escape_string($search), mysql_real_escape_string($search));
+    $query = sprintf("SELECT *  FROM `dsp`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%'", mysqli_real_escape_string($search), mysqli_real_escape_string($search), mysqli_real_escape_string($search));
     //echo $query;
-    $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+    $result = mysqli_query($query) or die('Invalid query: ' . mysqli_error());
     $i = 0;
     echo "[";
 
-    while ($row[$i] = mysql_fetch_assoc($result)) {
+    while ($row[$i] = mysqli_fetch_assoc($result)) {
         if ($i > 0)
             echo ", ";
         echo "{ \"label\": \"" . $row[$i]['last_name'] . ", " . $row[$i]['first_name'] . " (" . $row[$i]['user'] . ")\", \"value\": \"" . substr($_GET['term'], 0, $start) . " " . $row[$i]['user'] . ", \"}";
@@ -30,13 +30,13 @@ if (isset($_GET['multiple'])) {
     echo "]";
 }else {
     $search = trim($search);
-    $query = sprintf("SELECT *  FROM `dsp`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%'", mysql_real_escape_string($search), mysql_real_escape_string($search), mysql_real_escape_string($search));
+    $query = sprintf("SELECT *  FROM `dsp`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%'", mysqli_real_escape_string($search), mysqli_real_escape_string($search), mysqli_real_escape_string($search));
     //echo $query;
-    $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+    $result = mysqli_query($query) or die('Invalid query: ' . mysqli_error());
     $i = 0;
     echo "[";
 
-    while ($row[$i] = mysql_fetch_assoc($result)) {
+    while ($row[$i] = mysqli_fetch_assoc($result)) {
         if ($i > 0)
             echo ", ";
         echo "{ \"label\": \"" . $row[$i]['last_name'] . ", " . $row[$i]['first_name'] . " (" . $row[$i]['user'] . ")\", \"value\": \"" . $row[$i]['user'] . "\"}";

@@ -14,9 +14,9 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
     $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
     
-    $query = sprintf("SELECT * FROM `dsp`.`dsp_users` WHERE `user` = '%s'", mysql_real_escape_string($user));
-    $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
-    $data = mysql_fetch_assoc($result);
+    $query = sprintf("SELECT * FROM `dsp`.`dsp_users` WHERE `user` = '%s'", mysqli_real_escape_string($user));
+    $result = mysqli_query($query) or die('Invalid query: ' . mysqli_error());
+    $data = mysqli_fetch_assoc($result);
     if ($data['user'] == $user) {
         if ($data['pass'] == md5($pass)) {
             $_SESSION['user'] = $user;
@@ -59,3 +59,4 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         </div>
     </body>
 </html>
+<?php mysqli_close($mysql_link);

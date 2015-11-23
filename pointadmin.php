@@ -6,23 +6,23 @@ $query = "SELECT * FROM `dsp`.`points_awarded` WHERE 1 = 1";
 
 if (isset($_POST['datebefore']) && isset($_POST['dateafter'])) {
     //TODO make sure input is formatted to be a date
-    $query .= sprintf(" AND `timestamp` BETWEEN '%s' AND '%s 23:59:00'", mysql_escape_string($_POST['datebefore']), mysql_escape_string($_POST['dateafter']));
+    $query .= sprintf(" AND `timestamp` BETWEEN '%s' AND '%s 23:59:00'", mysqli_escape_string($_POST['datebefore']), mysqli_escape_string($_POST['dateafter']));
 }
 if (isset($_POST['awardedto']) && valid_net_id($_POST['awardedto'])) {
-    $query .= sprintf(" AND `awardedto` = '%s'", mysql_escape_string($_POST['awardedto']));
+    $query .= sprintf(" AND `awardedto` = '%s'", mysqli_escape_string($_POST['awardedto']));
 }
 if (isset($_POST['awardedby']) && valid_net_id($_POST['awardedby'])) {
-    $query .= sprintf(" AND `awardedby` = '%s'", mysql_escape_string($_POST['awardedby']));
+    $query .= sprintf(" AND `awardedby` = '%s'", mysqli_escape_string($_POST['awardedby']));
 }
 if (isset($_POST['code']) && strlen($_POST['code']) > 3 && strlen($_POST['code']) < 6) {
     //TODO make sure it is a valid code
-    $query .= sprintf(" AND `code` = '%s'", mysql_escape_string($_POST['code']));
+    $query .= sprintf(" AND `code` = '%s'", mysqli_escape_string($_POST['code']));
 }
 if (isset($_POST['quantity']) && $_POST['quantity'] > 0) {
-    $query .= sprintf(" AND `quantity` = '%s'", mysql_escape_string($_POST['quantity']));
+    $query .= sprintf(" AND `quantity` = '%s'", mysqli_escape_string($_POST['quantity']));
 }
 if (isset($_POST['comments'])) {
-    $query .= sprintf(" AND `comments` LIKE '%s'", mysql_escape_string($_POST['comments']));
+    $query .= sprintf(" AND `comments` LIKE '%s'", mysqli_escape_string($_POST['comments']));
 }
 
 switch ($_POST['sortby']) {
@@ -43,10 +43,10 @@ $limitL = ($_POST['page'] - 1) * 50;
 $query .= " LIMIT " . $limitL . ",50";
 
 require "include/mysql.inc";
-$result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+$result = mysqli_query($query) or die('Invalid query: ' . mysqli_error());
 
 $i = 0;
-while ($row[$i++] = mysql_fetch_assoc($result)) {
+while ($row[$i++] = mysqli_fetch_assoc($result)) {
     //TODO: add rows with same codes quantities into one single row
 }
 $rowcount = --$i; //Otherwise returns extra empty NULL row
@@ -157,7 +157,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 if ($config['debug'] || $_SESSION['debug']) {
                     echo "<br><div class=\"debug\">" . $query . "</div><br>";
                 }
-                echo mysql_num_rows($result);
+                echo mysqli_num_rows($result);
                 ?>
                 <table class="cream">
 

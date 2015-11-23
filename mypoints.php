@@ -10,12 +10,13 @@ FROM dsp.points_awarded AS pa
 INNER JOIN dsp.points_categories AS pc ON SUBSTRING(pa.code,1,2) = pc.code
 INNER JOIN dsp.points_definition AS pd ON pd.code = pa.code
 WHERE pa.awardedto = '%s'
-ORDER BY pa.code", mysql_real_escape_string($user));
-$result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+ORDER BY pa.code", mysqli_real_escape_string($user));
+
+$result = mysqli_query($query) or die('Invalid query: ' . mysqli_error());
 
 
 $rowcount = 0;
-while ($row[$rowcount] = mysql_fetch_assoc($result)) {
+while ($row[$rowcount] = mysqli_fetch_assoc($result)) {
     //TODO: add rows with same codes quantities into one single row
     $flag = false;
     for ($a = 0; $a < $rowcount; $a++) {
@@ -80,4 +81,4 @@ while ($row[$rowcount] = mysql_fetch_assoc($result)) {
     </body>
 </html>
 <?php
-mysql_close($mysql_link);
+mysqli_close($mysql_link);

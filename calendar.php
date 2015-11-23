@@ -10,7 +10,7 @@ require "include/functions.inc";
     <body>
         <?php require "include/header.inc"; ?>
         <h2>Calendar</h2>
-        <iframe src="http://goo.gl/zQeBnx" width="98%" height="96%"></iframe>
+        <iframe src="<?php echo $config['iframe_src']; ?>" width="98%" height="96%"></iframe>
         <?php require "include/footer.inc"; ?>
     </body>
 </html>

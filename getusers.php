@@ -13,7 +13,7 @@ if (isset($_GET['multiple'])) {
     }
 
     $search = trim($search);
-    $query = sprintf("SELECT *  FROM `dsp`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%'", mysqli_real_escape_string($search), mysqli_real_escape_string($search), mysqli_real_escape_string($search));
+    $query = sprintf("SELECT * FROM `dsp`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%' LIMIT 10", mysqli_real_escape_string($search), mysqli_real_escape_string($search), mysqli_real_escape_string($search));
     //echo $query;
     $result = mysqli_query($query) or die('Invalid query: ' . mysqli_error());
     $i = 0;
@@ -30,7 +30,7 @@ if (isset($_GET['multiple'])) {
     echo "]";
 }else {
     $search = trim($search);
-    $query = sprintf("SELECT *  FROM `dsp`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%'", mysqli_real_escape_string($search), mysqli_real_escape_string($search), mysqli_real_escape_string($search));
+    $query = sprintf("SELECT *  FROM `dsp`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%' LIMIT 10", mysqli_real_escape_string($search), mysqli_real_escape_string($search), mysqli_real_escape_string($search));
     //echo $query;
     $result = mysqli_query($query) or die('Invalid query: ' . mysqli_error());
     $i = 0;

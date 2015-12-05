@@ -4,25 +4,25 @@ require "include/functions.inc";
 
 $query = "SELECT * FROM `dsp`.`points_awarded` WHERE 1 = 1";
 
-if (isset($_POST['datebefore']) && isset($_POST['dateafter'])) {
+if (isset($_POST['datebefore']) && isset($_POST['dateafter']) && !empty($_POST['dateafter']) && !empty($_POST['datebefore'])) {
     //TODO make sure input is formatted to be a date
-    $query .= sprintf(" AND `timestamp` BETWEEN '%s' AND '%s 23:59:00'", mysqli_escape_string($_POST['datebefore']), mysqli_escape_string($_POST['dateafter']));
+    $query .= sprintf(" AND `timestamp` BETWEEN '%s' AND '%s 23:59:00'", mysql_escape_string($_POST['datebefore']), mysql_escape_string($_POST['dateafter']));
 }
-if (isset($_POST['awardedto']) && valid_net_id($_POST['awardedto'])) {
-    $query .= sprintf(" AND `awardedto` = '%s'", mysqli_escape_string($_POST['awardedto']));
+if (isset($_POST['awardedto']) && valid_net_id($_POST['awardedto']) && !empty($_POST['awardedto'])) {
+    $query .= sprintf(" AND `awardedto` = '%s'", mysql_escape_string($_POST['awardedto']));
 }
-if (isset($_POST['awardedby']) && valid_net_id($_POST['awardedby'])) {
-    $query .= sprintf(" AND `awardedby` = '%s'", mysqli_escape_string($_POST['awardedby']));
+if (isset($_POST['awardedby']) && valid_net_id($_POST['awardedby']) && !empty($_POST['awardedby'])) {
+    $query .= sprintf(" AND `awardedby` = '%s'", mysql_escape_string($_POST['awardedby']));
 }
-if (isset($_POST['code']) && strlen($_POST['code']) > 3 && strlen($_POST['code']) < 6) {
+if (isset($_POST['code']) && strlen($_POST['code']) > 3 && strlen($_POST['code']) < 6 && !empty($_POST['code'])) {
     //TODO make sure it is a valid code
-    $query .= sprintf(" AND `code` = '%s'", mysqli_escape_string($_POST['code']));
+    $query .= sprintf(" AND `code` = '%s'", mysql_escape_string($_POST['code']));
 }
-if (isset($_POST['quantity']) && $_POST['quantity'] > 0) {
-    $query .= sprintf(" AND `quantity` = '%s'", mysqli_escape_string($_POST['quantity']));
+if (isset($_POST['quantity']) && $_POST['quantity'] > 0 && !empty($_POST['quantity'])) {
+    $query .= sprintf(" AND `quantity` = '%s'", mysql_escape_string($_POST['quantity']));
 }
-if (isset($_POST['comments'])) {
-    $query .= sprintf(" AND `comments` LIKE '%s'", mysqli_escape_string($_POST['comments']));
+if (isset($_POST['comments']) && !empty($_POST['comments'])) {
+    $query .= sprintf(" AND `comments` LIKE '%s'", mysql_escape_string($_POST['comments']));
 }
 
 switch ($_POST['sortby']) {
@@ -43,10 +43,10 @@ $limitL = ($_POST['page'] - 1) * 50;
 $query .= " LIMIT " . $limitL . ",50";
 
 require "include/mysql.inc";
-$result = mysqli_query($query) or die('Invalid query: ' . mysqli_error());
+$result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 $i = 0;
-while ($row[$i++] = mysqli_fetch_assoc($result)) {
+while ($row[$i++] = mysql_fetch_assoc($result)) {
     //TODO: add rows with same codes quantities into one single row
 }
 $rowcount = --$i; //Otherwise returns extra empty NULL row
@@ -79,11 +79,11 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 });
             });
             function editPoint(pointID) {
-
+                $.post("pointadmin_functions.php", {task:"edit", pointid:pointID}, function (data){alert(data)});
             }
             function deletePoint(pointID) {
                 if (confirm("Are you sure you want to delete this point?")) {
-                    $.post("pointadmin_functions.php", {task:"delete", point:pointID}, function (data){alert(data)});
+                    $.post("pointadmin_functions.php", {task:"delete", pointid:pointID}, function (data){alert(data)});
                 }
             }
             var pointsOnPage = [<?php
@@ -157,7 +157,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 if ($config['debug'] || $_SESSION['debug']) {
                     echo "<br><div class=\"debug\">" . $query . "</div><br>";
                 }
-                echo mysqli_num_rows($result);
+                echo mysql_num_rows($result);
                 ?>
                 <table class="cream">
 
@@ -194,8 +194,8 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                             <td><?php echo $row[$i]['awardedto']; ?></td>
                             <td><?php echo $row[$i]['awardedby']; ?></td>
                             <td><?php echo $row[$i]['comments']; ?></td>
-                            <td><input type="button" value="Edit" onclick="editPoint('<?php echo $row[$i]['pointid']; ?>')"</td>
-                            <td><input type="button" value="Delete" onclick="deletePoint('<?php echo $row[$i]['pointid']; ?>')"</td>
+                            <td><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)"</td>
+                            <td><input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)"</td>
                             </form>
                         </tr>
                     <?php } ?>

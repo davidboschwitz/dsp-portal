@@ -1,6 +1,7 @@
 <?php
 $page['auth'] = 7;
 require "include/functions.inc";
+require "include/mysql.inc";
 
 $query = "SELECT * FROM `$mysql_db`.`points_awarded` WHERE 1 = 1";
 
@@ -42,7 +43,6 @@ if ($_POST['page'] < 1)
 $limitL = ($_POST['page'] - 1) * 50;
 $query .= " LIMIT " . $limitL . ",50";
 
-require "include/mysql.inc";
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 $i = 0;

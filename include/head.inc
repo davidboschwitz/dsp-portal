@@ -6,3 +6,4 @@
 <style><?php include "style.css"; ?></style>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/favicon.ico">

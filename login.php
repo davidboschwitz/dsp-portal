@@ -2,6 +2,7 @@
 session_start();
 session_destroy();
 //session_stop();
+$page['no_timeout'] = TRUE;
 
 include "include/functions.inc";
 

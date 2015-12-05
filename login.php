@@ -40,9 +40,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
 <html>
     <head>
         <title>DSP Portal - Login</title>
-        <style>
-<?php include "include/style.css"; ?>
-        </style>
+        <?php include "include/head.inc"; ?>
     </head>
     <body>
         <div id="header">

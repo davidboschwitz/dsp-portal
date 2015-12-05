@@ -1,15 +1,20 @@
 <?php
 $page['auth'] = 7;
 require "include/functions.inc";
+require "include/mysql.inc";
+
+$pointID = filter_input(INPUT_POST, 'pointid', FILTER_SANITIZE_NUMBER_INT);
 
 switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
     case 'edit':
         //TODO
-        echo "Edit unsuccessful!";
+        echo "Feature not available at this time.";
         break;
     case 'delete':
         //TODO
-        echo "Delete unsuccessful!";
+        $query = "DELETE FROM `dsp`.`points_awarded` WHERE `points_awarded`.`pointid` = '". $pointID."';";
+        mysql_query($query) or die("Delete Unsuccessful: ".  mysql_error());
+        echo "Delete Success! (".$pointID.")";
         break;
     case 'editmultiple':
         //TODO
@@ -20,3 +25,5 @@ switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         echo "Delete unsuccessful!";
         break;
 }
+
+mysql_close($mysql_link);

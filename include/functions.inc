@@ -11,7 +11,7 @@ if ($_SESSION['auth'] < $page['auth']) {
     exit;
 }
 
-if ($config['timeout'] > 0) {
+if ($config['timeout'] > 0 && !$page['no_timeout']) {
     if ($_SESSION['time'] + $config['timeout'] < time()) {
         //Session timeout
         echo "<h1>401 - Unauthorized</h1><br>";

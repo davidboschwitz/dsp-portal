@@ -11,7 +11,6 @@ switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         echo "Feature not available at this time.";
         break;
     case 'delete':
-        //TODO
         $query = "DELETE FROM `dsp`.`points_awarded` WHERE `points_awarded`.`pointid` = '". $pointID."';";
         mysql_query($query) or die("Delete Unsuccessful: ".  mysql_error());
         echo "Delete Success! (".$pointID.")";

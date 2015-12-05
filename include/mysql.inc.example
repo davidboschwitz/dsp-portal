@@ -1,1 +1,2 @@
-<?php $mysql_link = mysql_connect('HOST_ADDRESS', 'USER', 'PASS') or die('Could not connect: ' . mysql_error());?>
+<?php $mysql_link = mysql_connect('HOST_ADDRESS', 'USER', 'PASS') or die('Could not connect: ' . mysql_error());
+$mysql_db = "DB_NAME";

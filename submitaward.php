@@ -31,12 +31,12 @@ require "include/mysql.inc";
                     $awardto[$i] = trim($awardto[$i]);
                     if (!valid_net_id($awardto[$i]))
                         continue;
-                    $query = sprintf("INSERT INTO `dsp`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
+                    $query = sprintf("INSERT INTO `$mysql_db`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
                             . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($awardto[$i]), mysql_escape_string($_POST['code']), intval($_POST['quantity']), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
                     $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
                 }
             } else {
-                $query = sprintf("INSERT INTO `dsp`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
+                $query = sprintf("INSERT INTO `$mysql_db`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
                         . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($_POST['awardedto']), mysql_escape_string($_POST['code']), intval($_POST['quantity']), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
                 $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
             }

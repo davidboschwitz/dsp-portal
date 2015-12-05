@@ -2,7 +2,7 @@
 $page['auth'] = 7;
 require "include/functions.inc";
 
-$query = "SELECT * FROM `dsp`.`points_awarded` WHERE 1 = 1";
+$query = "SELECT * FROM `$mysql_db`.`points_awarded` WHERE 1 = 1";
 
 if (isset($_POST['datebefore']) && isset($_POST['dateafter']) && !empty($_POST['dateafter']) && !empty($_POST['datebefore'])) {
     //TODO make sure input is formatted to be a date

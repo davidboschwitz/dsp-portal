@@ -15,7 +15,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
     $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
 
-    $query = sprintf("SELECT * FROM `dsp`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
+    $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
     $result = mysql_query($query) or die('Invalid query (A): ' . mysql_error());
     $data = mysql_fetch_assoc($result);
     if ($data['user'] === $user) {

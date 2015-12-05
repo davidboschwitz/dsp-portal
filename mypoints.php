@@ -6,9 +6,9 @@ require "include/mysql.inc"; //connect to MySQL
 $user = $_SESSION['user'];
 
 $query = sprintf("SELECT pa.code, pa.quantity, pd.points, pd.description, pc.description AS category
-FROM dsp.points_awarded AS pa 
-INNER JOIN dsp.points_categories AS pc ON SUBSTRING(pa.code,1,2) = pc.code
-INNER JOIN dsp.points_definition AS pd ON pd.code = pa.code
+FROM $mysql_db.points_awarded AS pa 
+INNER JOIN $mysql_db.points_categories AS pc ON SUBSTRING(pa.code,1,2) = pc.code
+INNER JOIN $mysql_db.points_definition AS pd ON pd.code = pa.code
 WHERE pa.awardedto = '%s'
 ORDER BY pa.code", mysql_escape_string($user));
 

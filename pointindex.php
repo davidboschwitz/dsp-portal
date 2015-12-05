@@ -31,8 +31,8 @@ require "include/config.inc";
   pd.code,
   pc.description AS category,
   pd.description
-FROM dsp.points_definition AS pd
-INNER JOIN dsp.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code") or die('Invalid query: ' . mysql_error());
+FROM $mysql_db.points_definition AS pd
+INNER JOIN $mysql_db.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code") or die('Invalid query: ' . mysql_error());
 
             $i = 0;
             while ($row[$i++] = mysql_fetch_assoc($result)) {

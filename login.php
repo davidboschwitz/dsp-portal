@@ -46,16 +46,21 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         <div id="header">
             <span class="header-msg">DSP Portal - Login</span>
         </div>
-        <span style="color: red;"><?php echo $errormsg; ?></span>
-        <div id="login-message"></div>
-        <div id="login-box">
-            <form id="login" name="login" method="POST" action="login.php">
-                <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
-                <input id="user" name="user" type="text" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);?>"/><br>
-                <input id="pass" name="pass" type="password" placeholder="Password" /><br>
-                <input id="submit" type="submit" value="Login" />
-            </form>
-        </div>
+        <div class="row">
+            <span style="color: red;"><?php echo $errormsg; ?></span>
+            <div id="login-message"></div>
+            <div id="login-box">
+                <div class="col-md-4">&nbsp;</div>
+                <div class="col-md-4">
+                    <form id="login" name="login" method="POST" action="login.php">
+                        <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
+                        <input id="user" name="user" type="text" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING); ?>"/><br>
+                        <input id="pass" name="pass" type="password" placeholder="Password" /><br>
+                        <input id="submit" type="submit" value="Login" />
+                    </form>
+                </div>
+                <div class="col-md-4">&nbsp;</div>
+            </div>
     </body>
 </html>
 <?php

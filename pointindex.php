@@ -26,16 +26,16 @@ require "include/config.inc";
             </thead>
             <?php
             require "include/mysql.inc";
-            $result = mysqli_query("SELECT
+            $result = mysql_query("SELECT
   pd.points,
   pd.code,
   pc.description AS category,
   pd.description
 FROM dsp.points_definition AS pd
-INNER JOIN dsp.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code") or die('Invalid query: ' . mysqli_error());
+INNER JOIN dsp.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code") or die('Invalid query: ' . mysql_error());
 
             $i = 0;
-            while ($row[$i++] = mysqli_fetch_assoc($result)) {
+            while ($row[$i++] = mysql_fetch_assoc($result)) {
                 //TODO: add rows with same codes quantities into one single row
             }
             $rowcount = --$i; //Otherwise returns extra empty NULL row
@@ -56,4 +56,4 @@ INNER JOIN dsp.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code") or 
         </table>
     </body>
 </html>
-<?php mysqli_close($mysql_link);
+<?php mysql_close($mysql_link);

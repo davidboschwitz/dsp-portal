@@ -21,8 +21,8 @@ require "include/mysql.inc";
                 $errormsg = "Error: QUANTITY is not set!";
                 break;
             }
-            if ($_POST['quantity'] > 20 || $_POST['quantity'] < 1) {
-                $errormsg = "Error: QUANTITY out of range [1,20]!";
+            if (!is_int($_POST['quantity']) && $_POST['quantity'] > 20 || $_POST['quantity'] < 1) {
+                $errormsg = "Error: QUANTITY out of range [1-20]!";
                 break;
             }
             if ($_POST['multiple'] == "on") {
@@ -32,13 +32,13 @@ require "include/mysql.inc";
                     if (!valid_net_id($awardto[$i]))
                         continue;
                     $query = sprintf("INSERT INTO `dsp`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
-                            . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysqli_real_escape_string($awardto[$i]), mysqli_real_escape_string($_POST['code']), intval($_POST['quantity']), mysqli_real_escape_string($_SESSION['user']), mysqli_real_escape_string($_POST['comments']));
-                    $result = mysqli_query($query) or ( $errormsg = ('Invalid query: ' . mysqli_error()));
+                            . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($awardto[$i]), mysql_escape_string($_POST['code']), intval($_POST['quantity']), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
+                    $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
                 }
             } else {
                 $query = sprintf("INSERT INTO `dsp`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
-                        . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysqli_real_escape_string($_POST['awardedto']), mysqli_real_escape_string($_POST['code']), intval($_POST['quantity']), mysqli_real_escape_string($_SESSION['user']), mysqli_real_escape_string($_POST['comments']));
-                $result = mysqli_query($query) or ( $errormsg = ('Invalid query: ' . mysqli_error()));
+                        . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($_POST['awardedto']), mysql_escape_string($_POST['code']), intval($_POST['quantity']), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
+                $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
             }
         } while (false);
         ?>
@@ -85,4 +85,4 @@ require "include/mysql.inc";
 </html>
 
 <?php
-mysqli_close($mysql_link);
+mysql_close($mysql_link);

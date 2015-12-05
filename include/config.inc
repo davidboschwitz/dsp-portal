@@ -1,16 +1,18 @@
 <?php
 /* */
 $config['version'] = 0.1;
+
 /* */
 $config['debug'] = false;
+
 /* Timeout: set to 0 for never timeout. */
-$config['timeout'] = 0;
+$config['timeout'] = 15 * 60; //15 minutes
 
 /* Webmaster email address (for contact info) */
 $config['webmaster_email'] = "dbosch@iastate.edu";
 
 /* Calendar iframe src */
-$config['iframe_src'] = "http://goo.gl/zQeBnx";
+$config['calendar_iframe_src'] = "http://goo.gl/zQeBnx";
 
 /* For making sure Dates/Times are correct. Will throw errors if removed */
 date_default_timezone_set('US/Central');

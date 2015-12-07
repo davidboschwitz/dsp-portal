@@ -158,8 +158,8 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                     </tr>
                 </table>
                 <?php if ($config['debug'] || $_SESSION['debug']) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    <div class="alert alert-warning" role="alert">
+                        <span class="glyphicon glyphicon-info-sign"></span>
                         <?php echo $query; ?>
                     </div>
                 <?php } echo mysql_num_rows($result); ?>

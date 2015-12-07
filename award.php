@@ -52,6 +52,7 @@ session_start();
                 if(!document.getElementById("multiple").checked)
                 if($("#awardedto").val() === ""){
                     $("#awardedto").class += " has-error";
+                    return false;
                 }
             }
         </script>
@@ -95,7 +96,7 @@ session_start();
                 </tr>
                 <tr>
                     <td class="awardlabel"></td>
-                    <td><input id="submit" type="submit" value="Submit" /></td>
+                    <td><input id="submit" type="submit" value="Submit" onclick="submitaward()" /></td>
                 </tr>
             </table>
         </form>

@@ -158,6 +158,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                     </tr>
                 </table>
                 <?php if ($config['debug'] || $_SESSION['debug']) { ?>
+                    <br>
                     <div class="alert alert-warning" role="alert">
                         <span class="glyphicon glyphicon-info-sign"></span>
                         <?php echo $query; ?>

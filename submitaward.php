@@ -14,7 +14,7 @@ require "include/mysql.inc";
         $errormsg = null;
         do {
             $quantity = filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
-            if (!isset($_POST['code']) || empty($_POST['code']) || strlen($_POST['code']) > 3 || strlen($_POST['code']) < 6) {
+            if (!isset($_POST['code']) || empty($_POST['code']) || strlen($_POST['code']) < 4 || strlen($_POST['code']) > 5) {
                 $errormsg = "Error: CODE is not set!";
                 break;
             }

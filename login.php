@@ -51,9 +51,24 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         <div id="login-box">
             <form id="login" name="login" method="POST" action="login.php">
                 <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
-                <input id="user" name="user" type="text" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);?>"/><br>
-                <input id="pass" name="pass" type="password" placeholder="Password" /><br>
-                <input id="submit" type="submit" value="Login" />
+               
+                <div class="form-group">
+                    <label for="user" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="user" name="user" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING); ?>" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pass" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Password" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" id="submit" class="btn btn-default" value="Log in" />
+                    </div>
+                </div>
             </form>
         </div>
     </body>

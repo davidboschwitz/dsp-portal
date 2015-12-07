@@ -34,7 +34,7 @@ require "include/mysql.inc";
                 $awardto = split(",", $_POST['awardedtomultiple']);
                 for ($i = 0; $i < count($awardto); $i++) {
                     $awardto[$i] = trim($awardto[$i]);
-                    if (!valid_net_id($awardto[$i]))
+                    if (!valid_net_id($awardto[$i]) || empty($awardto[$i]))
                         continue;
                     $query = sprintf("INSERT INTO `$mysql_db`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
                             . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($awardto[$i]), mysql_escape_string($_POST['code']), intval($quantity), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));

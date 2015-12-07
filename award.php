@@ -56,7 +56,7 @@ session_start();
             <table class="award">
                 <tr>
                     <td class="awardlabel">Code</td>
-                    <td><input id="code" name="code" type="text" maxlength="5" style="width: 50px;" readonly required class="form-control" />&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">list</a> ]</td>
+                    <td><input id="code" name="code" type="text" maxlength="5" readonly required class="form-control" style="width: 50px;" />&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">list</a> ]</td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Quantity</td>

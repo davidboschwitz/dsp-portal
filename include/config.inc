@@ -14,7 +14,7 @@ $config['webmaster_email'] = "dbosch@iastate.edu";
 /* Calendar iframe src */
 $config['calendar_iframe_src'] = "http://goo.gl/zQeBnx";
 
-$config['background_color'] = 'white';
+$config['background_color'] = '#336600';
 
 /* For making sure Dates/Times are correct. Will throw errors if removed */
 date_default_timezone_set('US/Central');

@@ -16,7 +16,7 @@ require 'include/functions.inc';
             }
         </script>
     </head>
-    <body style="background-color:white">
+    <body>
 <?php require 'include/header.inc'; ?>
         <div id="changepassdiv">
             <form id="changepass" >

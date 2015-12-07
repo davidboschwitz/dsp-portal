@@ -8,7 +8,6 @@
 }
 
 html {
-    background-color: olive;
 }
 
 .mycontent{
@@ -34,6 +33,7 @@ body {
     height: 100%; 
     margin: 10px;
     width: 100%; 
+    background-color: olive;
     //padding: 0.5em;
 }
 

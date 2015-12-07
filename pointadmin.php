@@ -159,7 +159,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 }
                 echo mysql_num_rows($result);
                 ?>
-                <table class="cream">
+                <table class="table table-bordered table-striped table-hover table-condensed">
 
                     <thead>
                         <tr>

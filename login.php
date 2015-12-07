@@ -22,7 +22,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         if ($data['pass'] === md5($pass)) {
             $_SESSION['user'] = $user;
             $_SESSION['auth'] = $data['auth'];
-            if ($data['auth'] >= 10)//webmaster
+            if ($data['auth'] >= 100)//webmaster
                 $_SESSION['debug'] = true;
             $_SESSION['full_name'] = $data['first_name'] . " " . $data['last_name'];
             $_SESSION['first_name'] = $data['first_name'];

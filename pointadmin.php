@@ -159,6 +159,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 }
                 echo mysql_num_rows($result);
                 ?>
+                <div style="width: 75%">
                 <table class="table table-bordered table-striped table-hover table-condensed">
 
                     <thead>
@@ -213,6 +214,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                         </tr>
                     </thead>
                 </table>
+                </div>
             </form>
         </div>
         <?php require "include/footer.inc"; ?>

@@ -11,7 +11,7 @@ html {
 }
 
 .mycontent{
-    background-color: <?php echo $config['background_color'] ?>;
+    background-color: white;
     padding: 0.5em;
 }
 
@@ -33,7 +33,7 @@ body {
     font: 12px/1.5 arial, sans-serif;
     height: 100%; 
     width: 100%; 
-    background-color: #336600;
+    background-color: <?php echo $config['background_color'] ?>;
     //padding: 0.5em;
 }
 

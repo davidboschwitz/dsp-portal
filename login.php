@@ -43,48 +43,62 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         <?php include "include/head.inc"; ?>
     </head>
     <body>
-        <div class="container mycontent" style="height:100%">
-            <div id="header">
-                <span class="header-msg">DSP Portal - Login</span>
+        <div class="container mycontent" style="height:100%"><div id="all-content" class="container mycontent">
+                <div id="sidebar">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#">DSP</a>
+                            </div>
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a href="#">Sign in</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div id="header">
+                    <span class="header-msg">DSP Portal - Login</span>
+                </div>
+                <div id="login-message"></div>
+                <?php if (!empty($errormsg)) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign"></span>
+                        <?php echo $errormsg; ?>
+                    </div>
+                <?php } ?>
+                <div class="panel panel-default" style="width:40%;">
+
+                    <div id="login-box" class="panel-heading">
+                        <h3 class="panel-title" style="font-weight: bold">Sign in</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
+                            <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
+
+                            <div class="form-group">
+                                <label for="user" class="col-sm-2 control-label">Username</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="user" name="user" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING); ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass" class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="pass" name="pass" placeholder="Password" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <input type="submit" id="submit" class="btn btn-default" value="Log in" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div id="login-message"></div>
-            <?php if (!empty($errormsg)) { ?>
-                <div class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign"></span>
-                    <?php echo $errormsg; ?>
-                </div>
-            <?php } ?>
-            <div class="panel panel-default" style="width:40%;">
-
-                <div id="login-box" class="panel-heading">
-                    <h3 class="panel-title" style="font-weight: bold">Log in</h3>
-                </div>
-                <div class="panel-body">
-
-                    <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
-                        <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
-
-                        <div class="form-group">
-                            <label for="user" class="col-sm-2 control-label">Username</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="user" name="user" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING); ?>" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="pass" class="col-sm-2 control-label">Password</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control" id="pass" name="pass" placeholder="Password" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <input type="submit" id="submit" class="btn btn-default" value="Log in" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </body>
 </html>
 <?php

@@ -43,7 +43,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         <?php include "include/head.inc"; ?>
     </head>
     <body>
-        <div class="container mycontent" style="height:100%"><div id="all-content" class="container mycontent">
+        <div class="container mycontent" style="height:100%">
                 <div id="sidebar">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">

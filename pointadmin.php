@@ -164,7 +164,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                         <?php echo $query; ?>
                     </div>
                 <?php } ?>
-                    <p><?php echo mysql_num_rows($result); ?> rows returned</p>
+                <p><?php echo mysql_num_rows($result); ?> rows returned</p>
                 <div id="pointadmintable">
                     <table class="table table-bordered table-striped table-hover table-condensed">
 
@@ -199,7 +199,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <td><?php echo $row[$i]['awardedto']; ?></td>
                                 <td><?php echo $row[$i]['awardedby']; ?></td>
                                 <td><?php echo $row[$i]['comments']; ?></td>
-                                <td style="width:12px"><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
+                                <td style="width:20px"><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
                                     <input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs btn-danger" /></td>
                                 </form>
                             </tr>

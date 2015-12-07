@@ -60,13 +60,13 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                     <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
                         <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
 
-                        <div class="form-group <?php if (!empty($errormsg)) echo " has-error" ?>">
+                        <div class="form-group">
                             <label for="user" class="col-sm-2 control-label">Username</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="user" name="user" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING); ?>" />
                             </div>
                         </div>
-                        <div class="form-group <?php if (!empty($errormsg)) echo " has-error" ?>">
+                        <div class="form-group">
                             <label for="pass" class="col-sm-2 control-label">Password</label>
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="pass" name="pass" placeholder="Password" />

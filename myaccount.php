@@ -18,6 +18,7 @@ require 'include/functions.inc';
     </head>
     <body>
 <?php require 'include/header.inc'; ?>
+        <h1>My Account</h1>
         <div id="changepassdiv">
             <form id="changepass" >
                 Current Password: <br>

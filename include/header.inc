@@ -23,24 +23,29 @@ $auth[] = 1;
     <div id="sidebar">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <ul>
-                    <?php
-                    for ($i = 0; isset($link[$i]); $i++) {
-                        if (basename($_SERVER['PHP_SELF']) == $link[$i]) {
-                            ?>
-                            <li class="active"><a href="#"><?php echo $desc[$i]; ?></a></li>
-                            <?php
-                        } else {
-                            if ($_SESSION['auth'] >= $auth[$i]) {
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">DSP</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <?php
+                        for ($i = 0; isset($link[$i]); $i++) {
+                            if (basename($_SERVER['PHP_SELF']) == $link[$i]) {
                                 ?>
-                                <li><a href="<?php echo $link[$i]; ?>"><?php echo $desc[$i]; ?></a></li>
+                                <li class="active"><a href="#"><?php echo $desc[$i]; ?></a></li>
                                 <?php
+                            } else {
+                                if ($_SESSION['auth'] >= $auth[$i]) {
+                                    ?>
+                                    <li><a href="<?php echo $link[$i]; ?>"><?php echo $desc[$i]; ?></a></li>
+                                    <?php
+                                }
                             }
                         }
-                    }
-                    ?>
-                    <li><a href="login.php">Logout</a></li><br>
-                </ul>
+                        ?>
+                        <li><a href="login.php">Logout</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </div>

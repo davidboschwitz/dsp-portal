@@ -47,13 +47,13 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
             <div id="header">
                 <span class="header-msg">DSP Portal - Login</span>
             </div>
-            <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign"></span>
-                <?php echo $errormsg; ?>
-            </div>
             <div id="login-message"></div>
             <figure class="highlight">
                 <div id="login-box" style="width:40%; padding: 0.5em">
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign"></span>
+                        <?php echo $errormsg; ?>
+                    </div>
                     <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
                         <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
 

@@ -69,7 +69,7 @@ session_start();
                     </tr>
                     <tr>
                         <td class="awardlabel">Quantity</td>
-                        <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="1" required class="form-control" /></td>
+                        <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="1" required class="form-control" style="width:15%" /></td>
                     </tr>
                     <tr>
                         <td class="awardlabel">Award to</td>

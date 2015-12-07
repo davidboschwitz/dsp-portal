@@ -47,7 +47,10 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
             <div id="header">
                 <span class="header-msg">DSP Portal - Login</span>
             </div>
-            <p style="color: red;"><?php echo $errormsg; ?></p>
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                <?php echo $errormsg; ?>
+            </div>
             <div id="login-message"></div>
             <figure class="highlight">
                 <div id="login-box" style="width:40%; padding: 0.5em">

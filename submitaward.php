@@ -23,7 +23,7 @@ require "include/mysql.inc";
                 break;
             }
             if (!is_int($quantity) || $quantity > 20 || $quantity < 1) {
-                $errormsg = "Error: QUANTITY out of range [1-20]!";
+                $errormsg = "Error: QUANTITY out of range [1-20]! $quantity";
                 break;
             }
             if (!isset($_POST['awardedto'])) {

@@ -57,7 +57,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
             <div class="panel panel-default" style="width:40%;">
 
                 <div id="login-box" class="panel-heading">
-                    Log in
+                    <h3 class="panel-title">Log in</h3>
                 </div>
                 <div class="panel-body">
 

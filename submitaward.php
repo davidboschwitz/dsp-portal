@@ -26,7 +26,7 @@ require "include/mysql.inc";
                 $errormsg = "Error: QUANTITY out of range [1-20]! $quantity";
                 break;
             }
-            if (!isset($_POST['awardedto'])) {
+            if ($_POST['multiple'] !== "on" && !isset($_POST['awardedto'])) {
                 $errormsg = "Error: AWARDEDTO is not set!";
                 break;
             }

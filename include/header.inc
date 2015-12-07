@@ -21,7 +21,7 @@ $auth[] = 1;
 ?>
 <div id="all-content" class="container">
     <div id="sidebar">
-        <ul class="nav nav-tabs">
+        <ul class="navbar navbar-default">
             <?php
             for ($i = 0; isset($link[$i]); $i++) {
                 if (basename($_SERVER['PHP_SELF']) == $link[$i]) {

@@ -170,14 +170,14 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
 
                         <thead>
                             <tr>
-                                <td><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>">Previous</button><?php } ?></td>
+                                <td style="width:1"><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>">Previous</button><?php } ?></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td style="text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></td>
+                                <td style="width:1; text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></td>
                             </tr>
                             <tr>
                                 <th><input type="checkbox" id="pointcheckall" onclick="togglePoint('all')" /></th>

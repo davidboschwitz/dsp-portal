@@ -8,8 +8,13 @@
 }
 
 html {
-
+    background-color: olive;
 }
+
+.mycontent{
+    background-color: white;
+}
+
 #content {
     height: 100%
 }

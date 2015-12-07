@@ -48,8 +48,8 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                 <span class="header-msg">DSP Portal - Login</span>
             </div>
             <div id="login-message"></div>
-            <figure class="highlight">
-                <div id="login-box" style="width:40%; padding: 0.5em">
+            <div class="panel panel-default">
+                <div id="login-box" class="panel-heading" style="width:40%; padding: 0.5em" >
 
                     <?php if (!empty($errormsg)) { ?>
                         <div class="alert alert-danger" role="alert">
@@ -79,7 +79,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                         </div>
                     </form>
                 </div>
-            </figure>
+            </div>
         </div>
     </body>
 </html>

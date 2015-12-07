@@ -183,8 +183,6 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                             <th onclick="sortForm('awardedby')">Awarded By</th>
                             <th onclick="sortForm('comments')">Comments</th>
                             <th>Actions</th>
-                            <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <?php for ($i = 0; $i < $rowcount; $i++) { ?>    

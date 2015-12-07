@@ -12,7 +12,7 @@ require "include/config.inc";
             }
         </script>
     </head>
-    <body>
+    <body style="background-color:white">
         <h2>Points Breakdown</h2>
         Click on code to insert
         <table class="cream">

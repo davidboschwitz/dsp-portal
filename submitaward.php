@@ -83,7 +83,12 @@ require "include/mysql.inc";
                         <td class="awardlabel">Awarded on</td>
                         <td><?php echo date("Y-m-d h:m:s"); ?></td>
                     </tr>
-                    <tr><td class="<?php echo $errormsg != null ? "awardlabelfail" : "awardlabelsuccess"; ?>" colspan="2"><?php echo $errormsg != null ? $errormsg : "Points awarded successfully!"; ?></td></tr>
+                    <tr>
+                        <td class="<?php echo $errormsg != null ? "awardlabelfail" : "awardlabelsuccess"; ?>" colspan="2"><?php echo $errormsg != null ? $errormsg : "Points awarded successfully!"; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="<?php echo $errormsg != null ? "awardlabelfail" : "awardlabelsuccess"; ?>" style="text-align: center" colspan="2"><a href="award.php"><?php echo $errormsg != null ? "Retry" : "Submit another"; ?></a></td>
+                    </tr>
                 </table>
             </div>
         </form>

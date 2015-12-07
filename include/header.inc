@@ -46,6 +46,7 @@ $auth[] = 1;
                         
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li>Signed in as <a href="#" class="navbar-link"><?php echo $_SESSION['full_name'] ?></a></li>
                         <li><a href="login.php">Logout</a></li>
                     </ul>
                 </div>

@@ -167,8 +167,8 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 <p><?php echo mysql_num_rows($result); ?> rows returned</p>
                 <div id="pointadmintable">
                         <div>
-                            <div class="col-md-6" style="text-align: left;"><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>" class="btn btn-default btn-sm">Previous</button><?php } ?></div>
-                            <div class="col-md-6" style="text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>" class="btn btn-default btn-sm">Next</button><?php } ?></div>
+                            <div class="col-md-6" style="text-align: left;"><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>" class="btn btn-sm">Previous</button><?php } ?></div>
+                            <div class="col-md-6" style="text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>" class="btn btn-sm">Next</button><?php } ?></div>
                     </div>
                     <table class="table table-bordered table-striped table-hover table-condensed">
 

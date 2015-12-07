@@ -204,18 +204,6 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 </form>
                             </tr>
                         <?php } ?>
-                        <thead>
-                            <tr>
-                                <th>&nbsp;</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
                     </table>
                 </div>
             </form>

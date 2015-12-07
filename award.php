@@ -64,7 +64,7 @@ session_start();
                 </tr>
                 <tr>
                     <td class="awardlabel">Award to</td>
-                    <td> <input id="awardedto" name="awardedto" type="text" placeholder="net-id to award to" required /></td>
+                    <td> <input id="awardedto" name="awardedto" type="text" placeholder="net-id to award to" required class="form-control" /></td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Award to multiple members?</td>
@@ -72,7 +72,7 @@ session_start();
                 </tr>
                 <tr>
                     <td class="awardlabel">Award to multiple<br><i>(comma separate users)</i></td>
-                    <td><textarea id="awardedtomultiple" name="awardedtomultiple" type="text" placeholder="multiple net-ids (comma separated)" style="width: 390px; height:80px; margin:0px"></textarea></td>
+                    <td><textarea id="awardedtomultiple" name="awardedtomultiple" type="text" placeholder="multiple net-ids (comma separated)" style="width: 390px; height:80px; margin:0px" class="form-control" ></textarea></td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Comments</td>

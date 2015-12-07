@@ -47,6 +47,13 @@ session_start();
                 });
                 
             });
+            
+            function submitaward(){
+                if(!document.getElementById("multiple").checked)
+                if($("#awardedto").val() === ""){
+                    $("#awardedto").class += " has-error";
+                }
+            }
         </script>
     </head>
     <body onload="multipleCheck()">

@@ -13,15 +13,16 @@ require "include/mysql.inc";
         require "include/header.inc";
         $errormsg = null;
         do {
-            if (!isset($_POST['code'])) {
+            $quantity = filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
+            if (!isset($_POST['code']) && !empty($_POST['code']) && strlen($_POST['code']) > 3 && strlen($_POST['code']) < 6) {
                 $errormsg = "Error: CODE is not set!";
                 break;
             }
-            if (!isset($_POST['quantity'])) {
+            if (!isset($quantity) ) {
                 $errormsg = "Error: QUANTITY is not set!";
                 break;
             }
-            if (!is_int($_POST['quantity']) && $_POST['quantity'] > 20 || $_POST['quantity'] < 1) {
+            if (!is_int($quantity) && $quantity > 20 || $quantity < 1) {
                 $errormsg = "Error: QUANTITY out of range [1-20]!";
                 break;
             }
@@ -32,12 +33,12 @@ require "include/mysql.inc";
                     if (!valid_net_id($awardto[$i]))
                         continue;
                     $query = sprintf("INSERT INTO `$mysql_db`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
-                            . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($awardto[$i]), mysql_escape_string($_POST['code']), intval($_POST['quantity']), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
+                            . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($awardto[$i]), mysql_escape_string($_POST['code']), intval($quantity), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
                     $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
                 }
             } else {
                 $query = sprintf("INSERT INTO `$mysql_db`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
-                        . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($_POST['awardedto']), mysql_escape_string($_POST['code']), intval($_POST['quantity']), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
+                        . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($_POST['awardedto']), mysql_escape_string($_POST['code']), intval($quantity), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
                 $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
             }
         } while (false);
@@ -51,7 +52,7 @@ require "include/mysql.inc";
                 </tr>
                 <tr>
                     <td class="awardlabel">Quantity</td>
-                    <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="<?php echo $_POST['quantity']; ?>" disabled /></td>
+                    <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="<?php echo $quantity; ?>" disabled /></td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Award to</td>

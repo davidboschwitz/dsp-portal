@@ -19,7 +19,7 @@ $link[] = "myaccount.php";
 $desc[] = "Account Settings";
 $auth[] = 1;
 ?>
-<div id="all-content">
+<div id="all-content" class="container">
     <div id="sidebar">
         <ul class="nav nav-tabs">
             <?php

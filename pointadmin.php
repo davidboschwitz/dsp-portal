@@ -171,7 +171,6 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
                             <td style="text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></td>
                         </tr>
                         <tr>
@@ -202,7 +201,6 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
-                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>

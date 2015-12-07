@@ -79,11 +79,15 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 });
             });
             function editPoint(pointID) {
-                $.post("pointadmin_functions.php", {task:"edit", pointid:pointID}, function (data){alert(data)});
+                $.post("pointadmin_functions.php", {task: "edit", pointid: pointID}, function (data) {
+                    alert(data)
+                });
             }
             function deletePoint(pointID) {
                 if (confirm("Are you sure you want to delete this point?")) {
-                    $.post("pointadmin_functions.php", {task:"delete", pointid:pointID}, function (data){alert(data)});
+                    $.post("pointadmin_functions.php", {task: "delete", pointid: pointID}, function (data) {
+                        alert(data)
+                    });
                 }
             }
             var pointsOnPage = [<?php
@@ -159,58 +163,58 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 }
                 echo mysql_num_rows($result);
                 ?>
-                <div style="width: 75%">
-                <table class="table table-bordered table-striped table-hover table-condensed">
+                <div id="pointadmintable">
+                    <table class="table table-bordered table-striped table-hover table-condensed">
 
-                    <thead>
-                        <tr>
-                            <td><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>">Previous</button><?php } ?></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></td>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" id="pointcheckall" onclick="togglePoint('all')" /></th>
-                            <th onclick="sortForm('timestamp')">Timestamp</th>
-                            <th onclick="sortForm('code')">Code</th>
-                            <th onclick="sortForm('quantity')">Quantity</th>
-                            <th onclick="sortForm('awardedto')">Awarded To</th>
-                            <th onclick="sortForm('awardedby')">Awarded By</th>
-                            <th onclick="sortForm('comments')">Comments</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <?php for ($i = 0; $i < $rowcount; $i++) { ?>    
-                        <tr id="point[<?php echo $row[$i]['pointid']; ?>]">
-                            <td><input type="checkbox" id="pointcheck<?php echo $row[$i]['pointid']; ?>" onclick="togglePoint(<?php echo $row[$i]['pointid']; ?>)" /></td>
-                            <td><?php echo $row[$i]['timestamp']; ?></td>
-                            <td><?php echo $row[$i]['code']; ?></td>
-                            <td><?php echo $row[$i]['quantity']; ?></td>
-                            <td><?php echo $row[$i]['awardedto']; ?></td>
-                            <td><?php echo $row[$i]['awardedby']; ?></td>
-                            <td><?php echo $row[$i]['comments']; ?></td>
-                            <td><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
-                            <input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs btn-danger" /></td>
-                            </form>
-                        </tr>
-                    <?php } ?>
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
+                        <thead>
+                            <tr>
+                                <td><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>">Previous</button><?php } ?></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></td>
+                            </tr>
+                            <tr>
+                                <th><input type="checkbox" id="pointcheckall" onclick="togglePoint('all')" /></th>
+                                <th onclick="sortForm('timestamp')">Timestamp</th>
+                                <th onclick="sortForm('code')">Code</th>
+                                <th onclick="sortForm('quantity')">Quantity</th>
+                                <th onclick="sortForm('awardedto')">Awarded To</th>
+                                <th onclick="sortForm('awardedby')">Awarded By</th>
+                                <th onclick="sortForm('comments')">Comments</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <?php for ($i = 0; $i < $rowcount; $i++) { ?>    
+                            <tr id="point[<?php echo $row[$i]['pointid']; ?>]">
+                                <td><input type="checkbox" id="pointcheck<?php echo $row[$i]['pointid']; ?>" onclick="togglePoint(<?php echo $row[$i]['pointid']; ?>)" /></td>
+                                <td><?php echo $row[$i]['timestamp']; ?></td>
+                                <td><?php echo $row[$i]['code']; ?></td>
+                                <td><?php echo $row[$i]['quantity']; ?></td>
+                                <td><?php echo $row[$i]['awardedto']; ?></td>
+                                <td><?php echo $row[$i]['awardedby']; ?></td>
+                                <td><?php echo $row[$i]['comments']; ?></td>
+                                <td><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
+                                    <input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs btn-danger" /></td>
+                                </form>
+                            </tr>
+                        <?php } ?>
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </form>
         </div>

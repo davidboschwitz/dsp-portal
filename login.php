@@ -46,19 +46,19 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         <div id="header">
             <span class="header-msg">DSP Portal - Login</span>
         </div>
-        <span style="color: red;"><?php echo $errormsg; ?></span>
+        <p style="color: red;"><?php echo $errormsg; ?></p>
         <div id="login-message"></div>
-        <div id="login-box" style="width:40%; background-color: grey; padding: 0.5em">
+        <div id="login-box" style="width:40%; padding: 0.5em">
             <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
                 <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
                
-                <div class="form-group">
+                <div class="form-group <?php if(!empty($errormsg)) echo " has-error" ?>">
                     <label for="user" class="col-sm-2 control-label">Username</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="user" name="user" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING); ?>" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?php if(!empty($errormsg)) echo " has-error" ?>">
                     <label for="pass" class="col-sm-2 control-label">Password</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="pass" name="pass" placeholder="Password" />

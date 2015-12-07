@@ -155,7 +155,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 </table>
                 <?php
                 if ($config['debug'] || $_SESSION['debug']) {
-                    echo "<br><div class=\"danger\">" . $query . "</div><br>";
+                    echo "<br><div class=\"debug\">" . $query . "</div><br>";
                 }
                 echo mysql_num_rows($result);
                 ?>

@@ -21,23 +21,27 @@ $auth[] = 1;
 ?>
 <div id="all-content" class="container">
     <div id="sidebar">
-        <ul class="navbar navbar-default">
-            <?php
-            for ($i = 0; isset($link[$i]); $i++) {
-                if (basename($_SERVER['PHP_SELF']) == $link[$i]) {
-                    ?>
-            <li class="active"><a href="#"><?php echo $desc[$i]; ?></a></li>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul>
                     <?php
-                } else {
-                    if ($_SESSION['auth'] >= $auth[$i]) {
-                        ?>
-                        <li><a href="<?php echo $link[$i]; ?>"><?php echo $desc[$i]; ?></a></li>
-                        <?php
+                    for ($i = 0; isset($link[$i]); $i++) {
+                        if (basename($_SERVER['PHP_SELF']) == $link[$i]) {
+                            ?>
+                            <li class="active"><a href="#"><?php echo $desc[$i]; ?></a></li>
+                            <?php
+                        } else {
+                            if ($_SESSION['auth'] >= $auth[$i]) {
+                                ?>
+                                <li><a href="<?php echo $link[$i]; ?>"><?php echo $desc[$i]; ?></a></li>
+                                <?php
+                            }
+                        }
                     }
-                }
-            }
-            ?>
-            <li><a href="login.php">Logout</a></li><br>
-        </ul>
+                    ?>
+                    <li><a href="login.php">Logout</a></li><br>
+                </ul>
+            </div>
+        </nav>
     </div>
     <div id="main-content">

@@ -118,7 +118,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <h2>Search for Points Awarded</h2>
+        <h1>Search for Points Awarded</h1>
         <div class="center">
             <form id="pointadmin" action="" method="POST">
                 <input id="sortby" name="sortby" type="hidden" value="<?php echo ($_POST['sortby'] ? $_POST['sortby'] : "ASC"); ?>" />
@@ -170,7 +170,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
 
                         <thead>
                             <tr>
-                                <td style="width:1"><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>">Previous</button><?php } ?></td>
+                                <td style="width:12px"><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>">Previous</button><?php } ?></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -187,7 +187,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <th onclick="sortForm('awardedto')">Awarded To</th>
                                 <th onclick="sortForm('awardedby')">Awarded By</th>
                                 <th onclick="sortForm('comments')">Comments</th>
-                                <th style="width:1">Actions</th>
+                                <th style="width:12px">Actions</th>
                             </tr>
                         </thead>
                         <?php for ($i = 0; $i < $rowcount; $i++) { ?>    
@@ -199,7 +199,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <td><?php echo $row[$i]['awardedto']; ?></td>
                                 <td><?php echo $row[$i]['awardedby']; ?></td>
                                 <td><?php echo $row[$i]['comments']; ?></td>
-                                <td style="width:1"><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
+                                <td style="width:12px"><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
                                     <input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs btn-danger" /></td>
                                 </form>
                             </tr>

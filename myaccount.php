@@ -2,7 +2,7 @@
 $page['auth'] = 1;
 require 'include/functions.inc';
 ?>
-<html>
+<html style="background-color:white">
     <head>
         <title>Account Settings</title>
         <?php require 'include/head.inc'; ?>

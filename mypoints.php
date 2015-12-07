@@ -39,7 +39,7 @@ while ($row[$rowcount] = mysql_fetch_assoc($result)) {
     <body>
         <?php require "include/header.inc"; ?>
         <h2>My Points Breakdown (<?php echo $_SESSION['full_name']; ?>)</h2>
-        <table class="table table-bordered table-striped table-hover">
+        <table class="table table-bordered table-striped table-hover table-condensed">
             <thead>
                 <tr>
                     <th style="text-align: right;">Pts</th>

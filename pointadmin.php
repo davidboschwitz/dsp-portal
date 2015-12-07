@@ -157,12 +157,12 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                         <td><button name="page" type="Submit" value="0" >Submit</button></td>
                     </tr>
                 </table>
-                <?php
-                if ($config['debug'] || $_SESSION['debug']) {
-                    echo "<br><div class=\"debug\">" . $query . "</div><br>";
-                }
-                echo mysql_num_rows($result);
-                ?>
+                <?php if ($config['debug'] || $_SESSION['debug']) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign"></span>
+                        <?php echo $query; ?>
+                    </div>
+                <?php } echo mysql_num_rows($result); ?>
                 <div id="pointadmintable">
                     <table class="table table-bordered table-striped table-hover table-condensed">
 

@@ -51,12 +51,12 @@ session_start();
     </head>
     <body onload="multipleCheck()">
         <?php require "include/header.inc"; ?>
-        <form id="awardpts" action="submitaward.php" method="POST" on>
+        <form id="awardpts" action="submitaward.php" method="POST" on class="form-group">
             <h2>Award new points</h2>
             <table class="award">
-                <tr>
+                <tr class="form-inline">
                     <td class="awardlabel">Code</td>
-                    <td><input id="code" name="code" type="text" maxlength="5" readonly required class="form-control" style="width: 50px;" />&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">list</a> ]</td>
+                    <td><input id="code" name="code" type="text" maxlength="5" readonly required class="form-control " style="width: 50px;" />&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">list</a> ]</td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Quantity</td>

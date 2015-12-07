@@ -43,6 +43,11 @@ $auth[] = 1;
                             }
                         }
                         ?>
+                        
+                    </ul>
+                </div>
+                <div class="nav navbar-nav navbar-right">
+                    <ul>
                         <li><a href="login.php">Logout</a></li>
                     </ul>
                 </div>

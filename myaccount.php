@@ -2,7 +2,7 @@
 $page['auth'] = 1;
 require 'include/functions.inc';
 ?>
-<html style="background-color:white">
+<html>
     <head>
         <title>Account Settings</title>
         <?php require 'include/head.inc'; ?>
@@ -16,7 +16,7 @@ require 'include/functions.inc';
             }
         </script>
     </head>
-    <body>
+    <body style="background-color:white">
 <?php require 'include/header.inc'; ?>
         <div id="changepassdiv">
             <form id="changepass" >

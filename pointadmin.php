@@ -166,19 +166,13 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 <?php } ?>
                 <p><?php echo mysql_num_rows($result); ?> rows returned</p>
                 <div id="pointadmintable">
+                        <div>
+                            <div class="col-md-6" style="text-align: left;"><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>">Previous</button><?php } ?></div>
+                            <div class="col-md-6" style="text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></div>
+                    </div>
                     <table class="table table-bordered table-striped table-hover table-condensed">
 
                         <thead>
-                            <tr>
-                                <td style="width:20px"><?php if ($_POST['page'] != 1) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] - 1); ?>">Previous</button><?php } ?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td style="text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></td>
-                            </tr>
                             <tr>
                                 <th><input type="checkbox" id="pointcheckall" onclick="togglePoint('all')" /></th>
                                 <th onclick="sortForm('timestamp')">Timestamp</th>

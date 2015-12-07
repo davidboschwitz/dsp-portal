@@ -48,7 +48,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         </div>
         <span style="color: red;"><?php echo $errormsg; ?></span>
         <div id="login-message"></div>
-        <div id="login-box" style="width:40%">
+        <div id="login-box" style="width:40%; background-color: grey; ">
             <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
                 <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
                

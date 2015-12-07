@@ -177,7 +177,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td style="width:20px; text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></td>
+                                <td style="width:30px; text-align: right;"><?php if ($rowcount > 49) { ?><button name="page" type="Submit" value="<?php echo ($_POST['page'] + 1); ?>">Next</button><?php } ?></td>
                             </tr>
                             <tr>
                                 <th><input type="checkbox" id="pointcheckall" onclick="togglePoint('all')" /></th>
@@ -187,7 +187,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <th onclick="sortForm('awardedto')">Awarded To</th>
                                 <th onclick="sortForm('awardedby')">Awarded By</th>
                                 <th onclick="sortForm('comments')">Comments</th>
-                                <th style="width:20px">Actions</th>
+                                <th style="width:30px">Actions</th>
                             </tr>
                         </thead>
                         <?php for ($i = 0; $i < $rowcount; $i++) { ?>    
@@ -199,7 +199,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <td><?php echo $row[$i]['awardedto']; ?></td>
                                 <td><?php echo $row[$i]['awardedby']; ?></td>
                                 <td><?php echo $row[$i]['comments']; ?></td>
-                                <td style="width:20px"><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
+                                <td style="width:30px"><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
                                     <input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs btn-danger" /></td>
                                 </form>
                             </tr>

@@ -26,7 +26,7 @@ require "include/mysql.inc";
                 $errormsg = "Error: QUANTITY out of range [1-20]!";
                 break;
             }
-            if(!isset($_POST['awardedto'])){
+            if (!isset($_POST['awardedto'])) {
                 $errormsg = "Error: AWARDEDTO is not set!";
                 break;
             }
@@ -49,41 +49,43 @@ require "include/mysql.inc";
         ?>
         <form id="awardpts" action="submitaward.php" method="POST" >
             <h1>Points awarded</h1><br>
-            <table class="award">
-                <tr>
-                    <td class="awardlabel">Code</td>
-                    <td><input id="code" name="code" type="text" maxlength="5" style="width: 50px;" value="<?php echo $_POST['code']; ?>" disabled /></td>
-                </tr>
-                <tr>
-                    <td class="awardlabel">Quantity</td>
-                    <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="<?php echo $quantity; ?>" disabled /></td>
-                </tr>
-                <tr>
-                    <td class="awardlabel">Award to</td>
-                    <td> <input id="awardedto" name="awardedto" type="text" value="<?php echo $_POST['awardedto']; ?>" disabled /></td>
-                </tr>
-                <tr>
-                    <td class="awardlabel">Award to multiple members?</td>
-                    <td><input id="multiple" name="multiple" type="checkbox" <?php if ($_POST['multiple'] == "on") echo "checked"; ?> disabled /></td>
-                </tr>
-                <tr>
-                    <td class="awardlabel">Award to <br><i>(multiple, comma separate users)</i></td>
-                    <td><textarea id="awardedtomultiple" name="awardedtomultiple" type="text" disabled><?php echo $_POST['awardedtomultiple']; ?></textarea></td>
-                </tr>
-                <tr>
-                    <td class="awardlabel">Comments</td>
-                    <td><input id="comments" name="comments" type="text" style="width: 100%;" value="<?php echo $_POST['comments']; ?>" disabled /></td>
-                </tr>
-                <tr>
-                    <td class="awardlabel">Awarded by</td>
-                    <td><?php echo $_SESSION['user']; ?></td>
-                </tr>
-                <tr>
-                    <td class="awardlabel">Awarded on</td>
-                    <td><?php echo date("Y-m-d h:m:s"); ?></td>
-                </tr>
-                <tr><td class="<?php echo $errormsg != null ? "awardlabelfail" : "awardlabelsuccess"; ?>" colspan="2"><?php echo $errormsg != null ? $errormsg : "Points awarded successfully!"; ?></td></tr>
-            </table>
+            <div class="center-block" style="width: 50%">
+                <table class="table table-bordered table-striped table-hover table-condensed">
+                    <tr>
+                        <td class="awardlabel">Code</td>
+                        <td><input id="code" name="code" type="text" maxlength="5" style="width: 50px;" value="<?php echo $_POST['code']; ?>" disabled /></td>
+                    </tr>
+                    <tr>
+                        <td class="awardlabel">Quantity</td>
+                        <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="<?php echo $quantity; ?>" disabled /></td>
+                    </tr>
+                    <tr>
+                        <td class="awardlabel">Award to</td>
+                        <td> <input id="awardedto" name="awardedto" type="text" value="<?php echo $_POST['awardedto']; ?>" disabled /></td>
+                    </tr>
+                    <tr>
+                        <td class="awardlabel">Award to multiple members?</td>
+                        <td><input id="multiple" name="multiple" type="checkbox" <?php if ($_POST['multiple'] == "on") echo "checked"; ?> disabled /></td>
+                    </tr>
+                    <tr>
+                        <td class="awardlabel">Award to <br><i>(multiple, comma separate users)</i></td>
+                        <td><textarea id="awardedtomultiple" name="awardedtomultiple" type="text" disabled><?php echo $_POST['awardedtomultiple']; ?></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="awardlabel">Comments</td>
+                        <td><input id="comments" name="comments" type="text" style="width: 100%;" value="<?php echo $_POST['comments']; ?>" disabled /></td>
+                    </tr>
+                    <tr>
+                        <td class="awardlabel">Awarded by</td>
+                        <td><?php echo $_SESSION['user']; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="awardlabel">Awarded on</td>
+                        <td><?php echo date("Y-m-d h:m:s"); ?></td>
+                    </tr>
+                    <tr><td class="<?php echo $errormsg != null ? "awardlabelfail" : "awardlabelsuccess"; ?>" colspan="2"><?php echo $errormsg != null ? $errormsg : "Points awarded successfully!"; ?></td></tr>
+                </table>
+            </div>
         </form>
         <?php require "include/footer.inc"; ?>
     </body>

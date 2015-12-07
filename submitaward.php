@@ -22,7 +22,7 @@ require "include/mysql.inc";
                 $errormsg = "Error: QUANTITY is not set!";
                 break;
             }
-            if (!is_int($quantity) || $quantity > 20 || $quantity <= 0) {
+            if ($quantity > 20 || $quantity < 0) {
                 $errormsg = "Error: QUANTITY out of range [1-20]! $quantity";
                 break;
             }

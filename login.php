@@ -48,7 +48,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                 <span class="header-msg">DSP Portal - Login</span>
             </div>
             <div id="login-message"></div>
-            <div class="panel panel-default" style="width:40%; padding: 0.5em">
+            <div class="panel panel-default" style="width:40%;">
                 <div id="login-box" class="panel-heading">
 
                     <?php if (!empty($errormsg)) { ?>

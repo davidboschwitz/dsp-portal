@@ -68,13 +68,12 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                         <?php echo $errormsg; ?>
                     </div>
                 <?php } ?>
-                <div class="panel panel-default" style="width:40%;">
+                <div class="panel panel-default center-block" style="width:40%;">
 
                     <div id="login-box" class="panel-heading">
                         <h3 class="panel-title" style="font-weight: bold">Sign in</h3>
                     </div>
                     <div class="panel-body">
-
                         <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
                             <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
 

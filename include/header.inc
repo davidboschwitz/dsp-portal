@@ -19,7 +19,7 @@ $link[] = "myaccount.php";
 $desc[] = "Account Settings";
 $auth[] = 1;
 ?>
-<div id="all-content" class="container">
+<div id="all-content" class="container mycontent">
     <div id="sidebar">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -49,4 +49,4 @@ $auth[] = 1;
             </div>
         </nav>
     </div>
-    <div id="main-content" class="mycontent">
+    <div id="main-content">

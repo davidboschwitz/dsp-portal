@@ -60,7 +60,7 @@ session_start();
     <body onload="multipleCheck()">
         <?php require "include/header.inc"; ?>
         <form id="awardpts" action="submitaward.php" method="POST" on class="form-group">
-            <h2>Award new points</h2>
+            <h1>Award new points</h1>
             <div class="center-block" style="width: 50%">
                 <table class="table table-bordered table-striped table-hover table-condensed">
                     <tr class="form-inline">

@@ -187,7 +187,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <th onclick="sortForm('awardedto')">Awarded To</th>
                                 <th onclick="sortForm('awardedby')">Awarded By</th>
                                 <th onclick="sortForm('comments')">Comments</th>
-                                <th>Actions</th>
+                                <th style="width:1">Actions</th>
                             </tr>
                         </thead>
                         <?php for ($i = 0; $i < $rowcount; $i++) { ?>    
@@ -199,7 +199,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <td><?php echo $row[$i]['awardedto']; ?></td>
                                 <td><?php echo $row[$i]['awardedby']; ?></td>
                                 <td><?php echo $row[$i]['comments']; ?></td>
-                                <td><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
+                                <td style="width:1"><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
                                     <input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs btn-danger" /></td>
                                 </form>
                             </tr>

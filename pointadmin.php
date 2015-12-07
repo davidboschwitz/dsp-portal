@@ -163,7 +163,8 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                         <span class="glyphicon glyphicon-info-sign"></span>
                         <?php echo $query; ?>
                     </div>
-                <?php } echo mysql_num_rows($result); ?>
+                <?php } ?>
+                    <p><?php echo mysql_num_rows($result); ?> rows returned</p>
                 <div id="pointadmintable">
                     <table class="table table-bordered table-striped table-hover table-condensed">
 

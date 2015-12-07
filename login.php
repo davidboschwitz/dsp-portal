@@ -51,8 +51,10 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
             <figure class="highlight">
                 <div id="login-box" style="width:40%; padding: 0.5em">
                     <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign"></span>
-                        <?php echo $errormsg; ?>
+                        <?php if (!empty($errormsg)) { ?>
+                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            <?php echo $errormsg;
+                        } ?>
                     </div>
                     <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
                         <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />

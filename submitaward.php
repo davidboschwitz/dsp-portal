@@ -14,15 +14,15 @@ require "include/mysql.inc";
         $errormsg = null;
         do {
             $quantity = filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
-            if (!isset($_POST['code']) && !empty($_POST['code']) && strlen($_POST['code']) > 3 && strlen($_POST['code']) < 6) {
+            if (!isset($_POST['code']) || empty($_POST['code']) || strlen($_POST['code']) > 3 || strlen($_POST['code']) < 6) {
                 $errormsg = "Error: CODE is not set!";
                 break;
             }
-            if (!isset($quantity) ) {
+            if (!isset($quantity) || empty($quantity)) {
                 $errormsg = "Error: QUANTITY is not set!";
                 break;
             }
-            if (!is_int($quantity) && $quantity > 20 || $quantity < 1) {
+            if (!is_int($quantity) || $quantity > 20 || $quantity < 1) {
                 $errormsg = "Error: QUANTITY out of range [1-20]!";
                 break;
             }

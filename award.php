@@ -56,11 +56,11 @@ session_start();
             <table class="award">
                 <tr>
                     <td class="awardlabel">Code</td>
-                    <td><input id="code" name="code" type="text" maxlength="5" style="width: 50px;" readonly />&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">list</a> ]</td>
+                    <td><input id="code" name="code" type="text" maxlength="5" style="width: 50px;" readonly required class="form-control" />&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">list</a> ]</td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Quantity</td>
-                    <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="1" /></td>
+                    <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="1" required class="form-control" /></td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Award to</td>
@@ -68,7 +68,7 @@ session_start();
                 </tr>
                 <tr>
                     <td class="awardlabel">Award to multiple members?</td>
-                    <td><input id="multiple" name="multiple" type="checkbox" onchange="multipleCheck()" /></td>
+                    <td><input id="multiple" name="multiple" type="checkbox" onchange="multipleCheck()" class="form-control" /></td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Award to multiple<br><i>(comma separate users)</i></td>
@@ -76,15 +76,15 @@ session_start();
                 </tr>
                 <tr>
                     <td class="awardlabel">Comments</td>
-                    <td><input id="comments" name="comments" type="text" style="width: 100%;" /></td>
+                    <td><input id="comments" name="comments" type="text" style="width: 100%;" class="form-control" /></td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Awarded by</td>
-                    <td><?php echo $_SESSION['user']; ?></td>
+                    <td><p class="form-control-static"><?php echo $_SESSION['user']; ?></p></td>
                 </tr>
                 <tr>
                     <td class="awardlabel">Awarded on</td>
-                    <td><?php echo date("Y-m-d h:m:s"); ?></td>
+                    <td><p class="form-control-static"><?php echo date("Y-m-d h:m:s"); ?></p></td>
                 </tr>
                 <tr>
                     <td class="awardlabel"></td>

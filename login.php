@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,12 +49,12 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     }
     $errormsg = "User or Password incorrect";
 } else {
-    
+
 }
 ?>
 <html>
     <head>
-        <title>DSP Portal - Login</title>
+        <title><?php echo $config['name_abbr']; ?> Portal - Login</title>
         <?php include "include/head.inc"; ?>
     </head>
     <body>

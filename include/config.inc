@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,6 +31,9 @@ $config['calendar_iframe_src'] = "http://goo.gl/zQeBnx";
 
 $config['background_color'] = '#336600';
 
+$config['name_abbr'] = "DSP";
+
+
 /* For making sure Dates/Times are correct. Will throw errors if removed */
 date_default_timezone_set('US/Central');
 
@@ -44,10 +47,10 @@ function points_status($totalpts) {
     if ($totalpts < 400)
         return "Captian"; //300-399
     if ($totalpts < 500)
-        return "Egyptian"; //400-499 
+        return "Egyptian"; //400-499
     if ($totalpts < 600)
-        return "Nile"; //500-599 
+        return "Nile"; //500-599
     if ($totalpts < 700)
-        return "Pyramid"; //600-699 
-    return "Sphinx"; //700+ 
+        return "Pyramid"; //600-699
+    return "Sphinx"; //700+
 }

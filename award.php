@@ -92,7 +92,7 @@ session_start();
                     </tr>
                     <tr>
                         <td class="awardlabel">Award to multiple members?</td>
-                        <td><input id="multiple" name="multiple" type="checkbox" onchange="multipleCheck()" class="form-control" /></td>
+                        <td><input id="multiple" name="multiple" type="checkbox" onchange="multipleCheck()" /></td>
                     </tr>
                     <tr>
                         <td class="awardlabel">Award to multiple<br><i>(comma separate users)</i></td>

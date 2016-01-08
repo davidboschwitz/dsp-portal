@@ -73,9 +73,9 @@ session_start();
             
             function startTime() {
                 var today = new Date();
-                var month = today.getMonth();
+                var month = today.getMonth() + 1;
                 var day = today.getDay();
-                var year = today.getYear();
+                var year = today.getYear() + 1900;
                 var h = today.getHours();
                 var m = today.getMinutes();
                 var s = today.getSeconds();

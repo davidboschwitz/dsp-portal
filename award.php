@@ -83,7 +83,7 @@ session_start();
                 s = checkTime(s);
                 document.getElementById('date').innerHTML =
                 month + "/" + day + "/" + year + " " + h + ":" + m;
-                var t = setTimeout(startTime, 500);
+                var t = setTimeout(startTime, 5000);
             }
             
             function checkTime(i) {

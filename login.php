@@ -48,6 +48,8 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         }
     }
     $errormsg = "User or Password incorrect";
+    if($data['pass'] === "reset")
+      $errormsg = "You need to reset your password.  Please contact the webmaster at $config['webmaster_email']";
 } else {
 
 }

@@ -49,7 +49,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     }
     $errormsg = "User or Password incorrect";
     if($data['pass'] == "reset"){
-      $errormsg = "You need to reset your password.  Please contact the webmaster at <a href=\"mailto:$config['webmaster_email']\">$config['webmaster_email']</a>";
+      $errormsg = "You need to reset your password.  Please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
 } else {
 

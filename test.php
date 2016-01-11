@@ -4,13 +4,13 @@ include 'include/hash.php';
 
 echo $a = create_hash("Hello 1");
 echo "<br>";
-echo str_len($a);
+echo strlen($a);
 echo "<br>";
 echo "<br>";
 
 echo $b = create_hash("Hello 1");
 echo "<br>";
-echo str_len($b);
+echo strlen($b);
 echo "<br>";
 echo "<br>";
 

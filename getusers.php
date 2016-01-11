@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,7 +43,7 @@ if (isset($_GET['multiple'])) {
     }
 
     echo "]";
-}else {
+} else {
     $search = trim($search);
     $query = sprintf("SELECT *  FROM `$mysql_db`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%' LIMIT 10", mysql_escape_string($search), mysql_escape_string($search), mysql_escape_string($search));
     //echo $query;

@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ require "include/mysql.inc"; //connect to MySQL
 $user = $_SESSION['user'];
 
 $query = sprintf("SELECT pa.code, pa.quantity, pd.points, pd.description, pc.description AS category
-FROM $mysql_db.points_awarded AS pa 
+FROM $mysql_db.points_awarded AS pa
 INNER JOIN $mysql_db.points_categories AS pc ON SUBSTRING(pa.code,1,2) = pc.code
 INNER JOIN $mysql_db.points_definition AS pd ON pd.code = pa.code
 WHERE pa.awardedto = '%s'
@@ -31,7 +31,8 @@ $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 
 $rowcount = 0;
-while ($row[$rowcount] = mysql_fetch_assoc($result)) {
+$i
+while ($row[$i] = mysql_fetch_assoc($result)) {
     //TODO: add rows with same codes quantities into one single row
     $flag = false;
     for ($a = 0; $a < $rowcount; $a++) {
@@ -41,9 +42,10 @@ while ($row[$rowcount] = mysql_fetch_assoc($result)) {
         }
     }
     if (!$flag) {
-        $content[$a] = $row[$rowcount];
+        $content[$a] = $row[$i];
         $rowcount++;
     }
+    $i++;
 }
 ?>
 <html>
@@ -71,7 +73,7 @@ while ($row[$rowcount] = mysql_fetch_assoc($result)) {
             for ($i = 0; $i < $rowcount; $i++) {
                 $totalpts += $content[$i]['points'] * $content[$i]['quantity'];
                 $totalquantity += $content[$i]['quantity'];
-                ?>    
+                ?>
                 <tr>
                     <td style = "text-align: right;"><?php echo $content[$i]['points']; ?></td>
                     <td style = "text-align: right;"><?php echo $content[$i]['quantity']; ?></td>

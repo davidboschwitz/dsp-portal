@@ -70,9 +70,30 @@ session_start();
                         return false;
                     }
             }
+            
+            function startTime() {
+                var today = new Date();
+                var month = today.getMonth() + 1;
+                var day = today.getDate();
+                var year = today.getYear() + 1900;
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById('date').innerHTML =
+                month + "/" + day + "/" + year + " " + h + ":" + m;
+                var t = setTimeout(startTime, 5000);
+            }
+            
+            function checkTime(i) {
+                 if (i < 10)
+                     i = "0" + 1;
+                 return i;
+            }
         </script>
     </head>
-    <body onload="multipleCheck()">
+    <body onload="multipleCheck(), startTime()">
         <?php require "include/header.inc"; ?>
         <form id="awardpts" action="submitaward.php" method="POST" on class="form-group">
             <h1>Award new points</h1>
@@ -92,7 +113,7 @@ session_start();
                     </tr>
                     <tr>
                         <td class="awardlabel">Award to multiple members?</td>
-                        <td><input id="multiple" name="multiple" type="checkbox" onchange="multipleCheck()" class="form-control" /></td>
+                        <td><input id="multiple" name="multiple" type="checkbox" onchange="multipleCheck()" /></td>
                     </tr>
                     <tr>
                         <td class="awardlabel">Award to multiple<br><i>(comma separate users)</i></td>
@@ -108,7 +129,7 @@ session_start();
                     </tr>
                     <tr>
                         <td class="awardlabel">Awarded on</td>
-                        <td><p class="form-control-static"><?php echo date("Y-m-d h:m:s"); ?></p></td>
+                        <td><div id="date" class="form-control-static"><?php echo date("Y-m-d h:m:s"); ?></div></td>
                     </tr>
                     <tr>
                         <td class="awardlabel"></td>

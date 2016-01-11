@@ -169,7 +169,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                     </tr>
                     <tr>
                         <td class="awardlabel"></td>
-                        <td><button name="page" type="Submit" value="0" >Submit</button></td>
+                        <td><button name="page" type="Submit" value="0" >Search</button></td>
                     </tr>
                 </table>
                 <?php if ($config['debug'] || $_SESSION['debug']) { ?>

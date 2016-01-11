@@ -70,7 +70,7 @@ session_start();
                         return false;
                     }
             }
-            
+
             function startTime() {
                 var today = new Date();
                 var month = today.getMonth() + 1;
@@ -83,9 +83,9 @@ session_start();
                 s = checkTime(s);
                 document.getElementById('date').innerHTML =
                 month + "/" + day + "/" + year + " " + h + ":" + m;
-                var t = setTimeout(startTime, 5000);
+                var t = setTimeout(startTime, (61 - s) * 1000);
             }
-            
+
             function checkTime(i) {
                  if (i < 10)
                      i = "0" + 1;

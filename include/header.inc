@@ -34,38 +34,38 @@ $link[] = "myaccount.php";
 $desc[] = "Account Settings";
 $auth[] = 1;
 ?>
-<div id="all-content" class="container mycontent">
-    <div id="sidebar">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><?php echo $config['name_abbr']; ?></a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <?php
-                        for ($i = 0; isset($link[$i]); $i++) {
-                            if (basename($_SERVER['PHP_SELF']) == $link[$i]) {
+<div id="sidebar">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><?php echo $config['name_abbr']; ?></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <?php
+                    for ($i = 0; isset($link[$i]); $i++) {
+                        if (basename($_SERVER['PHP_SELF']) == $link[$i]) {
+                            ?>
+                            <li class="active"><a href="#"><?php echo $desc[$i]; ?></a></li>
+                            <?php
+                        } else {
+                            if ($_SESSION['auth'] >= $auth[$i]) {
                                 ?>
-                                <li class="active"><a href="#"><?php echo $desc[$i]; ?></a></li>
+                                <li><a href="<?php echo $link[$i]; ?>"><?php echo $desc[$i]; ?></a></li>
                                 <?php
-                            } else {
-                                if ($_SESSION['auth'] >= $auth[$i]) {
-                                    ?>
-                                    <li><a href="<?php echo $link[$i]; ?>"><?php echo $desc[$i]; ?></a></li>
-                                    <?php
-                                }
                             }
                         }
-                        ?>
+                    }
+                    ?>
 
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a>Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span></a></li>
-                        <li><a href="login.php">Sign Out</a></li>
-                    </ul>
-                </div>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span></a></li>
+                    <li><a href="login.php">Sign Out</a></li>
+                </ul>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+</div>
+<div id="all-content" class="container mycontent">
     <div id="main-content">

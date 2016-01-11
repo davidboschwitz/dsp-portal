@@ -40,7 +40,7 @@ switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
             //echo $currentPass.','.$data['pass'] . '=' . md5($currentPass);
             die("Current password incorrect!");
         }
-        $query = sprintf("UPDATE `$mysql_db`.`dsp_users` SET `pass` = '%s' WHERE `dsp_users`.`user` = '%s';", md5(mysql_escape_string($newPass)), mysql_escape_string($_SESSION['user']));
+        $query = sprintf("UPDATE `$mysql_db`.`dsp_users` SET `pass` = '%s' WHERE `dsp_users`.`user` = '%s';", mysql_escape_string(create_hash($newPass)), mysql_escape_string($_SESSION['user']));
         $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
         echo "Changed Password Successfully";
         break;

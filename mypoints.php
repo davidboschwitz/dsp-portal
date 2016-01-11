@@ -31,7 +31,7 @@ $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 
 $rowcount = 0;
-$i
+$i = 0;
 while ($row[$i] = mysql_fetch_assoc($result)) {
     //TODO: add rows with same codes quantities into one single row
     $flag = false;

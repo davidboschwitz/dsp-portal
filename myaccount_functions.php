@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,8 +35,9 @@ switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
             //should never happen, but you never know.
             die("Invalid user!");
         }
-        if (md5($currentPass) !== $data['pass']) {
-            echo $currentPass.','.$data['pass'] . '=' . md5($currentPass);
+        include "include/hash.php";
+        if (validate_password($currentPass, $data['pass']) !== 1) {
+            //echo $currentPass.','.$data['pass'] . '=' . md5($currentPass);
             die("Current password incorrect!");
         }
         $query = sprintf("UPDATE `$mysql_db`.`dsp_users` SET `pass` = '%s' WHERE `dsp_users`.`user` = '%s';", md5(mysql_escape_string($newPass)), mysql_escape_string($_SESSION['user']));

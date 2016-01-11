@@ -1,5 +1,5 @@
 <?php
-
+exit;
 include 'include/hash.php';
 
 echo $a = create_hash("Hello 1");

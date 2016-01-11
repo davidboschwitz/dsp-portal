@@ -26,6 +26,7 @@ $errormsg = "";
 if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     session_start();
     require "include/mysql.inc";
+    require "include/hash.php";
 
     $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
     $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
@@ -34,7 +35,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     $result = mysql_query($query) or die('Invalid query (A): ' . mysql_error());
     $data = mysql_fetch_assoc($result);
     if ($data['user'] === $user) {
-        if ($data['pass'] === md5($pass)) {
+        if (validate_password($pass, $data['pass'])) {
             $_SESSION['user'] = $user;
             $_SESSION['auth'] = $data['auth'];
             if ($data['auth'] >= 100)//webmaster
@@ -50,6 +51,9 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     $errormsg = "User or Password incorrect";
     if($data['pass'] == "reset"){
       $errormsg = "You need to reset your password.  Please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
+    }
+    if($data['pass'] == "disabled"){
+      $errormsg = "Your account has been disabled.  For more information, please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
 } else {
 

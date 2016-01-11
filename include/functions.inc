@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,6 +31,7 @@ if ($config['timeout'] > 0 && !$page['no_timeout']) {
         //Session timeout
         echo "<h1>401 - Unauthorized</h1><br>";
         echo "Session Timed-out. You have been automatically logged out. <a href=\"login.php\">Login here.</a>";
+        session_destroy();
         exit;
     }
     $_SESSION['time'] = time();

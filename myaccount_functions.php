@@ -36,7 +36,7 @@ switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
             die("Invalid user!");
         }
         include "include/hash.php";
-        if (validate_password($currentPass, $data['pass']) !== 1) {
+        if (!validate_password($currentPass, $data['pass'])) {
             //echo $currentPass.','.$data['pass'] . '=' . md5($currentPass);
             die("Current password incorrect!");
         }

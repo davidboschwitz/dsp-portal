@@ -53,7 +53,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     if($data['pass'] == "reset"){
       $errormsg = "You need to reset your password.  Please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
-    if($data['pass'] == "disabled" || $data['auth'] === 0){
+    if($data['pass'] == "disabled" || $data['auth'] == 0){
       $errormsg = "Your account has been disabled.  For more information, please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
 } else {

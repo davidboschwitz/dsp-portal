@@ -64,8 +64,16 @@ $auth[] = 100;
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a>Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span></a></li>
-                    <li><a href="login.php">Sign Out</a></li>
+                    <?php /*<li><a>Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span></a></li>
+                    <li><a href="login.php">Sign Out</a></li>*/?>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><a>Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span></a> <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Account Settings</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Sign Out</a></li>
+                      </ul>
+                  </li>
                 </ul>
             </div>
         </div>

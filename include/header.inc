@@ -33,6 +33,10 @@ $auth[] = 1;
 $link[] = "myaccount.php";
 $desc[] = "Account Settings";
 $auth[] = 1;
+
+$link[] = "webmaster.php";
+$desc[] = "Webmaster Tools";
+$auth[] = 100;
 ?>
 <div id="sidebar">
     <nav class="navbar navbar-default">

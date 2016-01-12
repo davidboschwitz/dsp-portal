@@ -66,7 +66,7 @@ $auth[] = 100;
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span><span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <?php if (basename($_SERVER['PHP_SELF']) == "myaccount.php") {?>
-                          <li class="active"><a href="myaccount.php">Account Settings</a></li>
+                          <li class="active"><a href="#">Account Settings</a></li>
                         <?php } else { ?>
                           <li><a href="myaccount.php">Account Settings</a></li>
                         <?php } ?>

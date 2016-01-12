@@ -30,10 +30,6 @@ $link[] = "calendar.php";
 $desc[] = "Calendar";
 $auth[] = 1;
 
-$link[] = "myaccount.php";
-$desc[] = "Account Settings";
-$auth[] = 1;
-
 $link[] = "webmaster.php";
 $desc[] = "Webmaster Tools";
 $auth[] = 100;
@@ -69,9 +65,9 @@ $auth[] = 100;
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span><span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="#">Account Settings</a></li>
+                        <li><a href="myaccount.php">Account Settings</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Sign Out</a></li>
+                        <li><a href="login.php">Sign Out</a></li>
                       </ul>
                   </li>
                 </ul>

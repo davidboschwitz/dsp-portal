@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2015 David Boschwitz.
+ * Copyright 2016 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,6 @@ require "include/functions.inc";
     <body>
         <?php require "include/header.inc"; ?>
         <h1>Webmaster Tools</h1>
-
+        
     </body>
 </html>

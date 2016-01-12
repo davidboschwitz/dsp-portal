@@ -35,7 +35,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     $result = mysql_query($query) or die('Invalid query (A): ' . mysql_error());
     $data = mysql_fetch_assoc($result);
     if ($data['user'] === $user) {
-        if (validate_password($pass, $data['pass']) && $data['auth'] > 0) {
+        if (validate_password($pass, $data['pass'])) {
             mysql_query("UPDATE `dsp_users` SET `num_login` = `num_login` + 1 WHERE `user` = "%s";",mysql_escape_string($user));
             $_SESSION['user'] = $user;
             $_SESSION['auth'] = $data['auth'];
@@ -53,7 +53,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     if($data['pass'] == "reset"){
       $errormsg = "You need to reset your password.  Please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
-    if($data['pass'] == "disabled" || $data['auth'] == 0){
+    if($data['pass'] == "disabled"){
       $errormsg = "Your account has been disabled.  For more information, please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
 } else {

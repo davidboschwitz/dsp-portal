@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,8 +62,8 @@ require "include/mysql.inc";
             }
         } while (false);
         ?>
-        <form id="awardpts" action="submitaward.php" method="POST" >
-            <h1>Points awarded</h1><br>
+        <form id="awardpts">
+            <h1 style="margin-top: 0">Points awarded</h1><br>
             <div class="center-block" style="width: 50%">
                 <table class="table table-bordered table-striped table-hover table-condensed">
                     <tr>

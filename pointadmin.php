@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -133,7 +133,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <h1>Search for Points Awarded</h1>
+        <h1 style="margin-top: 0">Search for Points Awarded</h1>
         <div class="center">
             <form id="pointadmin" action="" method="POST">
                 <input id="sortby" name="sortby" type="hidden" value="<?php echo ($_POST['sortby'] ? $_POST['sortby'] : "ASC"); ?>" />
@@ -199,7 +199,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <?php for ($i = 0; $i < $rowcount; $i++) { ?>    
+                        <?php for ($i = 0; $i < $rowcount; $i++) { ?>
                             <tr id="point[<?php echo $row[$i]['pointid']; ?>]">
                                 <td><input type="checkbox" id="pointcheck<?php echo $row[$i]['pointid']; ?>" onclick="togglePoint(<?php echo $row[$i]['pointid']; ?>)" /></td>
                                 <td><?php echo $row[$i]['timestamp']; ?></td>

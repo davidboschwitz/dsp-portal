@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ require "include/config.inc";
         </script>
     </head>
     <body style="background-color:white">
-        <h2>Points Breakdown</h2>
+        <h2 style="margin-top: 0">Points Breakdown</h2>
         Click on code to insert
         <table class="cream">
             <thead>
@@ -55,7 +55,7 @@ INNER JOIN $mysql_db.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code
             }
             $rowcount = --$i; //Otherwise returns extra empty NULL row
             for ($i = 0; $i < $rowcount; $i++) {
-                ?>    
+                ?>
                 <tr>
                     <td style="text-align: right;"><?php echo $row[$i]['points']; ?></td>
                     <td onclick="giveCode('<?php echo $row[$i]['code']; ?>')"><a style="text-decoration: underline; color: blue;" href="#" onclick="giveCode('<?php echo $row[$i]['code']; ?>')"><?php echo $row[$i]['code']; ?></a></td>

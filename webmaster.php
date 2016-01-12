@@ -16,3 +16,16 @@
  */
 $page['auth'] = 100;
 require "include/functions.inc";
+
+?>
+<html>
+    <head>
+        <title>Points Admin</title>
+        <?php require "include/head.inc"; ?>
+    </head>
+    <body>
+        <?php require "include/header.inc"; ?>
+        <h1>Webmaster Tools</h1>
+
+    </body>
+</html>

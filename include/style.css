@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2015 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
+/*
     Created on : Oct 21, 2015, 2:29:12 PM
     Author     : davidboschwitz
 */
@@ -37,6 +37,7 @@ html {
 h1 {
     font-size: 18px;
     font-weight: bold;
+    margin-top: 0px;
 }
 
 h2 {
@@ -46,8 +47,8 @@ h2 {
 
 body {
     font: 12px/1.5 arial, sans-serif;
-    height: 100%; 
-    width: 100%; 
+    height: 100%;
+    width: 100%;
     background-color: <?php echo $config['background_color'] ?>;
     //padding: 0.5em;
 }
@@ -57,9 +58,9 @@ a {
 }
 
 .all-content {
-    height: 100%; 
+    height: 100%;
     margin: 0px;
-    width: 100%; 
+    width: 100%;
 }
 
 .main-content {

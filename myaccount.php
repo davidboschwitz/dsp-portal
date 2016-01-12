@@ -26,7 +26,7 @@ require 'include/functions.inc';
                 if (confirm("Are you sure you want to change your password?")) {
                     $.post("myaccount_functions.php", {task: "changepass", currentpass: $("#currentpass").val(), newpass: $("#newpass").val(), confirmnewpass: $("#confirmnewpass").val()}, function (data) {
                         alert(data);
-                    });    
+                    });
                 }
                 document.getElementById("currentpass").value = "";
                 document.getElementById("newpass").value = "";
@@ -39,7 +39,7 @@ require 'include/functions.inc';
         <h1 style="margin-top: 0">My Account</h1>
         <div id="accountinfo">
           <strong>Name:</strong> <?php echo $_SESSION['full_name']; ?><br>
-          <strong>Net-ID</strong> <?php echo $_SESSION['user']; ?><br>
+          <strong>Net-ID:</strong> <?php echo $_SESSION['user']; ?><br>
           <br>
         </div>
         <div id="changepassdiv">

@@ -34,6 +34,11 @@ require 'include/functions.inc';
     <body>
 <?php require 'include/header.inc'; ?>
         <h1 style="margin-top: 0">My Account</h1>
+        <div id="accountinfo">
+          <strong>Name:</strong> <?php echo $_SESSION['full_name']; ?><br>
+          <strong>Net-ID</strong> <?php echo $_SESSION['user']; ?><br>
+          <br>
+        </div>
         <div id="changepassdiv">
             <form id="changepass" >
                 Current Password: <br>

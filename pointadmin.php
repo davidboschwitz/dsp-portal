@@ -133,7 +133,7 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <h1 style="margin-top: 0">Search for Points Awarded</h1>
+        <h1>Search for Points Awarded</h1>
         <div class="center">
             <form id="pointadmin" action="" method="POST">
                 <input id="sortby" name="sortby" type="hidden" value="<?php echo ($_POST['sortby'] ? $_POST['sortby'] : "ASC"); ?>" />

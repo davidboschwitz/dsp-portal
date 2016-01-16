@@ -21,7 +21,10 @@ include "include/functions.inc";
 switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)){
   case "resetpass":
     $newpass = substr(md5(rand()), 7, 8);
-    echo json_encode(array(1, $newpass));
+
+    // echo "{ \"status\": \"1\", ";
+    // echo "newpass: " . $newpass . "}";
+    echo json_encode(array('status' => 1, 'newpass' => $newpass));
     break;
 
 

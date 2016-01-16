@@ -35,7 +35,7 @@ $desc[] = "Webmaster Tools";
 $auth[] = 100;
 ?>
 <div id="sidebar">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#"><?php echo $config['name_abbr']; ?></a>
@@ -60,18 +60,20 @@ $auth[] = 100;
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <?php /*<li><a>Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span></a></li>
-                    <li><a href="login.php">Sign Out</a></li>*/?>
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span><span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Signed in as <span class="navbar-link"><?php echo $_SESSION['full_name'] ?></span><span class="caret"></span>
+                      </a>
                       <ul class="dropdown-menu">
                         <?php if (basename($_SERVER['PHP_SELF']) == "myaccount.php") {?>
                           <li class="active"><a href="#">Account Settings</a></li>
                         <?php } else { ?>
-                          <li><a href="myaccount.php">Account Settings</a></li>
+                          <li><a href="myaccount.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            &nbsp;Account Settings</a></li>
                         <?php } ?>
                         <li role="separator" class="divider"></li>
-                        <li><a href="login.php">Sign Out</a></li>
+                        <li><a href="login.php"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                          &nbsp;Sign Out</a></li>
                       </ul>
                   </li>
                 </ul>

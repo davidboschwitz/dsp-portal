@@ -220,7 +220,7 @@ table.award td {
   border-color: #080808;
   color: #9d9d9d;
   &>li>a{
-    color: #999;
+    color: #9d9d9d;
     &:hover{
       color: #fff;
       background-color: #000;

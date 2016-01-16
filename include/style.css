@@ -213,3 +213,19 @@ table.award td {
     left: 40%;
     right: 30%;
 }
+
+/* taken from https://github.com/twbs/bootstrap/issues/9588 */
+.inverse-dropdown{
+  background-color: #222;
+  border-color: #080808;
+  &>li>a{
+    color: #999;
+    &:hover{
+      color: #fff;
+      background-color: #000;
+    }
+  }
+  &>.divider {
+    background-color: #000;
+  }
+}

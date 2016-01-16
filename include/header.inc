@@ -64,7 +64,7 @@ $auth[] = 100;
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Signed in as <?php echo $_SESSION['full_name'] ?><span class="caret"></span>
                       </a>
-                      <ul class="dropdown-menu">
+                      <ul class="dropdown-menu inverse-dropdown">
                         <?php if (basename($_SERVER['PHP_SELF']) == "myaccount.php") {?>
                           <li class="active"><a href="#">Account Settings</a></li>
                         <?php } else { ?>

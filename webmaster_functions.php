@@ -15,17 +15,18 @@
  * limitations under the License.
  */
 $page['auth'] = 100;
-include "include/functions.inc";
+require "include/functions.inc";
 
 
-switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)){
-  case "resetpass":
-    $newpass = substr(md5(rand()), 7, 8);
+switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
+    case "resetpass":
+      if(!validate_password($pass, $_SESSION['pass'])) {
+          die(json_encode(array('status' => 0, 'error' => "Invalid authentication")));
+      }
+      $newpass = substr(md5(rand()), 7, 8);
 
-    // echo "{ \"status\": \"1\", ";
-    // echo "newpass: " . $newpass . "}";
-    echo json_encode(array('status' => 1, 'newpass' => $newpass));
-    break;
+      echo json_encode(array('status' => 1, 'newpass' => $newpass));
+      break;
 
 
 }

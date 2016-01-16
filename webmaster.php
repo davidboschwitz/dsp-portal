@@ -32,6 +32,7 @@ require "include/functions.inc";
           });
 
           function resetpass(){
+            document.getElementById("givenpass").value = "";
             if (confirm("Are you sure you want to reset ")) {
                 $.post("webmaster_functions.php", {task: "resetpass", mypass: $("#mypass").val(), usertoreset: $("#usertoreset").val()}, function (data) {
                     var response = jQuery.parseJSON(data);
@@ -39,12 +40,12 @@ require "include/functions.inc";
                       console.log(response.status);
                       console.log(response.newpass);
                     <?php } ?>
-                    if(response.status == 1){
+                    if(response.status == 1) {
                       alert("Password reset success!");
                       document.getElementById("givenpass").value = response.newpass;
-
+                    } else {
+                      alert("Password reset failed!");
                     }
-
                 });
             }
             document.getElementById("mypass").value = "";
@@ -61,7 +62,7 @@ require "include/functions.inc";
             <input type="password" id="mypass" name="mypass" /><br>
             Enter the user who you would like to reset:<br>
             <input type="password" id="usertoreset" name="usertoreset" /><br>
-            New password:
+            New password:<br>
             <input type="text" id="givenpass" readonly /><br>
             <input type="button" id="resetpassbutton" value="Reset Password" onclick="resetpass()" />
         </form>

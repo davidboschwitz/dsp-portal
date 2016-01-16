@@ -39,6 +39,9 @@ require "include/functions.inc";
                     deb = data;
                     console.log(data);
                     console.log(data[2]);
+                    var arr = jQuery.parseJSON(data);
+                    console.log(arr.status);
+                    console.log(arr.newpass);
 
                     if(data['status'] == 1){
                       alert("Password reset success!");

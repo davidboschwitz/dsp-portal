@@ -37,8 +37,8 @@ require "include/functions.inc";
                 $.post("webmaster_functions.php", {task: "resetpass", mypass: $("#mypass").val(), usertoreset: $("#usertoreset").val()}, function (data) {
                     var response = jQuery.parseJSON(data);
                     <?php if($_SESSION['debug']) { ?>
-                      console.log(response.status);
-                      console.log(response.newpass);
+                      //console.log(response.status);
+                      //console.log(response.newpass);
                     <?php } ?>
                     if(response.status == 1) {
                       alert("Password reset success!");

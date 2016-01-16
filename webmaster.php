@@ -22,10 +22,44 @@ require "include/functions.inc";
     <head>
         <title>Points Admin</title>
         <?php require "include/head.inc"; ?>
+        <script type="text/javascript">
+          $(function () {
+              $("#usertoreset").autocomplete({
+                  delay: 300,
+                  minlength: 2,
+                  source: "./getusers.php"
+              });
+          });
+
+          function resetpass(){
+            if (confirm("Are you sure you want to reset ")) {
+                $.post("webmaster_functions.php", {task: "resetpass", mypass: $("#mypass").val(), usertoreset: $("#usertoreset").val()}, function (data) {
+                    //alert(data);
+                    if(data['status'] == 1){
+                      alert("Password reset success!");
+                      document.getElementById("givenpass").value = data['newpass'];
+
+                    }
+
+                });
+            }
+            document.getElementById("mypass").value = "";
+            document.getElementById("usertoreset").value = "";
+          }
+        </script>
     </head>
     <body>
         <?php require "include/header.inc"; ?>
         <h1>Webmaster Tools</h1>
-        
+        <h3>Reset user password</h3>
+        <form id="resetpass" method="POST">
+            Enter your password:<br>
+            <input type="password" id="mypass" name="mypass" /><br>
+            Enter the user who you would like to reset:<br>
+            <input type="password" id="usertoreset" name="usertoreset" /><br>
+            New password:
+            <input type="text" id="givenpass" readonly /><br>
+            <input type="button" id="resetpassbutton" value="Reset Password" onclick="resetpass()" />
+        </form>
     </body>
 </html>

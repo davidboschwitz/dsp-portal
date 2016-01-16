@@ -23,7 +23,6 @@ require "include/functions.inc";
         <title>Points Admin</title>
         <?php require "include/head.inc"; ?>
         <script type="text/javascript">
-        var deb;
           $(function () {
               $("#usertoreset").autocomplete({
                   delay: 300,
@@ -35,17 +34,14 @@ require "include/functions.inc";
           function resetpass(){
             if (confirm("Are you sure you want to reset ")) {
                 $.post("webmaster_functions.php", {task: "resetpass", mypass: $("#mypass").val(), usertoreset: $("#usertoreset").val()}, function (data) {
-                    //alert(data);
-                    deb = data;
-                    console.log(data);
-                    console.log(data[2]);
-                    var arr = jQuery.parseJSON(data);
-                    console.log(arr.status);
-                    console.log(arr.newpass);
-
-                    if(data['status'] == 1){
+                    var response = jQuery.parseJSON(data);
+                    <?php if($_SESSION['debug']) { ?>
+                      console.log(response.status);
+                      console.log(response.newpass);
+                    <?php } ?>
+                    if(response.status == 1){
                       alert("Password reset success!");
-                      document.getElementById("givenpass").value = data['newpass'];
+                      document.getElementById("givenpass").value = response.newpass;
 
                     }
 

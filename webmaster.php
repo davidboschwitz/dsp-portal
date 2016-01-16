@@ -38,6 +38,8 @@ require "include/functions.inc";
                     //alert(data);
                     deb = data;
                     console.log(data);
+                    console.log(data[2]);
+
                     if(data['status'] == 1){
                       alert("Password reset success!");
                       document.getElementById("givenpass").value = data['newpass'];

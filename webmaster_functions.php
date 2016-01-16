@@ -18,7 +18,7 @@ $page['auth'] = 100;
 include "include/functions.inc";
 
 
-switch($action){
+switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)){
   case "resetpass":
     $newpass = substr(md5(rand()), 7, 8);
 

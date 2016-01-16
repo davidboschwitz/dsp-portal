@@ -35,6 +35,7 @@ require "include/functions.inc";
             if (confirm("Are you sure you want to reset ")) {
                 $.post("webmaster_functions.php", {task: "resetpass", mypass: $("#mypass").val(), usertoreset: $("#usertoreset").val()}, function (data) {
                     //alert(data);
+                    console.log(data);
                     if(data['status'] == 1){
                       alert("Password reset success!");
                       document.getElementById("givenpass").value = data['newpass'];

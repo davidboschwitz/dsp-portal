@@ -18,10 +18,12 @@ session_start();
 session_destroy();
 //session_stop();
 $page['no_timeout'] = TRUE;
+$page['auth'] = 0;
 
-include "include/functions.inc";
-
-$errormsg = "";
+include_once "include/functions.inc";
+if(!isset($errormsg)){
+    $errormsg = "";
+}
 //If a login attempt has been made
 if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     session_start();
@@ -36,7 +38,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     $data = mysql_fetch_assoc($result);
     if ($data['user'] === $user) {
         if (validate_password($pass, $data['pass']) && $data['auth'] > 0) {
-            mysql_query("UPDATE `dsp_users` SET `num_login` = `num_login` + 1 WHERE `user` = \"%s\";",mysql_escape_string($user));
+            mysql_query(sprintf("UPDATE `dsp_users` SET `num_login` = `num_login` + 1 WHERE `user` = \"%s\";",mysql_escape_string($user)));
             $_SESSION['user'] = $user;
             $_SESSION['auth'] = $data['auth'];
             if ($data['auth'] >= 100)//webmaster
@@ -47,14 +49,15 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
             $_SESSION['time'] = time();
             $_SESSION['pass'] = $data['pass'];
             header("Location: ./mypoints.php");
+            mysql_close($mysql_link);
             exit;
         }
     }
     $errormsg = "User or Password incorrect";
-    if($data['pass'] == "reset"){
+    if($data['pass'] == "reset") {
       $errormsg = "You need to reset your password.  Please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
-    if($data['pass'] == "disabled" || $data['auth'] == 0){
+    if($data['pass'] == "disabled" || $data['auth'] == 0) {
       $errormsg = "Your account has been disabled.  For more information, please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
 } else {

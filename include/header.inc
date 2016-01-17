@@ -35,7 +35,7 @@ $desc[] = "Webmaster Tools";
 $auth[] = 100;
 ?>
 <div id="sidebar">
-    <nav class="navbar navbar-inverse navbar-default">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#"><?php echo $config['name_abbr']; ?></a>
@@ -64,11 +64,11 @@ $auth[] = 100;
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Signed in as <?php echo $_SESSION['full_name'] ?><span class="caret"></span>
                       </a>
-                      <ul class="dropdown-menu inverse-dropdown">
+                      <ul class="dropdown-menu">
                         <?php if (basename($_SERVER['PHP_SELF']) == "myaccount.php") {?>
-                          <li class="active"><a href="#">Account Settings</a></li>
+                          <li class="active"><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;Account Settings</a></li>
                         <?php } else { ?>
-                          <li><a href="myaccount.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                          <li><a href="myaccount.php"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                             &nbsp;Account Settings</a></li>
                         <?php } ?>
                         <li role="separator" class="divider"></li>

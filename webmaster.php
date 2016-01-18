@@ -31,7 +31,7 @@ require "include/functions.inc";
               });
           });
 
-          function toggledebug(){
+          function toggledebug() {
                 $.post("webmaster_functions.php", {task: "toggledebug"}, function (data) {
                     <?php if($_SESSION['debug']) { ?>
                       console.log(data);
@@ -49,7 +49,7 @@ require "include/functions.inc";
                 });
           }
 
-          function resetpass(){
+          function resetpass() {
             document.getElementById("givenpass").value = "";
             if (confirm("Are you sure you want to reset ")) {
                 $.post("webmaster_functions.php", {task: "resetpass", mypass: $("#mypass").val(), usertoreset: $("#usertoreset").val()}, function (data) {

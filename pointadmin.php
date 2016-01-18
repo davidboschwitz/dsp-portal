@@ -210,8 +210,12 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                                 <td><?php echo $row[$i]['awardedto']; ?></td>
                                 <td><?php echo $row[$i]['awardedby']; ?></td>
                                 <td><?php echo $row[$i]['comments']; ?></td>
-                                <td><input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
-                                    <input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs btn-danger" /></td>
+                                <td>
+                                  <div class="btn-group">
+                                    <input type="button" value="Edit" onclick="editPoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs " />
+                                    <input type="button" value="Delete" onclick="deletePoint(<?php echo $row[$i]['pointid']; ?>)" class="btn btn-xs btn-danger" />
+                                  </div>
+                                </td>
                                 </form>
                             </tr>
                         <?php } ?>

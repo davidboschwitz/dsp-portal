@@ -32,7 +32,7 @@ require "include/functions.inc";
           });
 
           function toggledebug(){
-                $.post("webmaster_functions.php", {task: "toggledebug", function (data) {
+                $.post("webmaster_functions.php", {task: "toggledebug"}, function (data) {
                     <?php if($_SESSION['debug']) { ?>
                       console.log(data);
                       //console.log(response.status);

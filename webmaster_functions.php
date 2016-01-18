@@ -20,27 +20,35 @@ require "include/functions.inc";
 
 switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
     case "resetpass":
-    require "include/hash.php";
-    include "include/mysql.inc";
+        require "include/hash.php";
+        require "include/mysql.inc";
 
-      if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
-          die(json_encode(array('status' => 0, 'error' => "Invalid authentication")));
-      }
-      $user = filter_input(INPUT_POST, 'usertoreset', FILTER_SANITIZE_STRING);
-      $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
-      $result = mysql_query($query);
-      $data = mysql_fetch_assoc($result);
+        if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
+            die(json_encode(array('status' => 0, 'error' => "Invalid authentication")));
+        }
+        $user = filter_input(INPUT_POST, 'usertoreset', FILTER_SANITIZE_STRING);
+        $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
+        $result = mysql_query($query);
+        $data = mysql_fetch_assoc($result);
 
-      if ($user !== $data['user']) {
-          //webmasters should know better
-          die(json_encode(array('status' => 0, 'error' => "User: $user does not exist!")));
-      }
-      $newpass = substr(md5(rand()), 7, 8);
+        if ($user !== $data['user']) {
+            //webmasters should know better
+            die(json_encode(array('status' => 0, 'error' => "User: $user does not exist!")));
+        }
+        $newpass = substr(md5(rand()), 7, 8);
 
-      $query = sprintf("UPDATE `$mysql_db`.`dsp_users` SET `pass` = '%s' WHERE `dsp_users`.`user` = '%s';", mysql_escape_string(create_hash($newpass)), mysql_escape_string($user));
-      $result = mysql_query($query) or die(json_encode(array('status' => 0, 'error' => ('Invalid query: ' . mysql_error()))));
-      echo json_encode(array('status' => 1, 'newpass' => $newpass));
-      break;
+        $query = sprintf("UPDATE `$mysql_db`.`dsp_users` SET `pass` = '%s' WHERE `dsp_users`.`user` = '%s';", mysql_escape_string(create_hash($newpass)), mysql_escape_string($user));
+        $result = mysql_query($query) or die(json_encode(array('status' => 0, 'error' => ('Invalid query: ' . mysql_error()))));
+        echo json_encode(array('status' => 1, 'newpass' => $newpass));
+        break;
 
+    case "toggledebug":
+        if(!isset($_SESSION['debug'])) {
+            $_SESSION['debug'] = true;
+        } else {
+            $_SESSION['debug'] = !$_SESSION['debug'];
+        }
+        echo json_encode(array('status' => ($_SESSION['debug'] ? 1 : 2), 'msg' => "Debug is now ".($_SESSION['debug'] ? "ON" : "OFF")));
+        break;
 
 }

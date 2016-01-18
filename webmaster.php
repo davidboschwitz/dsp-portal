@@ -31,6 +31,24 @@ require "include/functions.inc";
               });
           });
 
+          function toggledebug(){
+                $.post("webmaster_functions.php", {task: "toggledebug", function (data) {
+                    <?php if($_SESSION['debug']) { ?>
+                      console.log(data);
+                      //console.log(response.status);
+                      //console.log(response.newpass);
+                    <?php } ?>
+                    var response = jQuery.parseJSON(data);
+                    alert(response.msg);
+                    if(response.status == 1) {
+                      document.getElementById("debugbutton").value = "Turn debug OFF";
+                    }
+                    if(response.status == 2) {
+                      document.getElementById("debugbutton").value = "Turn debug ON";
+                    }
+                });
+          }
+
           function resetpass(){
             document.getElementById("givenpass").value = "";
             if (confirm("Are you sure you want to reset ")) {
@@ -58,6 +76,13 @@ require "include/functions.inc";
     <body>
         <?php require "include/header.inc"; ?>
         <h1>Webmaster Tools</h1>
+        <h3>Toggle Debug</h3>
+        Note: Debug will only ever be on for webmasters (auth > 100).<br>
+        <?php if($_SESSION['debug']) { ?>
+          <input type="button" id="debugbutton" value="Turn debug OFF" onclick="toggledebug()" />
+        <?php } else { ?>
+          <input type="button" id="debugbutton" value="Turn debug ON" onclick="toggledebug()" />
+        <?php } ?>
         <h3>Reset user password</h3>
         <form id="resetpass" method="POST">
             Enter your password:<br>

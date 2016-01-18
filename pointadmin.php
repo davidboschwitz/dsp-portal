@@ -18,7 +18,7 @@ $page['auth'] = 7;
 require "include/functions.inc";
 require "include/mysql.inc";
 
-$query = "SELECT * FROM `$mysql_db`.`points_awarded` WHERE 1 = 1";
+$query = "SELECT * FROM `$mysql_db`.`points_awarded` WHERE 1 ";
 
 if (isset($_POST['datebefore']) && isset($_POST['dateafter']) && !empty($_POST['dateafter']) && !empty($_POST['datebefore'])) {
     //TODO make sure input is formatted to be a date
@@ -74,6 +74,8 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
             function openHints() {
                 window.open("pointindex.php", "_blank", "toolbar=no, scrollbars=yes, resizable=no, top=500, left=500, width=500, height=600");
             }
+
+
 
             function sortForm(col) {
                 if (document.getElementById("sortby").value == col) {
@@ -190,12 +192,12 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                         <thead>
                             <tr>
                                 <th><input type="checkbox" id="pointcheckall" onclick="togglePoint('all')" /></th>
-                                <th onclick="sortForm('timestamp')">Timestamp</th>
-                                <th onclick="sortForm('code')">Code</th>
-                                <th onclick="sortForm('quantity')">Quantity</th>
-                                <th onclick="sortForm('awardedto')">Awarded To</th>
-                                <th onclick="sortForm('awardedby')">Awarded By</th>
-                                <th onclick="sortForm('comments')">Comments</th>
+                                <th style="cursor: s-resize;" onclick="sortForm('timestamp')">Timestamp</th>
+                                <th style="cursor: s-resize;" onclick="sortForm('code')">Code</th>
+                                <th style="cursor: s-resize;" onclick="sortForm('quantity')">Quantity</th>
+                                <th style="cursor: s-resize;" onclick="sortForm('awardedto')">Awarded To</th>
+                                <th style="cursor: s-resize;" onclick="sortForm('awardedby')">Awarded By</th>
+                                <th style="cursor: s-resize;" onclick="sortForm('comments')">Comments</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>

@@ -15,7 +15,6 @@
  * limitations under the License.
  */
 session_start();
-session_destroy();
 //session_stop();
 $page['no_timeout'] = TRUE;
 $page['auth'] = 0;
@@ -23,7 +22,10 @@ $page['auth'] = 0;
 include_once "include/functions.inc";
 if(!isset($errormsg)){
     $errormsg = "";
+    if(isset($_SESSION['errormsg']))
+        $errormsg = $_SESSION['errormsg'];
 }
+session_destroy();
 //If a login attempt has been made
 if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     session_start();

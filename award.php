@@ -95,6 +95,9 @@ session_start();
 
             function replaceNL() {
                 document.getElementById("awardedtomultiple").value = document.getElementById("awardedtomultiple").value.replace(/(?:\r\n|\r|\n)/g, ', ').replace(/@<?php echo $config['email_domain']; ?>/g, '');
+                if(document.getElementById("awardedtomultiple").value.contains("@")){
+                    alert("Not all emails entered under domain @<?php echo $config['email_domain']; ?>! Errors may occur!");
+                }
             }
         </script>
     </head>

@@ -40,7 +40,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     $data = mysql_fetch_assoc($result);
     if ($data['user'] === $user) {
         if (validate_password($pass, $data['pass']) && $data['auth'] > 0) {
-            mysql_query(sprintf("UPDATE `dsp_users` SET `num_login` = `num_login` + 1 WHERE `user` = \"%s\";",mysql_escape_string($user)));
+            mysql_query(sprintf("UPDATE `dsp_users` SET `num_login` = (`num_login` + 1) WHERE `user` = '%s';",mysql_escape_string($user)));
             $_SESSION['user'] = $user;
             $_SESSION['auth'] = $data['auth'];
             if ($data['auth'] >= 100)//webmaster

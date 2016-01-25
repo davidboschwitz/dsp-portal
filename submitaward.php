@@ -38,22 +38,28 @@ require "include/mysql.inc";
                 break;
             }
             if ($quantity > 20 || $quantity < 0) {
-                $errormsg = "Error: QUANTITY out of range [1-20]! $quantity";
+                $errormsg = "Error: QUANTITY out of range [1-20]! ($quantity)";
                 break;
             }
             if ($_POST['multiple'] !== "on" && !isset($_POST['awardedto'])) {
                 $errormsg = "Error: AWARDEDTO is not set!";
                 break;
             }
-            if ($_POST['multiple'] == "on") {
-                $awardto = split(",", $_POST['awardedtomultiple']);
+            if($_POST['multiple'] === "on" && (!isset($_POST['awardedtomultiple']) || empty($_POST['awardedtomultiple']))){
+                $errormsg = "Error: no contents in multiple entry box";
+                break;
+            }
+
+            if ($_POST['multiple'] === "on") {
+                $awardmult = str_replace(array("\r\n","\n\r","\r", "\n"), ",", $_POST['awardedtomultiple']);
+                $awardto = split(",", $awardmult);
                 for ($i = 0; $i < count($awardto); $i++) {
                     $awardto[$i] = trim($awardto[$i]);
                     if (!valid_net_id($awardto[$i]) || empty($awardto[$i]))
                         continue;
                     $query = sprintf("INSERT INTO `$mysql_db`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "
                             . "(NULL, CURRENT_TIMESTAMP, '%s', '%s', '%d', '%s', '%s');", mysql_escape_string($awardto[$i]), mysql_escape_string($_POST['code']), intval($quantity), mysql_escape_string($_SESSION['user']), mysql_escape_string($_POST['comments']));
-                    $result = mysql_query($query) or ( $errormsg = ('Invalid query: ' . mysql_error()));
+                    $result = mysql_query($query) or ($errormsg = ('Invalid query: ' . mysql_error()));
                 }
             } else {
                 $query = sprintf("INSERT INTO `$mysql_db`.`points_awarded` (`pointid`, `timestamp`, `awardedto`, `code`, `quantity`, `awardedby`, `comments`) VALUES "

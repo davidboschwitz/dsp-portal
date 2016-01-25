@@ -33,6 +33,9 @@ $config['background_color'] = '#336600';
 
 $config['name_abbr'] = "DSP";
 
+/* ex iastate.edu */
+$config['email_domain'] = "iastate.edu";
+
 
 /* For making sure Dates/Times are correct. Will throw errors if removed */
 date_default_timezone_set('US/Central');

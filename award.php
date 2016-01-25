@@ -94,7 +94,7 @@ session_start();
             }
 
             function replaceNL() {
-                document.getElementById("awardedtomultiple").value = document.getElementById("awardedtomultiple").value.replace(/(?:\r\n|\r|\n)/g, ', ').replace("@iastate.edu", "");
+                document.getElementById("awardedtomultiple").value = document.getElementById("awardedtomultiple").value.replace(/(?:\r\n|\r|\n)/g, ', ').replace("@<?php echo $config['email_domain']; ?>", "");
             }
         </script>
     </head>

@@ -19,6 +19,7 @@ require "include/functions.inc";
 
 
 switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
+  
     case "resetpass":
         require "include/hash.php";
         require "include/mysql.inc";
@@ -42,6 +43,7 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         echo json_encode(array('status' => 1, 'newpass' => $newpass));
         break;
 
+
     case "toggledebug":
         if(!isset($_SESSION['debug'])) {
             $_SESSION['debug'] = true;
@@ -49,6 +51,12 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
             $_SESSION['debug'] = !$_SESSION['debug'];
         }
         echo json_encode(array('status' => ($_SESSION['debug'] ? 1 : 2), 'msg' => "Debug is now ".($_SESSION['debug'] ? "ON" : "OFF")));
+        break;
+
+
+    case "createuser":
+
+
         break;
 
 }

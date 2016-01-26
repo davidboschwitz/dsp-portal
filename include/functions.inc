@@ -29,9 +29,8 @@ if($page['auth'] > 0 ){
     if ($config['timeout'] > 0 && !isset($page['no_timeout'])) {
         if ($_SESSION['time'] + $config['timeout'] < time()) {
             //Session timeout
-            $errormsg = "Session Timed-out. You have been automatically logged out.";
-            session_destroy();
-            include "login.php";
+            $_SESSION['errormsg'] = "Session Timed-out. You have been automatically logged out.";
+            header("Location: login.php");
             exit;
         }
         $_SESSION['time'] = time();

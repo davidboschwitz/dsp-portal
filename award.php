@@ -96,7 +96,8 @@ session_start();
             function replaceNL() {
                 document.getElementById("awardedtomultiple").value = document.getElementById("awardedtomultiple").value.replace(/(?:\r\n|\r|\n)/g, ', ').replace(/@<?php echo $config['email_domain']; ?>/g, '');
                 if(document.getElementById("awardedtomultiple").value.indexOf("@") > -1){
-                    alert("Not all emails entered under domain @<?php echo $config['email_domain']; ?>! Errors may occur!");
+                    var s = document.getElementById("awardedtomultiple").value;
+                    alert("Not all emails entered under domain @<?php echo $config['email_domain']; ?>! Errors may occur! ("+s.substring(s.indexOf("@"), s.substring(s.indexOf("@").indexOf(",")))+")");
                 }
             }
         </script>

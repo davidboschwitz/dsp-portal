@@ -22,6 +22,7 @@ $search = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_SPECIAL_CHARS);
 if (isset($_GET['multiple'])) {
     $start = 0;
     //echo $search;
+
     while (strpos($search, ",") > 0) {
         $start += ($a = strpos($search, ",") + 1);
         $search = substr($search, $a);
@@ -43,6 +44,9 @@ if (isset($_GET['multiple'])) {
     }
 
     echo "]";
+} else if (isset($_GET['exists'])) {
+
+
 } else {
     $search = trim($search);
     $query = sprintf("SELECT *  FROM `$mysql_db`.`dsp_users` WHERE `user` LIKE '%s%%' OR `first_name` LIKE '%s%%' OR `last_name` LIKE '%s%%' LIMIT 10", mysql_escape_string($search), mysql_escape_string($search), mysql_escape_string($search));
@@ -61,3 +65,5 @@ if (isset($_GET['multiple'])) {
 
     echo "]";
 }
+
+mysql_close($mysql_link);

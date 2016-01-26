@@ -110,7 +110,7 @@ session_start();
                 <table class="table table-bordered table-striped table-hover table-condensed">
                     <tr class="form-inline">
                         <td class="awardlabel">Code</td>
-                        <td><input id="code" name="code" type="text" maxlength="5" readonly required class="form-control input-sm" style="width: 60px; background-color: white;" onclick="openHints()" />&nbsp;&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">select code</a> ]</td>
+                        <td><input id="code" name="code" type="text" maxlength="5" readonly required class="form-control input-sm" style="width: 60px; background-color: white; cursor:pointer;" onclick="openHints()" />&nbsp;&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">select code</a> ]</td>
                     </tr>
                     <tr>
                         <td class="awardlabel">Quantity</td>

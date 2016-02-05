@@ -166,7 +166,7 @@ require "include/functions.inc";
             <div class="col-md-4">
               <h3>Create new point definition</h3>
               <form id="createuser" method="POST">
-                  New point code:<br>&nbsp;&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">code index</a> ]
+                  New point code:&nbsp;&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">code index</a> ]<br>
                   <input type="text" id="new_point_code" name="new_point_code" required disabled /><br>
                   Number of points given:<br>
                   <input type="number" id="new_point_pts" name="new_point_pts" min="1" max="50" required disabled /><br>

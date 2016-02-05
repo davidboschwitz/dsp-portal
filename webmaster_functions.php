@@ -62,7 +62,8 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         break;
 
     case "createpointdef":
-
+        require "include/hash.php";
+        
         if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
             die(json_encode(array('status' => 0, 'error' => "Invalid authentication")));
         }

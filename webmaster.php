@@ -41,10 +41,12 @@ require "include/functions.inc";
                   for(var i = 0; i < nodes.length; i++) {
                        nodes[i].disabled = false;
                   }
+                  document.getElementById("disdis").style="color: black";
               } else {
                 for(var i = 0; i < nodes.length; i++) {
                      nodes[i].disabled = true;
                 }
+                document.getElementById("disdis").style="color: red";
               }
           }
 
@@ -105,7 +107,7 @@ require "include/functions.inc";
                       alert("Success");
                       alert(response.msg);
                     } else {
-                      alert("Password reset failed!");
+                      alert("Add point failed!");
                       alert(response.error);
                     }
                 });
@@ -133,7 +135,7 @@ require "include/functions.inc";
         <div class="row">
           <div class="col-md-4"></div>
           <div class="col-md-4" style="text-align: center">
-            <h3>You must enter your password to enable the below features</h3>
+            <h3 id="passwarn" style="color:red">You must enter your password to enable the below features</h3>
             Enter your password:<br>
             <input type="password" id="mypass" name="mypass" required onchange="haspass()" /><br>
 

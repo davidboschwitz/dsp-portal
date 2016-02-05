@@ -31,6 +31,10 @@ require "include/functions.inc";
               });
           });
 
+          function openHints() {
+              window.open("pointindex.php", "_blank", "toolbar=no, scrollbars=yes, resizable=no, top=500, left=500, width=500, height=600");
+          }
+
           function haspass(){
               var nodes = document.getElementById("disdis").getElementsByTagName('*');
               if($("#mypass").val()){

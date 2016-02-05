@@ -89,15 +89,16 @@ require "include/functions.inc";
 
           function createpointdef(){
             document.getElementById("givenpass").value = "";
-            if (confirm("Are you sure you want to reset " + $("#usertoreset").val())+"\'s password?") {
+            if (confirm("Are you sure you want to add this point?") {
                 $.post("webmaster_functions.php", {task: "createpointdef", mypass: $("#mypass").val(), code: $("#new_point_code").val(), pts: $("#new_point_pts").val(), desc: $("#new_point_def").val()}, function (data) {
-                    <?php if($_SESSION['debug']) { ?>
+                    <?php if($_SESSION['debug']) {
                       console.log(data);
                       //console.log(response.status);
                       //console.log(response.newpass);
                     <?php } ?>
                     var response = jQuery.parseJSON(data);
                     if(response.status == 1) {
+                      alert("Success");
                       alert(response.msg);
                     } else {
                       alert("Password reset failed!");

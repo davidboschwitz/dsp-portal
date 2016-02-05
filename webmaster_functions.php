@@ -19,7 +19,7 @@ require "include/functions.inc";
 
 
 switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
-  
+
     case "resetpass":
         require "include/hash.php";
         require "include/mysql.inc";
@@ -31,6 +31,8 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
         $result = mysql_query($query);
         $data = mysql_fetch_assoc($result);
+
+        mysql_close($mysql_link);
 
         if ($user !== $data['user']) {
             //webmasters should know better
@@ -55,8 +57,33 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
 
 
     case "createuser":
+        die(json_encode(array('status' => 0, 'error' => "Feature not yet implemented!")));
 
+        break;
 
+    case "createpointdef":
+
+        if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
+            die(json_encode(array('status' => 0, 'error' => "Invalid authentication")));
+        }
+
+        $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
+        $pts = filter_input(INPUT_POST, 'pts', FILTER_SANITIZE_NUMBER_INT);
+        $desc = filter_input(INPUT_POST, 'desc', FILTER_SANITIZE_STRING);
+
+        if(strlen($code) < 4 || strlen($code) > 5){
+            die(json_encode(array('status' => 0, 'error' => ("Code should be in format AA##"))));
+        }
+        if($pts < 1 || $pts > 50){
+            die(json_encode(array('status' => 0, 'error' => ("1 < pts < 50"))));
+        }
+        require "include/mysql.inc";
+
+        $query = sprintf("INSERT INTO `$mysql_db`.`points_definition` (`code`, `points`, `description`) VALUES ('%s', '%s', '%s');", mysql_escape_string($code), mysql_escape_string($pts), mysql_escape_string($desc));
+        $result = mysql_query($query) or die(json_encode(array('status' => 0, 'error' => ('Invalid query: ' . mysql_error()))));
+        mysql_close($mysql_link);
+
+        echo json_encode(array('status' => 1, 'msg' => "Success!"));
         break;
 
 }

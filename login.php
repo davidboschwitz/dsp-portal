@@ -62,6 +62,8 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     if($data['pass'] == "disabled" || $data['auth'] == 0) {
       $errormsg = "Your account has been disabled.  For more information, please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
+
+    mysql_close($mysql_link);
 } else {
 
 }
@@ -130,4 +132,3 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     </body>
 </html>
 <?php
-mysql_close($mysql_link);

@@ -86,7 +86,7 @@ while ($row[$i] = mysql_fetch_assoc($result)) {
             <thead>
                 <tr>
                     <th style="text-align: right;">&nbsp;</th>
-                    <th style="text-align: right;"><?php echo $totalquantity; ?></th>
+                    <th style="text-align: right;"><?php //echo $totalquantity; ?></th>
                     <th style="text-align: right;"><?php echo $totalpts; ?></th>
                     <th><i>Total</i></th>
                     <th style="text-align: right;">Current Status:</th>

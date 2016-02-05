@@ -32,28 +32,15 @@ require "include/functions.inc";
           });
 
           function haspass(){
+              var nodes = document.getElementById("disdis").getElementsByTagName('*');
               if($("#mypass").val()){
-                // document.getElementById("new_user").disabled = false;
-                // document.getElementById("new_firstname").disabled = false;
-                // document.getElementById("new_lastname").disabled = false;
-                // document.getElementById("new_auth").disabled = false;
-                // document.getElementById("createuserbutton").disabled = false;
-                //
-                // document.getElementById("usertoreset").disabled = false;
-                // document.getElementById("resetpassbutton").disabled = false;
-                // document.getElementById("new_").disabled = false;
-                $("#disdis").children().prop('disabled', false);
-              }else{
-                // document.getElementById("new_user").disabled = true;
-                // document.getElementById("new_firstname").disabled = true;
-                // document.getElementById("new_lastname").disabled = true;
-                // document.getElementById("new_auth").disabled = true;
-                // document.getElementById("createuserbutton").disabled = true;
-                //
-                // document.getElementById("usertoreset").disabled = true;
-                // document.getElementById("resetpassbutton").disabled = true;
-                // document.getElementById("new_").disabled = true;
-                $("#disdis").children().prop('disabled', true);
+                  for(var i = 0; i < nodes.length; i++) {
+                       nodes[i].disabled = false;
+                  }
+              } else {
+                for(var i = 0; i < nodes.length; i++) {
+                     nodes[i].disabled = true;
+                }
               }
           }
 

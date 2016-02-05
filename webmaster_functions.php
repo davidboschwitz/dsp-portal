@@ -87,4 +87,8 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         echo json_encode(array('status' => 1, 'msg' => "Added point $code"));
         break;
 
+    case "deletepointdef":
+        //DELETE FROM `deltasigba`.`points_definition` WHERE `points_definition`.`code` = '%s'
+        break;
+
 }

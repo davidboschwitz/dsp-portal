@@ -41,12 +41,12 @@ require "include/functions.inc";
                   for(var i = 0; i < nodes.length; i++) {
                        nodes[i].disabled = false;
                   }
-                  document.getElementById("disdis").style="color: black";
+                  document.getElementById("passwarn").style="color: black";
               } else {
                 for(var i = 0; i < nodes.length; i++) {
                      nodes[i].disabled = true;
                 }
-                document.getElementById("disdis").style="color: red";
+                document.getElementById("passwarn").style="color: red";
               }
           }
 

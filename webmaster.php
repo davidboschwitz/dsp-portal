@@ -89,7 +89,7 @@ require "include/functions.inc";
 
           function createpointdef(){
             document.getElementById("givenpass").value = "";
-            if (confirm("Are you sure you want to add this point?") {
+            if (confirm("Are you sure you want to add this point?")) {
                 $.post("webmaster_functions.php", {task: "createpointdef", mypass: $("#mypass").val(), code: $("#new_point_code").val(), pts: $("#new_point_pts").val(), desc: $("#new_point_def").val()}, function (data) {
                     <?php if($_SESSION['debug']) { ?>
                       console.log(data);

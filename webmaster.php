@@ -112,6 +112,9 @@ require "include/functions.inc";
                     }
                 });
             }
+            document.getElementById("new_point_code").value = "";
+            document.getElementById("new_point_pts").value = "";
+            document.getElementById("new_point_def").value = "";
             document.getElementById("mypass").value = "";
             haspass();
           }

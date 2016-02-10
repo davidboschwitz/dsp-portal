@@ -122,7 +122,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input type="submit" id="submit" class="btn btn-default" value="Log in" />
+                                    <input type="submit" id="submit" class="btn btn-success btn-block" value="Log in" />
                                 </div>
                             </div>
                         </form>

@@ -13,26 +13,47 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
  */
-$link[] = "mypoints.php";
-$desc[] = "My Points";
-$auth[] = 1;
 
-$link[] = "award.php";
-$desc[] = "Award Points";
-$auth[] = 5;
+class navbar_link {
+    /**
+     * @var int The authentication level required for this page
+     */
+    public $auth;
 
-$link[] = "pointadmin.php";
-$desc[] = "Point Admin";
-$auth[] = 7;
+    /**
+     * @var array The children (if any) of this link.
+     */
+    public $children;
 
-$link[] = "calendar.php";
-$desc[] = "Calendar";
-$auth[] = 1;
+    /**
+     * @var string The text displayed for this link.
+     */
+    protected $desc;
 
-$link[] = "webmaster.php";
-$desc[] = "Webmaster Tools";
-$auth[] = 100;
+    /**
+     * @var string The url displayed for this link.
+     */
+    protected $link;
+
+    /**
+     * Creates a new Response entity.
+     * 
+     */
+    public function __construct($link, $desc, $auth = 0, array $children = []) {
+        $this->link = $link;
+        $this->desc = $desc;
+        $this->auth = $auth;
+        $this->children = $children;
+    }
+}
+    
+$link[] = new navbar_link("mypoints.php", "My Points", 1);
+$link[] = new navbar_link("award.php", "Award Points", 5);
+$link[] = new navbar_link("pointadmin.php", "Point Admin", 7);
+$link[] = new navbar_link("calendar.php", "Calendar", 1);
+$link[] = new navbar_link("webmaster.php", "Webmaster Tools", 100);
 ?>
 <div id="sidebar">
     <nav class="navbar navbar-default">
@@ -44,14 +65,14 @@ $auth[] = 100;
                 <ul class="nav navbar-nav">
                     <?php
                     for ($i = 0; isset($link[$i]); $i++) {
-                        if (basename($_SERVER['PHP_SELF']) == $link[$i]) {
+                        if (basename($_SERVER['PHP_SELF']) == $link[$i]->link) {
                             ?>
-                            <li class="active"><a href="#"><?php echo $desc[$i]; ?></a></li>
+                            <li class="active"><a href="#"><?php echo $link[$i]->desc; ?></a></li>
                             <?php
                         } else {
-                            if ($_SESSION['auth'] >= $auth[$i]) {
+                            if ($_SESSION['auth'] >= $link[$i]->auth) {
                                 ?>
-                                <li><a href="<?php echo $link[$i]; ?>"><?php echo $desc[$i]; ?></a></li>
+                                <li><a href="<?php echo $link[$i]->link; ?>"><?php echo $link[$i]->desc; ?></a></li>
                                 <?php
                             }
                         }

@@ -242,5 +242,6 @@ $i = 0;
           </table>
         </div>
       </div>
+      <? include 'include/footer.inc'; ?>
     </body>
 </html>

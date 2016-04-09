@@ -112,7 +112,8 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
               },
               function(){
                 $.post("pointadmin_functions.php", {task: "delete", pointid: pointID}, function (data) {
-                    swal("Delete Point", data, "info")
+                    swal("Delete Point", data, "info");
+                    location.reload();
                 });
               });
             }

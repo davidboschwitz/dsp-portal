@@ -57,8 +57,25 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
 
 
     case "createuser":
-        die(json_encode(array('status' => 0, 'error' => "Feature not yet implemented!")));
+        require "include/hash.php";
 
+        if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
+            die(json_encode(array('status' => "error", 'msg' => "Invalid authentication", 'title' => "")));
+        }
+
+        $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
+        $first = filter_input(INPUT_POST, 'first', FILTER_SANITIZE_STRING);
+        $last = filter_input(INPUT_POST, 'last', FILTER_SANITIZE_STRING);
+        $pass = substr(md5(rand()), 7, 8);
+
+        require "include/mysql.inc";
+
+        $query = sprintf("INSERT INTO `{$mysql_db}`.`dsp_users` (`user`, `pass`, `auth`, `first_name`, `last_name`, `num_login`, `position`) VALUES ('%s', '%s', '1', '%s', '%s', '0', '');", mysql_escape_string($user), mysql_escape_string(create_hash($pass)), mysql_escape_string($first), mysql_escape_string($last));
+        $result = mysql_query($query) or die(json_encode(array('title'=>"Error", 'status' => 'error', 'msg' => ('Invalid query: ' . mysql_error()))));
+
+        echo json_encode(array('status' => 'success', 'msg' => "{$user} Created successfully, password: {$pass}", 'title'=>"Create User Successfully!"));
+
+        mysql_close();
         break;
 
     case "createpointdef":
@@ -107,13 +124,13 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
             die(json_encode(array('status' => 'error', 'msg' => "You cannot update someone to a higher authentication level than you.", 'title'=>"")));
         }
 
-        $query = sprintf("SELECT * FROM `{$mysql_db}`.`dsp_users` WHERE `user` = '%s'", $user);
+        $query = sprintf("SELECT * FROM `{$mysql_db}`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
         $result = mysql_query($query) or die(json_encode(array('title'=>"Error", 'status' => 'error', 'msg' => ('Invalid query: ' . mysql_error()))));
         $userData = mysql_fetch_assoc($result);
         if($userData['auth'] > $_SESSION['auth']) {
             die(json_encode(array('status' => 'error', 'msg' => "You cannot update someone who is a higher authentication level than you.", 'title'=>"")));
         }
-        $query = sprintf("UPDATE `{$mysql_db}`.`dsp_users` SET `position` = '%s', `auth` = '%d' WHERE `dsp_users`.`user` = '%s';", $pos, $auth, $user);
+        $query = sprintf("UPDATE `{$mysql_db}`.`dsp_users` SET `position` = '%s', `auth` = '%d' WHERE `dsp_users`.`user` = '%s';", mysql_escape_string($pos), mysql_escape_string($auth), mysql_escape_string($user));
         $result = mysql_query($query) or die(json_encode(array('title'=>"Error", 'status' => 'error', 'msg' => ('Invalid query: ' . mysql_error()))));
 
         echo json_encode(array('status' => 'success', 'msg' => "Updated Successfully!", 'title'=>""));

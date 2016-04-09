@@ -178,8 +178,36 @@ require "include/functions.inc";
             endPass();
           }
 
-          function createuser(){
-            swal("", "Not yet implemented!", "error");
+          function createuser() {
+            document.getElementById("givenpass").value = "";
+
+            var user = document.getElementById("newuser").value;
+            var first = document.getElementById("new_firstname").value;
+            var last = document.getElementById("new_firstname").value;
+            var my = document.getElementById("mypass").value;
+
+            swal({
+              title: "Are you sure?",
+              text: "Are you sure you want to update "+user+"\'s information?",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "rgb(140, 212, 245)",
+              confirmButtonText: "Yes, update it!",
+              closeOnConfirm: false
+            },
+            function(){
+              $.post("webmaster_functions.php", {task: "createuser", mypass: my, user: user, first: first, last: last}, function (data) {
+                  <?php if($_SESSION['debug']) { ?>
+                    console.log(data);
+                    //console.log(response.status);
+                    //console.log(response.newpass);
+                  <?php } ?>
+                  var response = jQuery.parseJSON(data);
+                  swal(response.title, response.msg, response.status);
+              });
+            });
+
+            endPass();
           }
         </script>
     </head>

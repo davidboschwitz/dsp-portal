@@ -229,7 +229,7 @@ $i = 0;
     while ($row[$i] = mysql_fetch_assoc($result)) {
               ?>
               <tr>
-                <td style="text-align: right;"><input type="text" id="name<?php echo $i;?>" value="<?php echo $row[$i]['name']; ?>" disabled /></td>
+                <td style="text-align: right;"><input type="text" id="user<?php echo $i;?>" value="<?php echo $row[$i]['user']; ?>" disabled /></td>
                 <td style="text-align: right;"><input type="text" id="auth<?php echo $i;?>" value="<?php echo $row[$i]['auth']; ?>" /></td>
                 <td style="text-align: right;"><input type="text" id="pos<?php echo $i;?>" value="<?php echo $row[$i]['position']; ?>" /></td>
                 <td><input type="button" value="Edit" onclick="editPerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>

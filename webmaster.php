@@ -265,7 +265,7 @@ $i = 0;
     while ($row[$i] = mysql_fetch_assoc($result)) {
               ?>
               <tr>
-                <td><input type="text" id="user<?php echo $i;?>" value="<?php echo $row[$i]['user']; ?>" disabled /></td>
+                <td><input type="text" id="user<?php echo $i;?>" value="<?php echo $row[$i]['user']; ?>" disabled readonly /></td>
                 <td><input type="text" id="auth<?php echo $i;?>" value="<?php echo $row[$i]['auth']; ?>" /></td>
                 <td><input type="text" id="pos<?php echo $i;?>" value="<?php echo $row[$i]['position']; ?>" /></td>
                 <td><input type="button" value="Update" onclick="updatePerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>

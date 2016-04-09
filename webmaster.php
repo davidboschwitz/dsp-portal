@@ -208,7 +208,7 @@ require "include/functions.inc";
               </form>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-left: 0px; margin-right: 0px">
           <h3>Roster</h3>
           <?php
            ?>

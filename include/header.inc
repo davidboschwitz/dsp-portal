@@ -42,7 +42,7 @@ $auth[] = 100;
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img src="/navicon.png" height="40" alt="<?php echo $config['name_abbr']; ?>"></a>
+                <a class="navbar-brand" href="#" style="padding: 3px 10px 3px 10px;"><img src="/navicon.png" height="40" alt="<?php echo $config['name_abbr']; ?>"></a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">

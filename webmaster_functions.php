@@ -91,4 +91,29 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         //DELETE FROM `deltasigba`.`points_definition` WHERE `points_definition`.`code` = '%s'
         break;
 
+    case "updateperson":
+        require "include/hash.php";
+
+        if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
+            die(json_encode(array('status' => 'error', 'msg' => "Invalid authentication", 'title'=>"")));
+        }
+        require 'include/mysql.inc';
+
+        $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
+        $auth = filter_input(INPUT_POST, 'auth', FILTER_SANITIZE_NUMBER_INT);
+        $pos = filter_input(INPUT_POST, 'pos', FILTER_SANITIZE_STRING);
+
+        $query = sprintf("SELECT * FROM `{$mysql_db}`.`dsp_users` WHERE `user` = '%s'", $user);
+        $result = mysql_query($query) or die(json_encode(array('title'=>"Error", 'status' => 'error', 'msg' => ('Invalid query: ' . mysql_error()))));
+        $userData = mysql_fetch_assoc($result);
+        if($userData['auth'] > $_SESSION['auth']){
+            die(json_encode(array('status' => 'error', 'msg' => "You cannot update someone who is a higher authentication level than you.", 'title'=>"")));
+        }
+        $query = sprintf("UPDATE `{$mysql_db}`.`dsp_users` SET `position` = '%s', `auth` = '%d' WHERE `dsp_users`.`user` = '%s';", $pos, $auth, $user);
+        $result = mysql_query($query) or die(json_encode(array('title'=>"Error", 'status' => 'error', 'msg' => ('Invalid query: ' . mysql_error()))));
+
+        echo json_encode(array('status' => 'success', 'msg' => "Updated Successfully!", 'title'=>""));
+        mysql_close($mysql_link);
+        break;
+
 }

@@ -142,6 +142,39 @@ require "include/functions.inc";
             haspass();
           }
 
+          function updatePerson(num) {
+            document.getElementById("givenpass").value = "";
+
+            var user = document.getElementById("user"+num).value;
+            var auth = document.getElementById("auth"+num).value;
+            var pos = document.getElementById("pos"+num).value;
+            var my = document.getElementById("mypass").value;
+
+            swal({
+              title: "Are you sure?",
+              text: "Are you sure you want to update "+user+"\'s information?",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, update it!",
+              closeOnConfirm: false
+            },
+            function(){
+              $.post("webmaster_functions.php", {task: "updateperson", mypass: my, user: user, auth: auth, pos: pos}, function (data) {
+                  <?php if($_SESSION['debug']) { ?>
+                    console.log(data);
+                    //console.log(response.status);
+                    //console.log(response.newpass);
+                  <?php } ?>
+                  var response = jQuery.parseJSON(data);
+                  swal(response.title, response.msg, response.status);
+              });
+            });
+
+            document.getElementById("mypass").value = "";
+            haspass();
+          }
+
           function createuser(){
             swal("", "Not yet implemented!", "error");
           }

@@ -25,6 +25,19 @@ require "include/functions.inc";
     </head>
     <body>
         <?php require "include/header.inc"; ?>
+        <div class="page-header" style="margin-top: 0; background-color: #fcfcfc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>
+                            <img style="display:none" height="35" width="35" class="print-inline" src="https://www.deltasig-de.org/Images/MobileTouch-57x57.png">
+                            Chapter Contacts
+                            <small>Spring 2016</small>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h1 style="margin-top: 0">Calendar</h1>
         <iframe src="<?php echo $config['calendar_iframe_src']; ?>" height="96%" width="100%"></iframe>
         <?php require "include/footer.inc"; ?>

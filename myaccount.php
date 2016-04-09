@@ -25,7 +25,7 @@ require 'include/functions.inc';
             function changepass() {
                 if (confirm("Are you sure you want to change your password?")) {
                     $.post("myaccount_functions.php", {task: "changepass", currentpass: $("#currentpass").val(), newpass: $("#newpass").val(), confirmnewpass: $("#confirmnewpass").val()}, function (data) {
-                        alert(data);
+                        swal("Change Password", data);
                     });
                 }
                 document.getElementById("currentpass").value = "";

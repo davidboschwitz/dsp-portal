@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * Copyright 2016 David Boschwitz.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,3 +23,5 @@
 <style><?php include "style.css"; ?></style>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" type="image/png" href="/favicon.png">
+<script src="include/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="include/sweetalert.css">

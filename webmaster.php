@@ -105,23 +105,36 @@ require "include/functions.inc";
 
           function createpointdef(){
             document.getElementById("givenpass").value = "";
-            if (confirm("Are you sure you want to add this point?")) {
-                $.post("webmaster_functions.php", {task: "createpointdef", mypass: $("#mypass").val(), code: $("#new_point_code").val(), pts: $("#new_point_pts").val(), desc: $("#new_point_def").val()}, function (data) {
-                    <?php if($_SESSION['debug']) { ?>
-                      console.log(data);
-                      //console.log(response.status);
-                      //console.log(response.newpass);
-                    <?php } ?>
-                    var response = jQuery.parseJSON(data);
-                    if(response.status == 1) {
-                      alert("Success");
-                      alert(response.msg);
-                    } else {
-                      alert("Add point failed!");
-                      alert(response.error);
-                    }
-                });
-            }
+
+            var code = document.getElementById("new_point_code").value;
+            var pts = document.getElementById("new_point_pts").value;
+            var def = document.getElementById("new_point_def").value;
+            var my document.getElementById("mypass").value;
+            swal({
+              title: "Are you sure?",
+              text: "Are you sure you want to add this point?",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, add it!",
+              closeOnConfirm: false
+            },
+            function(){
+              $.post("webmaster_functions.php", {task: "createpointdef", mypass: my, code: code, pts: pts, desc: def}, function (data) {
+                  <?php if($_SESSION['debug']) { ?>
+                    console.log(data);
+                    //console.log(response.status);
+                    //console.log(response.newpass);
+                  <?php } ?>
+                  var response = jQuery.parseJSON(data);
+                  if(response.status == 1) {
+                    swal("Add Point Succeeded!", response.msg, "success");
+                  } else {
+                    swal("Add Point Failed!", response.error, "error");
+                  }
+              });
+            });
+
             document.getElementById("new_point_code").value = "";
             document.getElementById("new_point_pts").value = "";
             document.getElementById("new_point_def").value = "";
@@ -130,7 +143,7 @@ require "include/functions.inc";
           }
 
           function createuser(){
-            alert("Not yet implemented!");
+            swal("Error", "Not yet implemented!", "error");
           }
         </script>
     </head>

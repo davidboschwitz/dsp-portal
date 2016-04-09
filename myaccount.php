@@ -42,7 +42,7 @@ require 'include/functions.inc';
                          //console.log(response.status);
                          //console.log(response.newpass);
                        <?php } ?>
-                       var response = jQuery.parseJSON(data);
+                       var response = JSON.parse(data);
                        swal(response.title, response.msg, response.status);
                    });
                  });

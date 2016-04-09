@@ -31,7 +31,7 @@ require 'include/functions.inc';
                 text: "Are you sure you want to change your password?",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
+                confirmButtonColor: "rgb(140, 212, 245)",
                 confirmButtonText: "Yes, change it!",
                 closeOnConfirm: false
                },
@@ -53,6 +53,7 @@ require 'include/functions.inc';
         <div id="accountinfo">
           <strong>Name:</strong> <?php echo $_SESSION['full_name']; ?><br>
           <strong>Net-ID:</strong> <?php echo $_SESSION['user']; ?><br>
+          <strong>Position:</strong> <?php echo $_SESSION['position']; ?><br>
           <br>
         </div>
         <div id="changepassdiv">

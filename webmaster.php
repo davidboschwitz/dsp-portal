@@ -181,7 +181,7 @@ require "include/functions.inc";
           function createuser() {
             document.getElementById("givenpass").value = "";
 
-            var user = document.getElementById("newuser").value;
+            var user = document.getElementById("new_user").value;
             var first = document.getElementById("new_firstname").value;
             var last = document.getElementById("new_firstname").value;
             var my = document.getElementById("mypass").value;

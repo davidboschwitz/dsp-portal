@@ -58,7 +58,7 @@ require "include/functions.inc";
                       //console.log(response.newpass);
                     <?php } ?>
                     var response = jQuery.parseJSON(data);
-                    swal("Debug", response.msg, "info");
+                    swal("", response.msg, "info");
                     if(response.status == 1) {
                       document.getElementById("debugbutton").value = "Turn debug OFF";
                     }

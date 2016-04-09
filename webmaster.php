@@ -199,7 +199,7 @@ require "include/functions.inc";
           <div class="col-md-4" style="text-align: center">
             <h3 id="passwarn" style="color:red">You must enter your password to enable the below features</h3>
             Enter your password:<br>
-            <input type="password" id="mypass" name="mypass" required onchange="haspass()" /><input type="checkbox" id="saveit" title="save password (for this visit only)" /><br>
+            <input type="password" id="mypass" name="mypass" required onchange="haspass()" /> <input type="checkbox" id="saveit" title="save password (for this visit only)" /><br>
 
           </div>
         </div>
@@ -226,8 +226,6 @@ require "include/functions.inc";
                   <input type="text" id="new_firstname" name="new_firstname" required disabled /><br>
                   User's last name:<br>
                   <input type="text" id="new_lastname" name="new_lastname" required disabled /><br>
-                  User's authentication level:<br>
-                  <input type="number" id="new_auth" name="new_auth" min="0" max="127" required disabled /><br>
                   <input type="button" id="createuserbutton" value="Create new user" onclick="createuser()" disabled />
               </form>
             </div>

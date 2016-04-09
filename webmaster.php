@@ -58,7 +58,7 @@ require "include/functions.inc";
                       //console.log(response.newpass);
                     <?php } ?>
                     var response = jQuery.parseJSON(data);
-                    alert(response.msg);
+                    swal("Debug", response.msg, "info");
                     if(response.status == 1) {
                       document.getElementById("debugbutton").value = "Turn debug OFF";
                     }
@@ -71,8 +71,19 @@ require "include/functions.inc";
 
           function resetpass() {
             document.getElementById("givenpass").value = "";
-            if (confirm("Are you sure you want to reset " + $("#usertoreset").val())+"\'s password?") {
-                $.post("webmaster_functions.php", {task: "resetpass", mypass: $("#mypass").val(), usertoreset: $("#usertoreset").val()}, function (data) {
+            var my = document.getElementById("mypass").value;
+            var resetme = document.getElementById("usertoreset").value;
+            swal({
+              title: "Are you sure?",
+              text: "Are you sure you want to reset " + resetme+"\'s password?",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, reset it!",
+              closeOnConfirm: false
+            },
+            function(){
+                $.post("webmaster_functions.php", {task: "resetpass", mypass: my, usertoreset: resetme}, function (data) {
                     <?php if($_SESSION['debug']) { ?>
                       console.log(data);
                       //console.log(response.status);
@@ -80,14 +91,14 @@ require "include/functions.inc";
                     <?php } ?>
                     var response = jQuery.parseJSON(data);
                     if(response.status == 1) {
-                      alert("Password reset success!");
+                      swal("Success!", "Password reset successful!", "success");
                       document.getElementById("givenpass").value = response.newpass;
                     } else {
-                      alert("Password reset failed!");
-                      alert(response.error);
+                      swal("Password reset failed!", response.error, "error");
                     }
                 });
-            }
+              });
+            });
             document.getElementById("mypass").value = "";
             document.getElementById("usertoreset").value = "";
             haspass();

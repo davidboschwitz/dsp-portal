@@ -25,7 +25,7 @@ switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         $newPass = filter_input(INPUT_POST, 'newpass', FILTER_SANITIZE_STRING);
         $confirmNewPass = filter_input(INPUT_POST, 'confirmnewpass', FILTER_SANITIZE_STRING);
         if ($newPass !== $confirmNewPass) {
-            die("New Passwords do not match!");
+          die(json_encode(array('status' => 'error', 'msg' => "New passwords do not match!", 'title' => 'Error')));
         }
         $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($_SESSION['user']));
         $result = mysql_query($query);
@@ -33,17 +33,17 @@ switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
 
         if ($_SESSION['user'] !== $data['user']) {
             //should never happen, but you never know.
-            die("Invalid user!");
+            die(json_encode(array('status' => 'error', 'msg' => "Invalid user!", 'title' => 'Error')));
         }
         include "include/hash.php";
         if (!validate_password($currentPass, $data['pass'])) {
             //echo $currentPass.','.$data['pass'] . '=' . md5($currentPass);
-            die("Current password incorrect!");
+            die(json_encode(array('status' => 'error', 'msg' => "Current password incorrect!", 'title' => 'Error')));
         }
         $newhash = create_hash($newPass);
         $query = sprintf("UPDATE `$mysql_db`.`dsp_users` SET `pass` = '%s' WHERE `dsp_users`.`user` = '%s';", mysql_escape_string($newhash), mysql_escape_string($_SESSION['user']));
-        $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
-        echo "Changed Password Successfully";
+        $result = mysql_query($query) or die(json_encode(array('status' => 'error', 'msg' => "Invalid query: " . mysql_error(), 'title' => 'Error')));
+        echo(json_encode(array('status' => 'success', 'msg' => "Changed Password Successfully!", 'title' => 'Success')));
         $_SESSION['pass'] = $newhash;
         break;
 }

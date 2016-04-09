@@ -36,10 +36,16 @@ require 'include/functions.inc';
                 closeOnConfirm: false
                },
                function(){
-                 $.post("myaccount_functions.php", {task: "changepass", currentpass: current, newpass: newP, confirmnewpass: confirm}, function (data) {
-                     swal("Change Password", data);
+                   $.post("myaccount_functions.php", {task: "changepass", currentpass: current, newpass: newP, confirmnewpass, confirm}, function (data) {
+                       <?php if($_SESSION['debug']) { ?>
+                         console.log(data);
+                         //console.log(response.status);
+                         //console.log(response.newpass);
+                       <?php } ?>
+                       var response = jQuery.parseJSON(data);
+                       swal(response.title, response.msg, response.status);
+                   });
                  });
-               });
                 document.getElementById("currentpass").value = "";
                 document.getElementById("newpass").value = "";
                 document.getElementById("confirmnewpass").value = "";

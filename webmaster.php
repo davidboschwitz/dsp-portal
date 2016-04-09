@@ -50,6 +50,12 @@ require "include/functions.inc";
               }
           }
 
+          function endPass(){
+            if(!document.getElementById("saveit").checked)
+              document.getElementById("mypass").value = "";
+            haspass();
+          }
+
           function toggledebug() {
                 $.post("webmaster_functions.php", {task: "toggledebug"}, function (data) {
                     <?php if($_SESSION['debug']) { ?>
@@ -98,9 +104,8 @@ require "include/functions.inc";
                     }
                 });
               });
-            document.getElementById("mypass").value = "";
             document.getElementById("usertoreset").value = "";
-            haspass();
+            endPass();
           }
 
           function createpointdef(){
@@ -138,8 +143,7 @@ require "include/functions.inc";
             document.getElementById("new_point_code").value = "";
             document.getElementById("new_point_pts").value = "";
             document.getElementById("new_point_def").value = "";
-            document.getElementById("mypass").value = "";
-            haspass();
+            endPass();
           }
 
           function updatePerson(num) {
@@ -171,8 +175,7 @@ require "include/functions.inc";
               });
             });
 
-            document.getElementById("mypass").value = "";
-            haspass();
+            endPass();
           }
 
           function createuser(){
@@ -196,7 +199,7 @@ require "include/functions.inc";
           <div class="col-md-4" style="text-align: center">
             <h3 id="passwarn" style="color:red">You must enter your password to enable the below features</h3>
             Enter your password:<br>
-            <input type="password" id="mypass" name="mypass" required onchange="haspass()" /><br>
+            <input type="password" id="mypass" name="mypass" required onchange="haspass()" /><input type="checkbox" id="saveit" /><br>
 
           </div>
         </div>

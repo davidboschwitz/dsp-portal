@@ -199,7 +199,7 @@ require "include/functions.inc";
           <div class="col-md-4" style="text-align: center">
             <h3 id="passwarn" style="color:red">You must enter your password to enable the below features</h3>
             Enter your password:<br>
-            <input type="password" id="mypass" name="mypass" required onchange="haspass()" /><input type="checkbox" id="saveit" /><br>
+            <input type="password" id="mypass" name="mypass" required onchange="haspass()" /><input type="checkbox" id="saveit" title="save password (for this visit only)" /><br>
 
           </div>
         </div>

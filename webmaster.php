@@ -120,7 +120,7 @@ require "include/functions.inc";
               text: "Are you sure you want to add this point?",
               type: "warning",
               showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
+              confirmButtonColor: "rgb(140, 212, 245)",
               confirmButtonText: "Yes, add it!",
               closeOnConfirm: false
             },
@@ -159,7 +159,7 @@ require "include/functions.inc";
               text: "Are you sure you want to update "+user+"\'s information?",
               type: "warning",
               showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
+              confirmButtonColor: "rgb(140, 212, 245)",
               confirmButtonText: "Yes, update it!",
               closeOnConfirm: false
             },

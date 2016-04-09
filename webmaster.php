@@ -109,7 +109,7 @@ require "include/functions.inc";
             var code = document.getElementById("new_point_code").value;
             var pts = document.getElementById("new_point_pts").value;
             var def = document.getElementById("new_point_def").value;
-            var my document.getElementById("mypass").value;
+            var my = document.getElementById("mypass").value;
             swal({
               title: "Are you sure?",
               text: "Are you sure you want to add this point?",

@@ -188,11 +188,11 @@ require "include/functions.inc";
 
             swal({
               title: "Are you sure?",
-              text: "Are you sure you want to update "+user+"\'s information?",
-              type: "warning",
+              text: "Are you sure you want to create "+user+"?",
+              type: "info",
               showCancelButton: true,
               confirmButtonColor: "rgb(140, 212, 245)",
-              confirmButtonText: "Yes, update it!",
+              confirmButtonText: "Yes, create it!",
               closeOnConfirm: false
             },
             function(){

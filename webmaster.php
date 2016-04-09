@@ -98,7 +98,6 @@ require "include/functions.inc";
                     }
                 });
               });
-            });
             document.getElementById("mypass").value = "";
             document.getElementById("usertoreset").value = "";
             haspass();

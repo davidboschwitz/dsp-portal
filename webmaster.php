@@ -206,7 +206,9 @@ require "include/functions.inc";
                   swal(response.title, response.msg, response.status);
               });
             });
-
+            document.getElementById("new_user").value = "";
+            document.getElementById("new_firstname").value = "";
+            document.getElementById("new_firstname").value = "";
             endPass();
           }
         </script>

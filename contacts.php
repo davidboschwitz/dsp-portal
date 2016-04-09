@@ -32,14 +32,44 @@ require "include/functions.inc";
                         <h2>
                             <img style="display:none" height="35" width="35" class="print-inline" src="https://www.deltasig-de.org/Images/MobileTouch-57x57.png">
                             Chapter Contacts
-                            <small>Spring 2016</small>
                         </h2>
                     </div>
                 </div>
             </div>
         </div>
-        <h1 style="margin-top: 0">Calendar</h1>
-        <iframe src="<?php echo $config['calendar_iframe_src']; ?>" height="96%" width="100%"></iframe>
+        <div class="row" style="margin-left: 0px; margin-right: 0px">
+          <h3>Roster</h3>
+          <?php
+           ?>
+          <table class="table table-bordered table-striped table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Position</th>
+                </tr>
+              </thead>
+              <?php
+              require 'include/mysql.inc';
+              $query = "SELECT * FROM `{$mysql_db}`.`dsp_users` WHERE `position` NOT LIKE ''";
+              $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+$i = 0;
+    while ($row[$i] = mysql_fetch_assoc($result)) {
+              ?>
+              <tr>
+                <td></td>
+                <td><?php echo $row[$i]['first_name'].' '.$row[$i]['last_name']; ?></td>
+                <td><a href="mailto:<?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?>"><?php echo $row[$i]['email'] .'@'. $config['email_domain']; ?></a></td>
+                <td><?php echo $row[$i]['position'];</td>
+              </tr>
+              <?php
+              $i++;
+            }
+            mysql_close();
+               ?>
+          </table>
+        </div>
         <?php require "include/footer.inc"; ?>
     </body>
 </html>

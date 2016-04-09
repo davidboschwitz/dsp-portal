@@ -265,7 +265,7 @@ $i = 0;
                 <td><input type="text" id="user<?php echo $i;?>" value="<?php echo $row[$i]['user']; ?>" disabled /></td>
                 <td><input type="text" id="auth<?php echo $i;?>" value="<?php echo $row[$i]['auth']; ?>" /></td>
                 <td><input type="text" id="pos<?php echo $i;?>" value="<?php echo $row[$i]['position']; ?>" /></td>
-                <td><input type="button" value="Edit" onclick="editPerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>
+                <td><input type="button" value="Update" onclick="updatePerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>
               </tr>
               <?php
               $i++;

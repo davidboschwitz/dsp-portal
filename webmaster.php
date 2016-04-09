@@ -208,6 +208,39 @@ require "include/functions.inc";
               </form>
             </div>
         </div>
+        <div class="row">
+          <h3>Roster</h3>
+          <?php
+           ?>
+          <table class="table table-bordered table-striped table-hover table-condensed">
+              <thead>
+                  <tr>
+                      <th style="text-align: right;">Name</th>
+                      <th style="text-align: right;">Auth Level</th>
+                      <th style="text-align: right;">Position</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <?php
+              require 'include/mysql.inc';
+              $query = "SELECT * FROM `{$mysql_db}`.`dsp_users`;";
+              $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+$i = 0;
+    while ($row[$i] = mysql_fetch_assoc($result)) {
+              ?>
+              <tr>
+                <td style="text-align: right;"><input type="text" id="name<?php echo $i;?>" value="<?php echo $row[$i]['name']; ?>" disabled /></td>
+                <td style="text-align: right;"><input type="text" id="auth<?php echo $i;?>" value="<?php echo $row[$i]['auth']; ?>" /></td>
+                <td style="text-align: right;"><input type="text" id="pos<?php echo $i;?>" value="<?php echo $row[$i]['position']; ?>" /></td>
+                <td><input type="button" value="Edit" onclick="editPerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>
+              </tr>
+              <?php
+              $i++;
+            }
+            mysql_close();
+               ?>
+          </table>
+        </div>
       </div>
     </body>
 </html>

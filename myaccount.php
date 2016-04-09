@@ -33,19 +33,14 @@ require 'include/functions.inc';
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Yes, change it!",
-                closeOnConfirm: true
+                closeOnConfirm: false
                },
                function(){
-                   $.post("myaccount_functions.php", {task: "changepass", currentpass: current, newpass: newP, confirmnewpass, confirm}, function (data) {
-                       <?php if($_SESSION['debug']) { ?>
-                         console.log(data);
-                         //console.log(response.status);
-                         //console.log(response.newpass);
-                       <?php } ?>
-                       var response = JSON.parse(data);
-                       swal(response.title, response.msg, response.status);
-                   });
+                 $.post("myaccount_functions.php", {task: "changepass", currentpass: current, newpass: newP, confirmnewpass: confirm}, function (data) {
+                   var response = JSON.parse(data);
+                   swal(response.title, response.msg, response.status);
                  });
+               });
                 document.getElementById("currentpass").value = "";
                 document.getElementById("newpass").value = "";
                 document.getElementById("confirmnewpass").value = "";

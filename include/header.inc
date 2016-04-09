@@ -28,7 +28,11 @@ $auth[] = 7;
 
 $link[] = "calendar.php";
 $desc[] = "Calendar";
-$auth[] = 1;
+$auth[] = 0;
+
+$link[] = "contacts.php";
+$desc[] = "Contacts";
+$auth[] = 0;
 
 $link[] = "webmaster.php";
 $desc[] = "Webmaster Tools";
@@ -59,6 +63,9 @@ $auth[] = 100;
                     ?>
 
                 </ul>
+                <?php
+                if(isset($_SESSION['logged_in'])){
+                  ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -77,6 +84,11 @@ $auth[] = 100;
                       </ul>
                   </li>
                 </ul>
+                <?php } else { ?>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="<?php echo (basename($_SERVER['PHP_SELF']) == "login.php" ? "active" : ""); ?>"><a href="login.php">Login</a></li>
+                  </ul>
+              <?php }?>
             </div>
         </div>
     </nav>

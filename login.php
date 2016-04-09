@@ -51,6 +51,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
             $_SESSION['position'] = $data['position'];
             $_SESSION['time'] = time();
             $_SESSION['pass'] = $data['pass'];
+            $_SESSION['logged_in'] = true;
             header("Location: ./mypoints.php");
             mysql_close($mysql_link);
             exit;
@@ -66,7 +67,8 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
 
     mysql_close($mysql_link);
 } else {
-
+  unset($_SESSION['logged_in']);
+  $_SESSION['auth'] = 0;
 }
 ?>
 <html>
@@ -75,21 +77,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
         <?php include "include/head.inc"; ?>
     </head>
     <body>
-        <div class="container mycontent" style="height:100%">
-                <div id="sidebar">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <a class="navbar-brand" href="#">DSP</a>
-                            </div>
-                            <div class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="active"><a href="#">Sign in</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
+        <?php require 'include/header.inc'; ?>
                 <div id="header">
                     <span class="header-msg">DSP Portal - Login</span>
                 </div>
@@ -107,12 +95,12 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                     </div>
                     <div class="panel-body">
                         <form id="login" name="login" method="POST" action="login.php" class="form-horizontal">
-                            <input id="attempt" name="attempt" type="hidden" value="<?php echo ((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""; ?>" />
+                            <input id="attempt" name="attempt" type="hidden" value="<?php echo (((filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT)) + 1) . ""); ?>" />
 
                             <div class="form-group">
                                 <label for="user" class="col-sm-2 control-label">Username</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="user" name="user" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING); ?>" />
+                                    <input type="text" class="form-control" id="user" name="user" placeholder="Username" value="<?php echo filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING); ?>" autofocus />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -129,7 +117,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                         </form>
                     </div>
                 </div>
-            </div>
+      <?php require 'include/footer.inc'; ?>
     </body>
 </html>
 <?php

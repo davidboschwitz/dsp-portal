@@ -20,7 +20,7 @@ require "include/functions.inc";
 ?>
 <html>
     <head>
-        <title>Calendar</title>
+        <title>Contacts</title>
         <?php require "include/head.inc"; ?>
     </head>
     <body>
@@ -30,7 +30,6 @@ require "include/functions.inc";
                 <div class="row">
                     <div class="col-xs-12">
                         <h2>
-                            <img style="display:none" height="35" width="35" class="print-inline" src="https://www.deltasig-de.org/Images/MobileTouch-57x57.png">
                             Chapter Contacts
                         </h2>
                     </div>
@@ -38,7 +37,6 @@ require "include/functions.inc";
             </div>
         </div>
         <div class="row" style="margin-left: 0px; margin-right: 0px">
-          <h3>Roster</h3>
           <?php
            ?>
           <table class="table table-bordered table-striped table-hover table-condensed">
@@ -52,7 +50,7 @@ require "include/functions.inc";
               </thead>
               <?php
               require 'include/mysql.inc';
-              $query = "SELECT * FROM `{$mysql_db}`.`dsp_users` WHERE `position` NOT LIKE ''";
+              $query = "SELECT * FROM `{$mysql_db}`.`dsp_users` WHERE `position` NOT LIKE '' ORDER BY `auth` DESC";
               $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 $i = 0;
     while ($row[$i] = mysql_fetch_assoc($result)) {
@@ -60,8 +58,8 @@ $i = 0;
               <tr>
                 <td></td>
                 <td><?php echo $row[$i]['first_name'].' '.$row[$i]['last_name']; ?></td>
-                <td><a href="mailto:<?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?>"><?php echo $row[$i]['email'] .'@'. $config['email_domain']; ?></a></td>
-                <td><?php echo $row[$i]['position'];</td>
+                <td><a href="mailto:<?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?>"><?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?></a></td>
+                <td><?php echo $row[$i]['position'];?></td>
               </tr>
               <?php
               $i++;

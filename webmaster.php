@@ -213,7 +213,7 @@ require "include/functions.inc";
           }
         </script>
     </head>
-    <body>
+    <body onload="haspass()">
         <?php require "include/header.inc"; ?>
         <h1>Webmaster Tools</h1>
         <h3>Toggle Debug</h3>

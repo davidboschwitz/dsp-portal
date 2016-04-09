@@ -33,7 +33,7 @@ require 'include/functions.inc';
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Yes, change it!",
-                closeOnConfirm: false
+                closeOnConfirm: true
                },
                function(){
                    $.post("myaccount_functions.php", {task: "changepass", currentpass: current, newpass: newP, confirmnewpass, confirm}, function (data) {

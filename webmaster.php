@@ -215,9 +215,9 @@ require "include/functions.inc";
           <table class="table table-bordered table-striped table-hover table-condensed">
               <thead>
                   <tr>
-                      <th style="text-align: right;">Name</th>
-                      <th style="text-align: right;">Auth Level</th>
-                      <th style="text-align: right;">Position</th>
+                      <th>Name</th>
+                      <th>Auth Level</th>
+                      <th>Position</th>
                       <th>Action</th>
                   </tr>
               </thead>
@@ -229,9 +229,9 @@ $i = 0;
     while ($row[$i] = mysql_fetch_assoc($result)) {
               ?>
               <tr>
-                <td style="text-align: right;"><input type="text" id="user<?php echo $i;?>" value="<?php echo $row[$i]['user']; ?>" disabled /></td>
-                <td style="text-align: right;"><input type="text" id="auth<?php echo $i;?>" value="<?php echo $row[$i]['auth']; ?>" /></td>
-                <td style="text-align: right;"><input type="text" id="pos<?php echo $i;?>" value="<?php echo $row[$i]['position']; ?>" /></td>
+                <td><input type="text" id="user<?php echo $i;?>" value="<?php echo $row[$i]['user']; ?>" disabled /></td>
+                <td><input type="text" id="auth<?php echo $i;?>" value="<?php echo $row[$i]['auth']; ?>" /></td>
+                <td><input type="text" id="pos<?php echo $i;?>" value="<?php echo $row[$i]['position']; ?>" /></td>
                 <td><input type="button" value="Edit" onclick="editPerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>
               </tr>
               <?php

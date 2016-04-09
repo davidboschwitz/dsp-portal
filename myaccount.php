@@ -23,17 +23,20 @@ require 'include/functions.inc';
         <?php require 'include/head.inc'; ?>
         <script>
             function changepass() {
+             var current = document.getElementById("currentpass").value;
+             var newP = document.getElementById("newpass").value;
+             var confirm = document.getElementById("confirmnewpass").value;
               swal({
                 title: "Are you sure?",
                 text: "Are you sure you want to change your password?",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#DD6B55",   
+                confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Yes, change it!",
                 closeOnConfirm: false
                },
                function(){
-                 $.post("myaccount_functions.php", {task: "changepass", currentpass: $("#currentpass").val(), newpass: $("#newpass").val(), confirmnewpass: $("#confirmnewpass").val()}, function (data) {
+                 $.post("myaccount_functions.php", {task: "changepass", currentpass: current, newpass: newP, confirmnewpass: confirm}, function (data) {
                      swal("Change Password", data);
                  });
                });

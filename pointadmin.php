@@ -101,11 +101,20 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
                 });
             }
             function deletePoint(pointID) {
-                if (confirm("Are you sure you want to delete this point?")) {
-                    $.post("pointadmin_functions.php", {task: "delete", pointid: pointID}, function (data) {
-                        alert(data)
-                    });
-                }
+              swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this point!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+              },
+              function(){
+                $.post("pointadmin_functions.php", {task: "delete", pointid: pointID}, function (data) {
+                    swal("Delete Point", data, "info")
+                });
+              });
             }
             var pointsOnPage = [<?php
         for ($i = 0; $i < $rowcount; $i++) {

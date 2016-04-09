@@ -143,7 +143,7 @@ require "include/functions.inc";
           }
 
           function createuser(){
-            swal("Error", "Not yet implemented!", "error");
+            swal("", "Not yet implemented!", "error");
           }
         </script>
     </head>

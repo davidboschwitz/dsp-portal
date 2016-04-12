@@ -27,6 +27,9 @@ switch (filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         if ($newPass !== $confirmNewPass) {
           die(json_encode(array('status' => 'error', 'msg' => "New passwords do not match!", 'title' => 'Error')));
         }
+        if(strlen($newPass) < 6) {
+            die(json_encode(array('status' => 'error', 'msg' => "New password must be at least 6 characters long!", 'title' => 'Error')));
+        }
         $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($_SESSION['user']));
         $result = mysql_query($query);
         $data = mysql_fetch_assoc($result);

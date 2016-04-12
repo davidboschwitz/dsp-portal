@@ -16,6 +16,7 @@
  */
 $page['auth'] = 0;
 $page['no_timeout'] = TRUE;
+$page['title'] = "Contacts";
 require "include/functions.inc";
 ?>
 <html>
@@ -25,17 +26,6 @@ require "include/functions.inc";
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <div class="page-header" style="margin-top: 0; background-color: #fcfcfc">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2>
-                            Chapter Contacts
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row" style="margin-left: 0px; margin-right: 0px">
           <?php
            ?>
@@ -44,8 +34,8 @@ require "include/functions.inc";
                 <tr>
                   <th></th>
                   <th>Name</th>
-                  <th>Email</th>
                   <th>Position</th>
+                  <th>Email</th>
                 </tr>
               </thead>
               <?php
@@ -58,8 +48,8 @@ $i = 0;
               <tr>
                 <td></td>
                 <td><?php echo $row[$i]['first_name'].' '.$row[$i]['last_name']; ?></td>
-                <td><a href="mailto:<?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?>"><?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?></a></td>
                 <td><?php echo $row[$i]['position'];?></td>
+                <td><a href="mailto:<?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?>"><?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?></a></td>
               </tr>
               <?php
               $i++;

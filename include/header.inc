@@ -42,8 +42,14 @@ $auth[] = 100;
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" style="padding: 3px 10px 3px 10px;"><img src="/navicon.png" height="40" alt="<?php echo $config['name_abbr']; ?>"></a>
+                <a class="navbar-brand" href="/" style="padding: 3px 10px 3px 10px;"><img src="/assets/img/navicon.png" height="40" alt="<?php echo $config['name_abbr']; ?>"></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
+
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <?php
@@ -64,34 +70,52 @@ $auth[] = 100;
 
                 </ul>
                 <?php
-                if(isset($_SESSION['logged_in'])){
-                  ?>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Signed in as <?php echo $_SESSION['full_name'] ?><span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <?php if (basename($_SERVER['PHP_SELF']) == "myaccount.php") {?>
-                          <li class="active"><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;Account Settings</a></li>
-                        <?php } else { ?>
-                          <li><a href="myaccount.php"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                            &nbsp;Account Settings</a></li>
-                        <?php } ?>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="login.php"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                          &nbsp;Sign Out</a></li>
-                      </ul>
-                  </li>
-                </ul>
+                if (isset($_SESSION['logged_in'])) {
+                    ?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Signed in as <?php echo $_SESSION['full_name'] ?><span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <?php if (basename($_SERVER['PHP_SELF']) == "myaccount.php") { ?>
+                                    <li class="active"><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;Account Settings</a></li>
+                                <?php } else { ?>
+                                    <li><a href="myaccount.php" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                            &nbsp;Account Settings</a></li>
+                                <?php } ?>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="logout.php" ><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                        &nbsp;Sign Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 <?php } else { ?>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li class="<?php echo (basename($_SERVER['PHP_SELF']) == "login.php" ? "active" : ""); ?>"><a href="login.php">Login</a></li>
-                  </ul>
-              <?php }?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="<?php echo (basename($_SERVER['PHP_SELF']) == "login.php" ? "active" : ""); ?>"><a href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</a></li>
+                    </ul>
+                <?php } ?>
             </div>
         </div>
     </nav>
 </div>
+<?php
+if (isset($page['homepage_header']) && $page['homepage_header'] != null) {
+    echo $page['homepage_header'];
+}
+if (isset($page['title'])) {
+    ?>
+    <div id="page-header" class="page-header" style="margin-top: 0; background-color: #fcfcfc">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 style="font-weight:bold;">
+    <?php echo $page['title']; ?>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 <div id="all-content" class="container mycontent">
     <div id="main-content">

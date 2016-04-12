@@ -18,6 +18,7 @@ session_start();
 //session_stop();
 $page['no_timeout'] = TRUE;
 $page['auth'] = 0;
+$page['title'] = "Portal - Login";
 
 include_once "include/functions.inc";
 if(!isset($errormsg)){
@@ -78,9 +79,6 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     </head>
     <body>
         <?php require 'include/header.inc'; ?>
-                <div id="header">
-                    <span class="header-msg">DSP Portal - Login</span>
-                </div>
                 <div id="login-message"></div>
                 <?php if (!empty($errormsg)) { ?>
                     <div class="alert alert-danger" role="alert">

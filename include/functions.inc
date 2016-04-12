@@ -32,7 +32,7 @@ if($page['auth'] > 0 ){
             session_destroy();
             //session_stop();
             session_start();
-            $_SESSION['errormsg'] = "Session Timed-out. You have been automatically logged out.";
+            $_SESSION['errormsg'] = "Session Timed-out: You have been automatically logged out.";
             header("Location: login.php");
             exit;
         }

@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 $page['auth'] = 1;
+$page['title'] = "My Account";
 require 'include/functions.inc';
 ?>
 <html>
@@ -49,7 +50,6 @@ require 'include/functions.inc';
     </head>
     <body>
 <?php require 'include/header.inc'; ?>
-        <h1 style="margin-top: 0">My Account</h1>
         <div id="accountinfo">
           <strong>Name:</strong> <?php echo $_SESSION['full_name']; ?><br>
           <strong>Net-ID:</strong> <?php echo $_SESSION['user']; ?><br>

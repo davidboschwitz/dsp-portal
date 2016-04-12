@@ -29,9 +29,22 @@ $config['webmaster_email'] = "dbosch@iastate.edu";
 /* Calendar iframe src */
 $config['calendar_iframe_src'] = "http://goo.gl/zQeBnx";
 
-$config['background_color'] = '#336600';
+$config['background_color'] = '#FFFFFF';
 
 $config['name_abbr'] = "DSP";
+$config['name_organization'] = "Delta Sigma Phi";
+$config['name_chapter'] = "Beta Alpha";
+$config['name_school'] = "Iowa State University";
+
+$config['contact_address'] = "307 Lynn Ave, Ames, Iowa  50014";
+$config['contact_address_googlemaps'] = "https://www.google.com/maps/dir//".$config['contact_address'];
+
+/* Social Icons on the Footer (Set to NULL to not display) */
+$config['social_facebook'] = "https://www.facebook.com/DeltaSigIAState";
+$config['social_twitter'] = "https://twitter.com/DeltaSigISU";
+$config['social_youtube'] = NULL;
+$config['social_flickr'] = NULL;
+$config['social_instagram'] = "https://www.instagram.com/deltasigisu/";
 
 /* ex iastate.edu */
 $config['email_domain'] = "iastate.edu";
@@ -56,4 +69,17 @@ function points_status($totalpts) {
     if ($totalpts < 700)
         return "Pyramid"; //600-699
     return "Sphinx"; //700+
+}
+
+/** assume alpha = 1*/
+function get_greek_num($num){
+    $num--;
+    $alphabet = array("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega");
+    $out = "";
+    if($num > 23) {
+      $out .= $alphabet[($num / 24) - 1] . " ";
+      $num -= 24;
+    }
+    $out .= $alphabet[($num) % 24];
+    return $out;
 }

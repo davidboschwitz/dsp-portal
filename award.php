@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 $page['auth'] = 5;
+$page['title'] = "Award new points";
 require "include/functions.inc";
 session_start();
 ?>
@@ -94,18 +95,27 @@ session_start();
             }
 
             function replaceNL() {
-                document.getElementById("awardedtomultiple").value = document.getElementById("awardedtomultiple").value.replace(/(?:\r\n|\r|\n)/g, ', ').replace(/@<?php echo $config['email_domain']; ?>/g, '');
+                document.getElementById("awardedtomultiple").value = document.getElementById("awardedtomultiple").value.replace(/(?:\r\n|\r|\n)/g, ', ').replace(/@<?php echo $config['email_domain']; ?>/g, '').replace(",,", ",").replace(", ,", ", ");
                 if(document.getElementById("awardedtomultiple").value.indexOf("@") > -1){
                     var s = document.getElementById("awardedtomultiple").value;
                     swal("Warning", "Not all emails entered under domain @<?php echo $config['email_domain']; ?>! Errors may occur! ("+s.substring(s.indexOf("@"), s.indexOf("@") + s.substring(s.indexOf("@")).indexOf(","))+")", "error");
                 }
+            }
+
+            function quantityCheck(){
+              if(document.getElementById("quantity").value > 1 && document.getElementById("quantity").value <= 20){
+                swal("Warning", "It looks like you've entered a number higher than 1 as quantity, make sure that's what you're intending to do", "warning");
+              }
+              if(document.getElementById("quantity").value < 1 || document.getElementById("quantity").value > 20){
+                swal("Invalid Value", "Quantity must be between [1-20]", "error");
+                document.getElementById("quantity").value = 1;
+              }
             }
         </script>
     </head>
     <body onload="multipleCheck(), startTime()">
         <?php require "include/header.inc"; ?>
         <form id="awardpts" action="submitaward.php" method="POST" on class="form-group">
-            <h1 style="margin-top: 0">Award new points</h1>
             <div class="center-block" style="width: 50%">
                 <table class="table table-bordered table-striped table-hover table-condensed">
                     <tr class="form-inline">
@@ -114,7 +124,7 @@ session_start();
                     </tr>
                     <tr>
                         <td class="awardlabel">Quantity</td>
-                        <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="1" required class="form-control input-sm" style="width:15%" /></td>
+                        <td><input id="quantity" name="quantity" type="number" min="1" max="20" value="1" required class="form-control input-sm" style="width:15%" onchange="quantityCheck()"/></td>
                     </tr>
                     <tr>
                         <td class="awardlabel">Award to</td>
@@ -122,7 +132,7 @@ session_start();
                     </tr>
                     <tr>
                         <td class="awardlabel">Award to multiple members?</td>
-                        <td><input id="multiple" name="multiple" type="checkbox" onchange="multipleCheck()" /></td>
+                        <td onclick="document.getElementById('multiple').checked = !document.getElementById('multiple').checked; multipleCheck();"><input id="multiple" name="multiple" type="checkbox" onchange="multipleCheck()" /></td>
                     </tr>
                     <tr>
                         <td class="awardlabel">Award to multiple<br><i>(comma separate users)</i></td>

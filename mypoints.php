@@ -16,6 +16,7 @@
  */
 $page['auth'] = 1;
 require "include/functions.inc";
+$page ['title'] = "My Points Breakdown (" . $_SESSION['full_name'] . ")";
 require "include/mysql.inc"; //connect to MySQL
 
 $user = $_SESSION['user'];
@@ -55,7 +56,6 @@ while ($row[$i] = mysql_fetch_assoc($result)) {
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <h1 style="margin-top: 0">My Points Breakdown (<?php echo $_SESSION['full_name']; ?>)</h1>
         <table class="table table-bordered table-striped table-hover table-condensed">
             <thead>
                 <tr>

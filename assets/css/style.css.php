@@ -1,3 +1,5 @@
+<?php 
+header('Content-Type: text/css');
 /*
  * Copyright 2016 David Boschwitz.
  *
@@ -17,10 +19,11 @@
     Created on : Oct 21, 2015, 2:29:12 PM
     Author     : davidboschwitz
 */
+?>
 
-* {
+/* {
     font-size: 12px;
-}
+}*/
 
 html {
 }
@@ -46,16 +49,16 @@ h2 {
 }
 
 body {
-    font: 12px/1.5 arial, sans-serif;
+    //font: 12px/1.5 arial, sans-serif;
     height: 100%;
     width: 100%;
-    background-color: <?php echo $config['background_color'] ?>;
+    //background-color: <?php echo $config['background_color'] ?>;
     //padding: 0.5em;
 }
 
-a {
+/*a {
     color: blue;
-}
+}*/
 
 .all-content {
     height: 100%;
@@ -67,7 +70,7 @@ a {
     margin-left: 100px;
     height: 100%;
     float: left;
-    background-color: green
+    //background-color: green
 }
 
 .sidebar {
@@ -82,6 +85,59 @@ a {
     font-size: 26pt;
     font-weight: bold;
 }
+
+.page-footer {
+    background-color:#f8f6f6;
+    border-top: 1px solid rgb(221, 221, 221);
+    margin-top: 100px; 
+}
+
+.active {
+    font-weight: bold;
+}
+
+table.award  {
+    border-collapse: collapse;
+}
+
+table.award td {
+    border: 1px solid #666666;
+    padding: 0.5em;
+}
+
+.awardlabel {
+    text-align: right;
+    //font-weight: bold;
+    background: #f2f2f2;
+}
+
+.awardlabelsuccess {
+    text-align: center;
+    color: green;
+    font-weight: bold;
+}
+
+.awardlabelfail {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+.debug {
+    border-color: #c63600;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 0.2em;
+    width:max-content;
+    background-color: lightcoral;
+    color: white;
+}
+
+.center {
+    left: 40%;
+    right: 30%;
+}
+
 
 /*-- Tables (taken from iastate.edu) --*/
 
@@ -172,47 +228,7 @@ table.cream tbody tr td.ops a + a{
     margin-left: 10px;
 }
 
-table.award  {
-    border-collapse: collapse;
-}
 
-table.award td {
-    border: 1px solid #666666;
-    padding: 0.5em;
-}
-
-.awardlabel {
-    text-align: right;
-    font-weight: bold;
-    background: #f2f2f2;
-}
-
-.awardlabelsuccess {
-    text-align: center;
-    color: green;
-    font-weight: bold;
-}
-
-.awardlabelfail {
-    text-align: center;
-    color: red;
-    font-weight: bold;
-}
-
-.debug {
-    border-color: #c63600;
-    border-style: solid;
-    border-radius: 10px;
-    padding: 0.2em;
-    width:max-content;
-    background-color: lightcoral;
-    color: white;
-}
-
-.center {
-    left: 40%;
-    right: 30%;
-}
 
 /* taken from https://github.com/twbs/bootstrap/issues/9588 */
 .inverse-dropdown{

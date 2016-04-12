@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 $page['auth'] = 7;
+$page['title'] = "Point Administration";
 require "include/functions.inc";
 require "include/mysql.inc";
 
@@ -145,12 +146,12 @@ $rowcount = --$i; //Otherwise returns extra empty NULL row
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <h1>Search for Points Awarded</h1>
+        <h3>Search for Points Awarded</h3>
         <div class="center">
             <form id="pointadmin" action="" method="POST">
                 <input id="sortby" name="sortby" type="hidden" value="<?php echo ($_POST['sortby'] ? $_POST['sortby'] : "ASC"); ?>" />
                 <input id="sortmethod" name="sortmethod" type="hidden" value="<?php echo $_POST['sortmethod']; ?>" />
-                <table class="award">
+                <table class="table table-bordered table-striped table-hover table-condensed" style="width:400px">
                     <tr>
                         <td class="awardlabel">Code</td>
                         <td><input id="code" name="code" type="text" maxlength="5" style="width: 50px;" value="<?php echo $_POST['code']; ?>" />&nbsp;&nbsp;[ <a onclick="openHints()" style="text-decoration: underline; color:blue;" href="#">list</a> ]</td>

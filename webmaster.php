@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 $page['auth'] = 100;
+$page['title'] = "Webmaster Tools";
 require "include/functions.inc";
 
 ?>
@@ -32,6 +33,11 @@ require "include/functions.inc";
           });
 
           function openHints() {
+              window.open("pointindex.php", "_blank", "toolbar=no, scrollbars=yes, resizable=no, top=500, left=500, width=500, height=600");
+          }
+
+
+          function ugh() {
               window.open("pointindex.php", "_blank", "toolbar=no, scrollbars=yes, resizable=no, top=500, left=500, width=500, height=600");
           }
 
@@ -215,7 +221,6 @@ require "include/functions.inc";
     </head>
     <body onload="haspass()">
         <?php require "include/header.inc"; ?>
-        <h1>Webmaster Tools</h1>
         <h3>Toggle Debug</h3>
         Note: Debug will only ever be on for webmasters (auth > 100).<br>
         <?php if($_SESSION['debug']) { ?>
@@ -282,6 +287,7 @@ require "include/functions.inc";
                       <th>Name</th>
                       <th>Auth Level</th>
                       <th>Position</th>
+                      <th>Class</th>
                       <th>Action</th>
                   </tr>
               </thead>
@@ -289,23 +295,26 @@ require "include/functions.inc";
               require 'include/mysql.inc';
               $query = "SELECT * FROM `{$mysql_db}`.`dsp_users`;";
               $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
-$i = 0;
-    while ($row[$i] = mysql_fetch_assoc($result)) {
+              $i = 0;
+              while ($row[$i] = mysql_fetch_assoc($result)) {
               ?>
               <tr>
-                <td><input type="text" id="user<?php echo $i;?>" value="<?php echo $row[$i]['user']; ?>" disabled readonly /></td>
+                <td><input type="hidden" id="user<?php echo $i;?>" value="<?php echo $row[$i]['user']; ?>" />
+                  <?php echo $row[$i]['last_name'] . ', '. $row[$i]['first_name']. ' (' . $row[$i]['user'] . ')'; ?></td>
                 <td><input type="text" id="auth<?php echo $i;?>" value="<?php echo $row[$i]['auth']; ?>" /></td>
                 <td><input type="text" id="pos<?php echo $i;?>" value="<?php echo $row[$i]['position']; ?>" /></td>
+                <td><input type="hidden" id="class<?php echo $i;?>" value="<?php echo $row[$i]['class']; ?>" />
+                  <input type="text" id="classname<?php echo $i;?>" value="<?php echo get_greek_num($row[$i]['class']); ?>" onclick="switchClass(<?php echo $i;?>)" /></td>
                 <td><input type="button" value="Update" onclick="updatePerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>
               </tr>
               <?php
-              $i++;
-            }
-            mysql_close();
+                $i++;
+              }
+              mysql_close();
                ?>
           </table>
         </div>
       </div>
-      <? include 'include/footer.inc'; ?>
+      <?php include 'include/footer.inc'; ?>
     </body>
 </html>

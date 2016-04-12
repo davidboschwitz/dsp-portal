@@ -30,7 +30,7 @@ require "include/config.inc";
     <body style="background-color:white">
         <h2 style="margin-top: 0">Points Breakdown</h2>
         Click on code to insert
-        <table class="cream">
+        <table style="font-size: 12px" class="table table-bordered table-striped table-hover table-condensed">
             <thead>
                 <tr>
                     <th style="text-align: right;">Pts</th>

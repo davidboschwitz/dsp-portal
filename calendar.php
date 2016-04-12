@@ -16,6 +16,7 @@
  */
 $page['auth'] = 0;
 $page['no_timeout'] = TRUE;
+$page['title'] = "Calendar";
 require "include/functions.inc";
 ?>
 <html>
@@ -25,17 +26,7 @@ require "include/functions.inc";
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <div class="page-header" style="margin-top: 0; background-color: #fcfcfc">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2>
-                            Chapter Calendar
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <iframe src="<?php echo $config['calendar_iframe_src']; ?>" height="96%" width="100%"></iframe>
         <?php require "include/footer.inc"; ?>
     </body>

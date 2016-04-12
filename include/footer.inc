@@ -27,13 +27,13 @@
                     <ul class="list-inline">
 
                         <li class="">
-                            <a href="/">Alumni</a>
+                            <a href="#" onclick="swal('Not yet implemented', 'This page hasn\'t been created yet!', 'error');">Alumni</a>
                         </li>
                         <li class="">
-                            <a href="/">Recruitment</a>
+                            <a href="#" onclick="swal('Not yet implemented', 'This page hasn\'t been created yet!', 'error');">Recruitment</a>
                         </li>
                         <li class="">
-                            <a href="/">History</a>
+                            <a href="#" onclick="swal('Not yet implemented', 'This page hasn\'t been created yet!', 'error');">History</a>
                         </li>
                         <li class="">
                             <a href="/contacts.php">Contacts</a>

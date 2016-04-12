@@ -22,7 +22,6 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <style><?php //include "../assets/css/style.css.php"; ?></style>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/png" href="/favicon.png">
 <script src="/assets/js/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/sweetalert.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.css">

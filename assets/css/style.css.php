@@ -89,7 +89,7 @@ body {
 .page-footer {
     background-color:#f8f6f6;
     border-top: 1px solid rgb(221, 221, 221);
-    margin-top: 100px; 
+    margin-top: 50px; 
 }
 
 .active {

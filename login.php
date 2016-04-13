@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-session_start();
+//session_start();
 //session_stop();
 $page['no_timeout'] = TRUE;
 $page['auth'] = 0;

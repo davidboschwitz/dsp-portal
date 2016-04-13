@@ -25,7 +25,7 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         require "include/mysql.inc";
 
         if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
-            die(json_encode(array('status' => 0, 'error' => "Invalid authentication")));
+            die(json_encode(array('status' => 'error', 'msg' => "Invalid authentication", 'title'=>"")));
         }
         $user = filter_input(INPUT_POST, 'usertoreset', FILTER_SANITIZE_STRING);
         $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
@@ -36,13 +36,13 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
 
         if ($user !== $data['user']) {
             //webmasters should know better
-            die(json_encode(array('status' => 0, 'error' => "User: $user does not exist!")));
+            die(json_encode(array('status' => 'error', 'msg' => "User: $user does not exist!", 'title'=> "Error")));
         }
         $newpass = substr(md5(rand()), 7, 8);
 
         $query = sprintf("UPDATE `$mysql_db`.`dsp_users` SET `pass` = '%s' WHERE `dsp_users`.`user` = '%s';", mysql_escape_string(create_hash($newpass)), mysql_escape_string($user));
-        $result = mysql_query($query) or die(json_encode(array('status' => 0, 'error' => ('Invalid query: ' . mysql_error()))));
-        echo json_encode(array('status' => 1, 'newpass' => $newpass));
+        $result = mysql_query($query) or die(json_encode(array('title'=>"Error", 'status' => 'error', 'msg' => ('Invalid query: ' . mysql_error()))));
+        echo json_encode(array('status' => 'success', 'newpass' => $newpass, 'title' => "Success", 'msg' => 'Reset pass successful'));
         break;
 
 
@@ -60,7 +60,7 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         require "include/hash.php";
 
         if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
-            die(json_encode(array('status' => "error", 'msg' => "Invalid authentication", 'title' => "")));
+            die(json_encode(array('status' => 'error', 'msg' => "Invalid authentication", 'title'=>"")));
         }
 
         $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
@@ -82,7 +82,7 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         require "include/hash.php";
 
         if(!validate_password(filter_input(INPUT_POST, 'mypass', FILTER_SANITIZE_STRING), $_SESSION['pass'])) {
-            die(json_encode(array('status' => 0, 'error' => "Invalid authentication")));
+            die(json_encode(array('status' => 'error', 'msg' => "Invalid authentication", 'title'=>"")));
         }
 
         $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
@@ -90,18 +90,18 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         $desc = filter_input(INPUT_POST, 'desc', FILTER_SANITIZE_STRING);
 
         if(strlen($code) < 4 || strlen($code) > 5){
-            die(json_encode(array('status' => 0, 'error' => ("Code should be in format AA##"))));
+            die(json_encode(array('status' => 'error', 'msg' => "Code should be in format AA##", 'title'=>"")));
         }
         if($pts < 1 || $pts > 50){
-            die(json_encode(array('status' => 0, 'error' => ("1 < pts < 50"))));
+            die(json_encode(array('status' => 'error', 'msg' => ("1 < pts < 50"), 'title'=>"")));
         }
         require "include/mysql.inc";
 
         $query = sprintf("INSERT INTO `$mysql_db`.`points_definition` (`code`, `points`, `description`) VALUES ('%s', '%s', '%s');", mysql_escape_string($code), mysql_escape_string($pts), mysql_escape_string($desc));
-        $result = mysql_query($query) or die(json_encode(array('status' => 0, 'error' => ('Invalid query: ' . mysql_error()))));
+        $result = mysql_query($query) or die(json_encode(array('title'=>"Error", 'status' => 'error', 'msg' => ('Invalid query: ' . mysql_error()))));
         mysql_close($mysql_link);
 
-        echo json_encode(array('status' => 1, 'msg' => "Added point $code"));
+        echo json_encode(array('status' => 'success', 'msg' => "Added point $code", 'title' => 'Success'));
         break;
 
     case "deletepointdef":

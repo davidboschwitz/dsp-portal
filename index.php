@@ -26,13 +26,11 @@ $page['title'] = $config['name_organization'] . "&nbsp;<small>" . $config['name_
         <?php require "include/head.inc"; ?>
     </head>
     <body>
-        <?php require "include/header.inc"; ?>
-        <div style="font-size: 20px">
-            <p>Salutations from the Beta Alpha Chapter of Delta Sigma Phi fraternity!  Our chapter was started in the spring semester of 2014.
-                Starting with the unwavering support of 45 founding members, this Delta Sig chapter has grown into a prominent organization at Iowa State and continues to expand its presence here on our campus.</p>
-
-            <p>Within our chapter, you will find several successful and high-achieving men.  The range of academic specialties and other campus organizations that our men are involved with embodies the mission of Delta Sigma Phi: to Build Better Men.  We strive to represent our chapter to the best of our ability, as well as become better leaders, students, future professionals, and citizens.</p>
-        </div>
-        <?php require "include/footer.inc"; ?>
+        <?php 
+            require "include/header.inc"; 
+            
+            echo file_get_contents("assets/html/index.html");
+            
+            require "include/footer.inc"; ?>
     </body>
 </html>

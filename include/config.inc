@@ -49,6 +49,8 @@ $config['social_instagram'] = "https://www.instagram.com/deltasigisu/";
 /* ex iastate.edu */
 $config['email_domain'] = "iastate.edu";
 
+$config['editable_file_names'] = array("assets/html/index.html", "assets/html/test.html");;
+
 
 /* For making sure Dates/Times are correct. Will throw errors if removed */
 date_default_timezone_set('US/Central');

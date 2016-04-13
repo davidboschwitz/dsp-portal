@@ -22,11 +22,28 @@
 // echo validate_password("hello 1", $a);
 // echo "<br>";
 
-include 'include/config.inc';
+//include 'include/config.inc';
+//
+//echo '<select id="greeknum">';
+//
+//for($i = 1; $i < 601; $i++)
+//echo "<option value=\"" . $i . "\">" . get_greek_num($i) . "</option>";
+//?>
+<!--</select>-->
 
-echo '<select id="greeknum">';
-
-for($i = 1; $i < 601; $i++)
-echo "<option value=\"" . $i . "\">" . get_greek_num($i) . "</option>";
-?>
-</select>
+<head>
+    
+<script src="/ckeditor/ckeditor.js"></script>
+</head>
+<body>
+<form id="that-editor">
+    <textarea name="editor1" id="editor1" rows="10" cols="80">
+        <?php echo file_get_contents("assets/html/index.html"); ?>
+    </textarea>
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1');
+    </script>
+</form>
+</body>

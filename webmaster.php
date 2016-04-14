@@ -150,6 +150,7 @@ require "include/functions.inc";
 
                 var user = document.getElementById("user" + num).value;
                 var auth = document.getElementById("auth" + num).value;
+                var cls = document.getElementById("class" + num).value;
                 var pos = document.getElementById("pos" + num).value;
                 var my = document.getElementById("mypass").value;
 
@@ -163,7 +164,7 @@ require "include/functions.inc";
                     closeOnConfirm: false
                 },
                         function () {
-                            $.post("webmaster_functions.php", {task: "updateperson", mypass: my, user: user, auth: auth, pos: pos}, function (data) {
+                            $.post("webmaster_functions.php", {task: "updateperson", mypass: my, user: user, auth: auth, pos: pos, "class": cls}, function (data) {
 <?php if ($_SESSION['debug']) { ?>
                                     console.log(data);
                                     //console.log(response.status);
@@ -214,12 +215,19 @@ require "include/functions.inc";
                 //console.log(document.getElementById('editor-selector').value);
                 if (document.getElementById('editor-selector').value < 0) {
                     document.getElementById('editor-selector').setAttribute("style", "height:0px");
-                    document.getElementById('editor-iframe').src = "";
+                    //document.getElementById('editor-iframe').src = "";
                     return;
                 }
-                document.getElementById('editor-iframe').src = "/webmaster_editor.php?pos=" + document.getElementById('editor-selector').value;
-                swal("Reminder", "Make sure you hit the save button before navigating away from this page or changing the document you're editing", "warning")
+                //document.getElementById('editor-iframe').src = "/webmaster_editor.php?pos=" + document.getElementById('editor-selector').value;
+                
             }
+            
+            function openeditorwindow(){
+                if (document.getElementById('editor-selector').value >= 0){ 
+                    window.open('webmaster_editor.php?pos='+document.getElementById('editor-selector').value, '_blank', 'toolbar=no, scrollbars=yes, resizable=yes');
+                }
+            }
+            
         </script>
     </head>
     <body onload="haspass()">
@@ -227,9 +235,9 @@ require "include/functions.inc";
         <h3>Toggle Debug</h3>
         Note: Debug will only ever be on for webmasters (auth > 100).<br>
         <?php if ($_SESSION['debug']) { ?>
-            <input type="button" id="debugbutton" value="Turn debug OFF" onclick="toggledebug()" />
+            <input type="button" id="debugbutton" value="Turn debug OFF" onclick="toggledebug()" class="btn btn-info btn-xs" />
         <?php } else { ?>
-            <input type="button" id="debugbutton" value="Turn debug ON" onclick="toggledebug()" />
+            <input type="button" id="debugbutton" value="Turn debug ON" onclick="toggledebug()" class="btn btn-info btn-xs" />
         <?php } ?>
 
         <div class="row">
@@ -289,9 +297,10 @@ require "include/functions.inc";
                         <option value="<?php echo $i; ?>"><?php echo $config['editable_file_names'][$i]; ?></option>
                     <?php } ?>
                 </select>
-
-                <iframe id="editor-iframe" src="" width="100%" height="450px">
-                </iframe>
+                <button class="btn btn-info btn-xs" onclick="openeditorwindow()">Open editor</button>
+                
+<!--                <iframe id="editor-iframe" src="" width="100%" height="450px">
+                </iframe>-->
             </div>
             <hr />
             <div class="row" style="margin-left: 0px; margin-right: 0px">
@@ -320,8 +329,13 @@ require "include/functions.inc";
                                 <?php echo $row[$i]['last_name'] . ', ' . $row[$i]['first_name'] . ' (' . $row[$i]['user'] . ')'; ?></td>
                             <td><input type="text" id="auth<?php echo $i; ?>" value="<?php echo $row[$i]['auth']; ?>" /></td>
                             <td><input type="text" id="pos<?php echo $i; ?>" value="<?php echo $row[$i]['position']; ?>" /></td>
-                            <td><input type="hidden" id="class<?php echo $i; ?>" value="<?php echo $row[$i]['class']; ?>" />
-                                <input type="text" id="classname<?php echo $i; ?>" value="<?php echo get_greek_num($row[$i]['class']); ?>" onclick="switchClass(<?php echo $i; ?>)" /></td>
+                            <td>
+                               <select id="class<?php echo $i; ?>">
+
+<?php for($a = 1; $a < 24; $a++) {?>
+<option value="<?php echo $a; ?> " <?php if($row[$i]['class'] == $a) echo" selected"; ?>><?php echo get_greek_num($a) ?></option>;
+<?php } ?>
+                               </select>
                             <td><input type="button" value="Update" onclick="updatePerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>
                         </tr>
                         <?php

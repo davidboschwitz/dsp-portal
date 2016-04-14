@@ -54,6 +54,7 @@ require 'include/functions.inc';
           <strong>Name:</strong> <?php echo $_SESSION['full_name']; ?><br>
           <strong>Net-ID:</strong> <?php echo $_SESSION['user']; ?><br>
           <strong>Position:</strong> <?php echo $_SESSION['position']; ?><br>
+          <strong>Class:</strong> <?php echo get_greek_num($_SESSION['class']); ?><br>
           <br>
         </div>
         <div id="changepassdiv">

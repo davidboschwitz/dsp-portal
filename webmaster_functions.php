@@ -119,6 +119,7 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
         $auth = filter_input(INPUT_POST, 'auth', FILTER_SANITIZE_NUMBER_INT);
         $pos = filter_input(INPUT_POST, 'pos', FILTER_SANITIZE_STRING);
+        $class = filter_input(INPUT_POST, 'class', FILTER_SANITIZE_NUMBER_INT);
 
         if($auth > $_SESSION['auth']){
             die(json_encode(array('status' => 'error', 'msg' => "You cannot update someone to a higher authentication level than you.", 'title'=>"")));
@@ -130,7 +131,7 @@ switch(filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING)) {
         if($userData['auth'] > $_SESSION['auth']) {
             die(json_encode(array('status' => 'error', 'msg' => "You cannot update someone who is a higher authentication level than you.", 'title'=>"")));
         }
-        $query = sprintf("UPDATE `{$mysql_db}`.`dsp_users` SET `position` = '%s', `auth` = '%d' WHERE `dsp_users`.`user` = '%s';", mysql_escape_string($pos), mysql_escape_string($auth), mysql_escape_string($user));
+        $query = sprintf("UPDATE `{$mysql_db}`.`dsp_users` SET `position` = '%s', `auth` = '%d', `class`='%d' WHERE `dsp_users`.`user` = '%s';", mysql_escape_string($pos), mysql_escape_string($auth), $class, mysql_escape_string($user));
         $result = mysql_query($query) or die(json_encode(array('title'=>"Error", 'status' => 'error', 'msg' => ('Invalid query: ' . mysql_error()))));
 
         echo json_encode(array('status' => 'success', 'msg' => "Updated Successfully!", 'title'=>""));

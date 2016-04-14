@@ -50,6 +50,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
             $_SESSION['first_name'] = $data['first_name'];
             $_SESSION['last_name'] = $data['last_name'];
             $_SESSION['position'] = $data['position'];
+            $_SESSION['class'] = $data['class'];
             $_SESSION['time'] = time();
             $_SESSION['pass'] = $data['pass'];
             $_SESSION['logged_in'] = true;

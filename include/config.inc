@@ -76,6 +76,8 @@ function points_status($totalpts) {
 /** assume alpha = 1*/
 function get_greek_num($num){
     $num--;
+    if($num < 0)
+        $num = 0;
     $alphabet = array("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega");
     $out = "";
     if($num > 23) {

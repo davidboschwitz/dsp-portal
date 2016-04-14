@@ -85,3 +85,14 @@ function get_greek_num($num){
     $out .= $alphabet[($num) % 24];
     return $out;
 }
+
+/** puts the star next to an exec position */
+function get_exec_star($position){
+    switch($position){
+        case 'President':
+        case 'Sargent at Arms':
+        case 'Secretary':
+            return "<i class=\"fa fa-star\" aria-hidden=\"true\" style=\"\"></i>";
+    }
+    return "";
+}

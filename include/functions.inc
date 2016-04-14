@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2016 David Boschwitz.
  *
@@ -17,7 +18,7 @@
 
 require "config.inc";
 session_start();
-if($page['auth'] > 0 ){
+if ($page['auth'] > 0) {
     if ($_SESSION['auth'] < $page['auth']) {
         //you don't have the authority to be on this page!
         echo "<h1>401 - Unauthorized</h1><br>";
@@ -26,17 +27,25 @@ if($page['auth'] > 0 ){
         exit;
     }
 
-    if ($config['timeout'] > 0 && !isset($page['no_timeout'])) {
+    if ($config['timeout'] > 0) {
         if ($_SESSION['time'] + $config['timeout'] < time()) {
-            //Session timeout
-            session_destroy();
-            //session_stop();
-            session_start();
-            $_SESSION['errormsg'] = "Session Timed-out: You have been automatically logged out.";
-            header("Location: login.php");
-            exit;
+            if (!isset($page['no_timeout'])) {
+                //Session timeout
+                session_destroy();
+                //session_stop();
+                session_start();
+                $_SESSION['errormsg'] = "Session Timed-out: You have been automatically logged out.";
+                header("Location: login.php");
+                exit;
+            } else if ($page['no_timeout']) {
+                //Still need to lower their auth level.
+                session_destroy();
+                session_start();
+                $_SESSION['auth'] = 0;
+            }
+        } else {
+            $_SESSION['time'] = time();
         }
-        $_SESSION['time'] = time();
     }
 }
 

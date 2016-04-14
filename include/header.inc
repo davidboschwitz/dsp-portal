@@ -40,6 +40,9 @@ $auth[] = 100;
 
 /*** About Dropdown ***/
 
+$link_about[] = "about.php";
+$desc_about[] = "About Us";
+$auth_about[] = 0;
 
 $link_about[] = "recruitment.php";
 $desc_about[] = "Recruitment";
@@ -62,15 +65,17 @@ $auth_about[] = 0;
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
                 <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;About<span class="caret"></span>
+                            <a id="about-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
+                                About<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                <?php for ($i = 0; isset($link_about[$i]); $i++) {
                         if (basename($_SERVER['PHP_SELF']) == $link_about[$i]) {
                             ?>
                             <li class="active"><a href="#"><?php echo $desc_about[$i]; ?></a></li>
+                            <script>document.getElementById('about-dropdown').setAttribute('class', 'active');</script>
                             <?php
                         } else {
                             if ($_SESSION['auth'] >= $auth_about[$i]) {
@@ -82,7 +87,6 @@ $auth_about[] = 0;
                     }?>
                             </ul>
                 </li>
-                <ul class="nav navbar-nav">
                     <?php
                     for ($i = 0; isset($link[$i]); $i++) {
                         if (basename($_SERVER['PHP_SELF']) == $link[$i]) {
@@ -105,12 +109,13 @@ $auth_about[] = 0;
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a id="myaccount-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Signed in as <?php echo $_SESSION['full_name'] ?><span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <?php if (basename($_SERVER['PHP_SELF']) == "myaccount.php") { ?>
                                     <li class="active"><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;Account Settings</a></li>
+                            <script>document.getElementById('myaccount-dropdown').setAttribute('class', 'active');</script>
                                 <?php } else { ?>
                                     <li><a href="myaccount.php" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                                             &nbsp;Account Settings</a></li>

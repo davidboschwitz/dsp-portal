@@ -48,7 +48,7 @@ $i = 0;
               <tr>
                 <td></td>
                 <td><?php echo $row[$i]['first_name'].' '.$row[$i]['last_name']; ?></td>
-                <td><?php echo $row[$i]['position'];?></td>
+                <td><?php echo $row[$i]['position'];?>&nbsp;<?php echo get_exec_star($row[$i]['position']); ?></td>
                 <td><a href="mailto:<?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?>"><?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?></a></td>
               </tr>
               <?php

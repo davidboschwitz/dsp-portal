@@ -30,10 +30,10 @@
                             <a href="#" onclick="swal('Not yet implemented', 'This page hasn\'t been created yet!', 'error');">Alumni</a>
                         </li>
                         <li class="">
-                            <a href="#" onclick="swal('Not yet implemented', 'This page hasn\'t been created yet!', 'error');">Recruitment</a>
+                            <a href="/recruitment.php" onclick="swal('Not yet implemented', 'This page hasn\'t been created yet!', 'error');">Recruitment</a>
                         </li>
                         <li class="">
-                            <a href="#" onclick="swal('Not yet implemented', 'This page hasn\'t been created yet!', 'error');">History</a>
+                            <a href="/history.php" onclick="swal('Not yet implemented', 'This page hasn\'t been created yet!', 'error');">History</a>
                         </li>
                         <li class="">
                             <a href="/contacts.php">Contacts</a>

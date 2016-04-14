@@ -37,6 +37,17 @@ $auth[] = 0;
 $link[] = "webmaster.php";
 $desc[] = "Webmaster Tools";
 $auth[] = 100;
+
+/*** About Dropdown ***/
+
+
+$link_about[] = "recruitment.php";
+$desc_about[] = "Recruitment";
+$auth_about[] = 0;
+
+$link_about[] = "history.php";
+$desc_about[] = "History";
+$auth_about[] = 0;
 ?>
 <div id="sidebar">
     <nav class="navbar navbar-default">
@@ -51,6 +62,26 @@ $auth[] = 100;
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;About<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                               <?php for ($i = 0; isset($link_about[$i]); $i++) {
+                        if (basename($_SERVER['PHP_SELF']) == $link_about[$i]) {
+                            ?>
+                            <li class="active"><a href="#"><?php echo $desc_about[$i]; ?></a></li>
+                            <?php
+                        } else {
+                            if ($_SESSION['auth'] >= $auth_about[$i]) {
+                                ?>
+                                <li><a href="<?php echo $link_about[$i]; ?>"><?php echo $desc_about[$i]; ?></a></li>
+                                <?php
+                            }
+                        }
+                    }?>
+                            </ul>
+                </li>
                 <ul class="nav navbar-nav">
                     <?php
                     for ($i = 0; isset($link[$i]); $i++) {

@@ -214,6 +214,7 @@ require "include/functions.inc";
                 //console.log(document.getElementById('editor-selector').value);
                 if (document.getElementById('editor-selector').value < 0) {
                     document.getElementById('editor-selector').setAttribute("style", "height:0px");
+                    document.getElementById('editor-iframe').src = "";
                     return;
                 }
                 document.getElementById('editor-iframe').src = "/webmaster_editor.php?pos=" + document.getElementById('editor-selector').value;

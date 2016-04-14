@@ -28,4 +28,4 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/simplex-bootstrap.min.css.php">
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css.php">
 <script src="/assets/js/portal.js"></script>
-<script src="/ckeditor/ckeditor.js"></script>
+<script src="/assets/ckeditor/ckeditor.js"></script>

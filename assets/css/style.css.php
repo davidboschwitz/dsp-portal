@@ -138,6 +138,23 @@ table.award td {
     right: 30%;
 }
 
+.login-box {
+    
+
+}
+
+
+@media (min-width: 500px) and (max-width: 999px) {
+   .login-box {
+       width: 55%;
+   }
+}
+
+@media (min-width: 1000px) {
+   .login-box {
+       width: 40%;
+   }
+}
 
 /*-- Tables (taken from iastate.edu) --*/
 

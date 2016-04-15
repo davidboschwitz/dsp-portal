@@ -87,7 +87,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
                         <?php echo $errormsg; ?>
                     </div>
                 <?php } ?>
-                <div class="panel panel-default center-block" style="width:40%;">
+                <div class="panel panel-default center-block" class="login-box">
 
                     <div id="login-box" class="panel-heading">
                         <h3 class="panel-title" style="font-weight: bold">Sign in</h3>

@@ -56,7 +56,7 @@ $auth_about[] = 0;
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/" style="padding: 3px 10px 3px 10px;"><img src="/assets/img/navicon.png" height="40" alt="<?php echo $config['name_abbr']; ?>"></a>
+                <a class="navbar-brand" href="/" style="padding: 0px 10px 3px 10px;"><img src="/assets/img/navicon.png" height="40" alt="<?php echo $config['name_abbr']; ?>"></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -66,7 +66,7 @@ $auth_about[] = 0;
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                <li class="dropdown">
+                    <li class="dropdown">
                             <a id="about-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
                                 About<span class="caret"></span>
                             </a>
@@ -84,9 +84,9 @@ $auth_about[] = 0;
                                 <?php
                             }
                         }
-                    }?>
+                         }?>
                             </ul>
-                </li>
+                    </li>
                     <?php
                     for ($i = 0; isset($link[$i]); $i++) {
                         if (basename($_SERVER['PHP_SELF']) == $link[$i]) {

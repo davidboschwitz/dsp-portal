@@ -138,6 +138,28 @@ table.award td {
     right: 30%;
 }
 
+/*-- Navbar collapse fix --*/
+
+@media(max-width:1000px)  {
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-collapse {
+        overflow-x: visible !important;
+    }
+
+    .navbar-collapse.in {
+      overflow-y: auto !important;
+    }
+
+    .collapse.in {
+      display: block !important;
+    }
+
+}
+
 
 /*-- Tables (taken from iastate.edu) --*/
 

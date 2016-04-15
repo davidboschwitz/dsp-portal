@@ -29,3 +29,4 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css.php">
 <script src="/assets/js/portal.js"></script>
 <script src="/assets/ckeditor/ckeditor.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">

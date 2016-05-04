@@ -15,6 +15,10 @@
  * limitations under the License.
  */
 require "include/config.inc";
+$field = "code";
+if (isset(filter_input(filter_input(INPUT_GET, 'field', FILTER_SANITIZE_STRING)))) {
+    $field = filter_input(filter_input(INPUT_GET, 'field', FILTER_SANITIZE_STRING));
+}
 ?>
 <html>
     <head>
@@ -22,7 +26,7 @@ require "include/config.inc";
         <?php include "include/head.inc"; ?>
         <script type="text/javascript">
             function giveCode(code) {
-                opener.document.getElementById("code").value = code;
+                opener.document.getElementById('<?php echo $field ?>').value = code;
                 this.close();
             }
         </script>
@@ -50,17 +54,13 @@ FROM $mysql_db.points_definition AS pd
 INNER JOIN $mysql_db.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code") or die('Invalid query: ' . mysql_error());
 
             $i = 0;
-            while ($row[$i++] = mysql_fetch_assoc($result)) {
-                //TODO: add rows with same codes quantities into one single row
-            }
-            $rowcount = --$i; //Otherwise returns extra empty NULL row
-            for ($i = 0; $i < $rowcount; $i++) {
+            while ($row = mysql_fetch_assoc($result)) {
                 ?>
                 <tr>
-                    <td style="text-align: right;"><?php echo $row[$i]['points']; ?></td>
-                    <td onclick="giveCode('<?php echo $row[$i]['code']; ?>')"><a style="text-decoration: underline; color: blue;" href="#" onclick="giveCode('<?php echo $row[$i]['code']; ?>')"><?php echo $row[$i]['code']; ?></a></td>
-                    <td><?php echo $row[$i]['category']; ?></td>
-                    <td><?php echo $row[$i]['description']; ?></td>
+                    <td style="text-align: right;"><?php echo $row['points']; ?></td>
+                    <td onclick="giveCode('<?php echo $row['code']; ?>')"><a style="text-decoration: underline; color: blue; cursor:pointer;" href="#" onclick="giveCode('<?php echo $row['code']; ?>')"><?php echo $row['code']; ?></a></td>
+                    <td><?php echo $row['category']; ?></td>
+                    <td><?php echo $row['description']; ?></td>
                 </tr>
             <?php } ?>
             <thead>
@@ -71,4 +71,5 @@ INNER JOIN $mysql_db.points_categories AS pc ON SUBSTRING(pd.code,1,2) = pc.code
         </table>
     </body>
 </html>
-<?php mysql_close($mysql_link);
+<?php
+mysql_close($mysql_link);

@@ -30,12 +30,17 @@ session_destroy();
 //If a login attempt has been made
 if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     session_start();
-    require "include/mysql.inc";
-    require "include/hash.php";
 
     $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
+    if(!isset($user) || empty($user)) {
+        //blah
+        goto main_page;
+    }
     $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
 
+    require "include/mysql.inc";
+    require "include/hash.php";
+    
     $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
     $result = mysql_query($query) or die('Invalid query (A): ' . mysql_error());
     $data = mysql_fetch_assoc($result);
@@ -72,6 +77,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
   unset($_SESSION['logged_in']);
   $_SESSION['auth'] = 0;
 }
+main_page:
 ?>
 <html>
     <head>

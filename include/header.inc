@@ -115,7 +115,7 @@ $auth_about[] = 0;
                             <ul class="dropdown-menu">
                                 <?php if (basename($_SERVER['PHP_SELF']) == "myaccount.php") { ?>
                                     <li class="active"><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;Account Settings</a></li>
-                            <script>document.getElementById('myaccount-dropdown').setAttribute('class', 'active');</script>
+                                    <script>document.getElementById('myaccount-dropdown').setAttribute('class', 'active');</script>
                                 <?php } else { ?>
                                     <li><a href="myaccount.php" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                                             &nbsp;Account Settings</a></li>

@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 $page['auth'] = 100;
+$page['json'] = true;
 require "include/functions.inc";
 
 

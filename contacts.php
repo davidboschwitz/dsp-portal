@@ -26,37 +26,36 @@ require "include/functions.inc";
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <div class="row" style="margin-left: 0px; margin-right: 0px">
-          <?php
-           ?>
-          <table class="table table-bordered table-striped table-hover table-condensed">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <?php
-              require 'include/mysql.inc';
-              $query = "SELECT * FROM `{$mysql_db}`.`dsp_users` WHERE `position` NOT LIKE '' ORDER BY `auth` DESC";
-              $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
-$i = 0;
-    while ($row[$i] = mysql_fetch_assoc($result)) {
-              ?>
-              <tr>
-                <td></td>
-                <td><?php echo $row[$i]['first_name'].' '.$row[$i]['last_name']; ?></td>
-                <td><?php echo $row[$i]['position'];?>&nbsp;<?php echo get_exec_star($row[$i]['position']); ?></td>
-                <td><a href="mailto:<?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?>"><?php echo $row[$i]['user'] .'@'. $config['email_domain']; ?></a></td>
-              </tr>
-              <?php
-              $i++;
-            }
-            mysql_close();
-               ?>
-          </table>
+        <div id="responsive-table" class="row" style="margin-left: 0px; margin-right: 0px">
+            <?php
+            ?>
+            <table class="table table-bordered table-striped table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <!-- Was thinking about putting photo here -->
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <?php
+                require 'include/mysql.inc';
+                $query = "SELECT * FROM `{$mysql_db}`.`dsp_users` WHERE `position` NOT LIKE '' ORDER BY `auth` DESC";
+                $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+                $i = 0;
+                while ($row[$i] = mysql_fetch_assoc($result)) {
+                    ?>
+                    <tr>
+                        <td data-title="Name"><?php echo $row[$i]['first_name'] . ' ' . $row[$i]['last_name']; ?></td>
+                        <td data-title="Position"><?php echo $row[$i]['position']; ?>&nbsp;<?php echo get_exec_star($row[$i]['position']); ?></td>
+                        <td data-title="Email"><a href="mailto:<?php echo $row[$i]['user'] . '@' . $config['email_domain']; ?>"><?php echo $row[$i]['user'] . '@' . $config['email_domain']; ?></a></td>
+                    </tr>
+                    <?php
+                    $i++;
+                }
+                mysql_close();
+                ?>
+            </table>
         </div>
         <?php require "include/footer.inc"; ?>
     </body>

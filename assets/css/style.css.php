@@ -263,3 +263,71 @@ table.cream tbody tr td.ops a + a{
     background-color: #000;
   }
 }
+
+
+#responsive-table td.table-right {
+        text-align:right;
+}
+
+/**
+ This technique was developed by Chris Coyier (@chriscoyier) and described in his post Responsive Data Tables at css-tricks.com. 
+ */
+ @media only screen and (max-width: 800px) {
+
+     /* Force table to not be like tables anymore */
+     #responsive-table table, 
+     #responsive-table thead,
+     #responsive-table tbody, 
+     #responsive-table th, 
+     #responsive-table td, 
+     #responsive-table tr { 
+         display: block; 
+     }
+
+     /* Hide table headers (but not display: none;, for accessibility) */
+     #responsive-table thead tr { 
+         position: absolute;
+         top: -9999px;
+         left: -9999px;
+     }
+     
+     #responsive-table td.table-hide {
+         position: absolute;
+         top: -9999px;
+         left: -9999px;
+     }
+     
+     #responsive-table td.table-right {
+        text-align:left;
+     }
+
+     #responsive-table tr { border: 1px solid #ccc; }
+
+     #responsive-table td { 
+         /* Behave  like a "row" */
+         border: none;
+         border-bottom: 1px solid #eee; 
+         position: relative;
+         padding-left: 50%; 
+         white-space: normal;
+         text-align:left;
+     }
+
+     #responsive-table td:before { 
+         /* Now like a table header */
+         position: absolute;
+         /* Top/left values mimic padding */
+         top: 6px;
+         left: 6px;
+         width: 45%; 
+         padding-right: 10px; 
+         white-space: nowrap;
+         text-align:left;
+         font-weight: bold;
+     }
+
+     /*
+     Label the data
+     */
+     #responsive-table td:before { content: attr(data-title); }
+ }

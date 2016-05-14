@@ -21,6 +21,9 @@ session_start();
 if ($page['auth'] > 0) {
     if ($_SESSION['auth'] < $page['auth']) {
         //you don't have the authority to be on this page!
+        if($page['json']){
+            die(json_encode(array('status' => 'error', 'msg' => "405 - Unauthorized", 'title'=>"Error")));
+        }
         echo "<h1>401 - Unauthorized</h1><br>";
         if (!isset($_SESSION['auth']))
             echo "<a href=\"login.php\">Login here.</a>";
@@ -32,6 +35,9 @@ if ($page['auth'] > 0) {
             if (!isset($page['no_timeout'])) {
                 //Session timeout
                 session_destroy();
+                if($page['json']){
+                    die(json_encode(array('status' => 'error', 'msg' => "Session Timed-out: You have been automatically logged out.", 'title'=>"Error")));
+                }
                 //session_stop();
                 session_start();
                 $_SESSION['errormsg'] = "Session Timed-out: You have been automatically logged out.";

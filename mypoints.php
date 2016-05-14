@@ -56,7 +56,7 @@ while ($row[$i] = mysql_fetch_assoc($result)) {
     </head>
     <body>
         <?php require "include/header.inc"; ?>
-        <table class="table table-bordered table-striped table-hover table-condensed">
+        <table id="responsive-table" class="table table-bordered table-striped table-hover table-condensed">
             <thead>
                 <tr>
                     <th style="text-align: right;">Pts</th>
@@ -75,24 +75,22 @@ while ($row[$i] = mysql_fetch_assoc($result)) {
                 $totalquantity += $content[$i]['quantity'];
                 ?>
                 <tr>
-                    <td style = "text-align: right;"><?php echo $content[$i]['points']; ?></td>
-                    <td style = "text-align: right;"><?php echo $content[$i]['quantity']; ?></td>
-                    <td style = "text-align: right;"><?php echo ($content[$i]['points'] * $content[$i]['quantity']); ?></td>
-                    <td><?php echo $content[$i]['code']; ?></td>
-                    <td><?php echo $content[$i]['category']; ?></td>
-                    <td><?php echo $content[$i]['description']; ?></td>
+                    <td class="table-right" data-title="Points"><?php echo $content[$i]['points']; ?></td>
+                    <td class="table-right" data-title="Quantity"><?php echo $content[$i]['quantity']; ?></td>
+                    <td class="table-right" data-title="Total"><?php echo ($content[$i]['points'] * $content[$i]['quantity']); ?></td>
+                    <td data-title="Code"><?php echo $content[$i]['code']; ?></td>
+                    <td data-title="Category"><?php echo $content[$i]['category']; ?></td>
+                    <td data-title="Description"><?php echo $content[$i]['description']; ?></td>
                 </tr>
             <?php } ?>
-            <thead>
-                <tr>
-                    <th style="text-align: right;">&nbsp;</th>
-                    <th style="text-align: right;"><?php //echo $totalquantity; ?></th>
-                    <th style="text-align: right;"><?php echo $totalpts; ?></th>
-                    <th><i>Total</i></th>
-                    <th style="text-align: right;">Current Status:</th>
-                    <th><?php echo points_status($totalpts); ?></th>
-                </tr>
-            </thead>
+            <tr>
+                <td class="table-hide table-right">&nbsp;</td>
+                <td class="table-hide table-right"><?php //echo $totalquantity;   ?></td>
+                <td class="table-right" data-title="Total Points"><?php echo $totalpts; ?></td>
+                <td class="table-hide"><i>Total</i></td>
+                <td class="table-hide table-right">Current Status:</td>
+                <td data-title="Current Status"><?php echo points_status($totalpts); ?></td>
+            </tr>
         </table>
         <?php require "include/footer.inc"; ?>
     </body>

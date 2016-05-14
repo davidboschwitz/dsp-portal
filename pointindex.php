@@ -16,7 +16,7 @@
  */
 require "include/config.inc";
 $field = "code";
-if (isset(filter_input(filter_input(INPUT_GET, 'field', FILTER_SANITIZE_STRING)))) {
+if (isset($_GET['field'])) {
     $field = filter_input(filter_input(INPUT_GET, 'field', FILTER_SANITIZE_STRING));
 }
 ?>

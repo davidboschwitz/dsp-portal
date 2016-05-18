@@ -219,15 +219,15 @@ require "include/functions.inc";
                     return;
                 }
                 //document.getElementById('editor-iframe').src = "/webmaster_editor.php?pos=" + document.getElementById('editor-selector').value;
-                
+
             }
-            
+
             function openeditorwindow(){
-                if (document.getElementById('editor-selector').value >= 0){ 
+                if (document.getElementById('editor-selector').value >= 0){
                     window.open('webmaster_editor.php?pos='+document.getElementById('editor-selector').value, '_blank', 'toolbar=no, scrollbars=yes, resizable=yes');
                 }
             }
-            
+
         </script>
     </head>
     <body onload="haspass()">
@@ -298,7 +298,7 @@ require "include/functions.inc";
                     <?php } ?>
                 </select>
                 <button class="btn btn-info btn-xs" onclick="openeditorwindow()">Open editor</button>
-                
+
 <!--                <iframe id="editor-iframe" src="" width="100%" height="450px">
                 </iframe>-->
             </div>
@@ -319,7 +319,7 @@ require "include/functions.inc";
                     </thead>
                     <?php
                     require 'include/mysql.inc';
-                    $query = "SELECT * FROM `{$mysql_db}`.`dsp_users`;";
+                    $query = "SELECT * FROM `{$mysql_db}`.`dsp_users` ORDER BY last_name;";
                     $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
                     $i = 0;
                     while ($row[$i] = mysql_fetch_assoc($result)) {

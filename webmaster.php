@@ -331,10 +331,9 @@ require "include/functions.inc";
                             <td><input type="text" id="pos<?php echo $i; ?>" value="<?php echo $row[$i]['position']; ?>" /></td>
                             <td>
                                <select id="class<?php echo $i; ?>">
-
-<?php for($a = 1; $a < 24; $a++) {?>
-<option value="<?php echo $a; ?> " <?php if($row[$i]['class'] == $a) echo" selected"; ?>><?php echo get_greek_num($a) ?></option>;
-<?php } ?>
+                                <?php for($a = 1; $a < 24; $a++) { ?>
+                                  <option value="<?php echo $a; ?> " <?php if($row[$i]['class'] == $a) echo" selected"; ?>><?php echo get_greek_num($a) ?></option>;
+                                <?php } ?>
                                </select>
                             <td><input type="button" value="Update" onclick="updatePerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>
                         </tr>

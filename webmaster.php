@@ -228,6 +228,18 @@ require "include/functions.inc";
                 }
             }
 
+            function editPerson(user, last_name, first_name){
+              document.getElementById('modal_current_user').value = user;
+              document.getElementById('modal_user').value = user;
+              document.getElementById('modal_first_name').value = first_name;
+              document.getElementById('modal_last_name').value = last_name;
+              $("#edit-person-modal").modal('show');
+            }
+
+            function modalupdate(){
+              swal("Soon...", "This operation is not yet supported", "error");
+            }
+
         </script>
     </head>
     <body onload="haspass()">
@@ -331,11 +343,11 @@ require "include/functions.inc";
                             <td><input type="text" id="pos<?php echo $i; ?>" value="<?php echo $row[$i]['position']; ?>" /></td>
                             <td>
                                <select id="class<?php echo $i; ?>">
-                                <?php for($a = 0; $a < 24; $a++) { ?>
+                                <?php for($a = 0; $a < 48; $a++) { ?>
                                   <option value="<?php echo $a; ?> " <?php if($row[$i]['class'] == $a) echo" selected"; ?>><?php echo get_greek_num($a) ?></option>;
                                 <?php } ?>
                                </select>
-                            <td><input type="button" value="Update" onclick="updatePerson(<?php echo $i; ?>)" class="btn btn-xs " /></td>
+                            <td><div class="btn-group"><input type="button" value="Update" onclick="updatePerson(<?php echo $i; ?>)" class="btn btn-xs btn-success" /><input type="button" value="Edit Info" onclick="editPerson('<?php echo $row[$i]['user'] ?>','<?php echo $row[$i]['last_name'] ?>','<?php echo $row[$i]['first_name'] ?>')" class="btn btn-xs btn-info" /></div></td>
                         </tr>
                         <?php
                         $i++;
@@ -343,6 +355,33 @@ require "include/functions.inc";
                     mysql_close();
                     ?>
                 </table>
+                <!-- Modal -->
+                <div class="modal fade" id="edit-person-modal" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="font-weight:bold">Edit Person</h4>
+                      </div>
+                      <div class="modal-body">
+                        <input type="hidden" id="modal_current_user" value="" />
+                        <b>Username:</b><br>
+                        <input type="text"  id="modal_user" value="" /><br>
+                        <b>First name:</b><br>
+                        <input type="text" id="modal_first_name" value="" /><br>
+                        <b>Last name:</b><br>
+                        <input type="text" id="modal_last_name" value="" /><br><br>
+                        <input type="button" id="modal_submit" value="Update" onclick="modalupdate()" class="btn btn-success btn-sm" />
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
             </div>
         </div>
         <?php include 'include/footer.inc'; ?>

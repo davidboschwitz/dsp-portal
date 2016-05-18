@@ -152,7 +152,7 @@ session_start();
                     </tr>
                     <tr>
                         <td class="awardlabel"></td>
-                        <td><input id="submit" type="submit" value="Submit" onclick="submitaward()" class="btn btn-default" /></td>
+                        <td><input id="submit" type="submit" value="Submit" onclick="submitaward()" class="btn btn-success" /></td>
                     </tr>
                 </table>
             </div>

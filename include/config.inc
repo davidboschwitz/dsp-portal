@@ -27,7 +27,7 @@ $config['timeout'] = 15 * 60; //15 minutes
 $config['webmaster_email'] = "dbosch@iastate.edu";
 
 /* Calendar iframe src */
-$config['calendar_iframe_src'] = "http://goo.gl/zQeBnx";
+$config['calendar_iframe_src'] = "https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23FFFFFF&src=deltasigiowastate@gmail.com&color=%23125A12&src=4ue0itf8p19jv09u3vsr0qd1ps@group.calendar.google.com&color=%23691426&src=skscbj4315r82akqnvtvo8a0s4@group.calendar.google.com&color=%23333333&ctz=America/Chicago&src=isugreekaffairs@gmail.com&color=navy";
 
 $config['background_color'] = '#FFFFFF';
 

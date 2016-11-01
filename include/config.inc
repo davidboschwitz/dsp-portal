@@ -73,12 +73,12 @@ function points_status($totalpts) {
     return "Sphinx"; //700+
 }
 
+$alphabet = array("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega");
 /** assume alpha = 1*/
 function get_greek_num($num) {
     if($num == 0)
       return "Alumni";
     $num--;
-    $alphabet = array("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega");
     $out = "";
     if($num > 23) {
       $out .= $alphabet[($num / 24) - 1] . " ";

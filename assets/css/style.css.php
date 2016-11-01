@@ -29,7 +29,7 @@ html {
 }
 
 .mycontent{
-    background-color: white;
+    background-color: #fcfcfc;
     padding: 0.5em;
 }
 

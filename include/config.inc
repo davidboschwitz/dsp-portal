@@ -93,7 +93,10 @@ function get_exec_star($position){
     switch($position){
         case 'President':
         case 'Sargent at Arms':
-        case 'Secretary':
+        case 'Treasurer':
+        case 'VP of Recruitment':
+        case 'Chapter Advisor':
+        case 'House Manager':
             return "<i class=\"fa fa-star\" aria-hidden=\"true\" style=\"\"></i>";
     }
     return "";

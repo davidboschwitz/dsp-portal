@@ -97,7 +97,7 @@ function get_exec_star($position){
         case 'VP of Recruitment':
         case 'Chapter Advisor':
         case 'House Manager':
-            return "<i class=\"fa fa-star\" aria-hidden=\"true\" style=\"\"></i>";
+            return "<i class=\"fa fa-star\" aria-hidden=\"true\" style=\"color:#b5b513\"></i>";
     }
     return "";
 }

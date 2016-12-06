@@ -20,7 +20,8 @@ $page['no_timeout'] = TRUE;
 $page['auth'] = 0;
 $page['title'] = "Portal - Login";
 
-include_once "include/functions.inc";
+require "include/functions.inc";
+require "include/ldap.php";
 if(!isset($errormsg)){
     $errormsg = "";
     if(isset($_SESSION['errormsg']))
@@ -38,14 +39,16 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     }
     $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
 
+    // call authenticate function
+    if(authenticate($username,$password)){
+    
     require "include/mysql.inc";
-    require "include/hash.php";
     
     $query = sprintf("SELECT * FROM `$mysql_db`.`dsp_users` WHERE `user` = '%s'", mysql_escape_string($user));
     $result = mysql_query($query) or die('Invalid query (A): ' . mysql_error());
     $data = mysql_fetch_assoc($result);
     if ($data['user'] === $user) {
-        if (validate_password($pass, $data['pass']) && $data['auth'] > 0) {
+        if ($data['auth'] > 0) {
             mysql_query(sprintf("UPDATE `dsp_users` SET `num_login` = (`num_login` + 1) WHERE `user` = '%s';",mysql_escape_string($user)));
             $_SESSION['user'] = $user;
             $_SESSION['auth'] = $data['auth'];
@@ -71,8 +74,12 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     if($data['pass'] == "disabled" || $data['auth'] == 0) {
       $errormsg = "Your account has been disabled.  For more information, please contact the webmaster at <a href=\"mailto:" . $config['webmaster_email'] . "\">" . $config['webmaster_email'] . "</a>";
     }
+     
 
     mysql_close($mysql_link);
+    } else {
+        $errormsg = "User or Password incorrect";
+    }
 } else {
   unset($_SESSION['logged_in']);
   $_SESSION['auth'] = 0;

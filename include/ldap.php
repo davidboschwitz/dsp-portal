@@ -1,4 +1,12 @@
   <?php
+
+ if (!extension_loaded('ldap')) {
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        dl('php_ldap.dll');
+    } else {
+        dl('ldap.so');
+    }
+ }
   /*
    * checks the credentials against the LDAP server
    * $user - 

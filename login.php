@@ -40,7 +40,7 @@ if (filter_input(INPUT_POST, 'attempt', FILTER_SANITIZE_NUMBER_INT) > 0) {
     $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
 
     // call authenticate function
-    if(authenticate($username,$password)){
+    if(ldap_authenticate($username,$password)){
     
     require "include/mysql.inc";
     
